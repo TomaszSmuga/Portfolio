@@ -36,11 +36,11 @@ const submitDataToSheet = () => {
     });
 };
 
-// Przykładowe przesłanie formularza
-const form1Data: Partial<GoogleSheetRow> = {
-  name: "Jan Kowalski",
-  age: "30",
-};
+// // Przykładowe przesłanie formularza
+// const form1Data: Partial<GoogleSheetRow> = {
+//   name: "Jan Kowalski",
+//   age: "30",
+// };
 
 updateFormData(form1Data);
 submitDataToSheet();
