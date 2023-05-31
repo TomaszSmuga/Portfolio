@@ -12,10 +12,15 @@
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.26",
+    "@types/sweetalert": "^2.0.4",
+    "axios": "^1.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
-    "styled-components": "^5.3.11"
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
+    "styled-components": "^5.3.11",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
