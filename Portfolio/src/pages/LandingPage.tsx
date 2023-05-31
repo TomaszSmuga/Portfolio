@@ -12,14 +12,14 @@ export const FormComponent: React.FC<{}> = (props) => {
    *
    */
   interface GoogleSheetForm {
-    name: string;
+    id: string;
     age: string;
     salary: string;
     hobby: string;
   }
 
   const [form, setForm] = useState<GoogleSheetForm>({
-    name: "",
+    id: "",
     age: "",
     salary: "",
     hobby: "",
@@ -45,7 +45,7 @@ export const FormComponent: React.FC<{}> = (props) => {
    */
   const onSubmitForm: Function = () => {
     if (
-      form.name !== "" ||
+      form.id !== "" ||
       form.age !== "" ||
       form.hobby !== "" ||
       form.salary !== ""
@@ -53,7 +53,7 @@ export const FormComponent: React.FC<{}> = (props) => {
       axios
         .post(GOOGLE_SHEET_API_LINK, form)
         .then(({ data }) => {
-          swal("Good job!", "You clicked the button!", "success");
+          swal("Dobra robota!", "Twój numer został przesłany");
         })
         .catch((err) => swal(err.message, "Warning!", "warning"));
     } else {
@@ -67,46 +67,15 @@ export const FormComponent: React.FC<{}> = (props) => {
         <Header as="h2">React Google Sheets!</Header>
         <Form className="form">
           <Form.Field>
-            <label>Name</label>
+            <label>Numer</label>
             <input
-              placeholder="Enter your name"
-              name="name"
+              placeholder="Wpisz przypisany numer"
+              name="id"
               onChange={(e) => updateForm(e)}
-              value={form.name}
+              value={form.id}
               required
             />
           </Form.Field>
-          <Form.Field>
-            <label>Age</label>
-            <input
-              placeholder="Enter your age"
-              name="age"
-              value={form.age}
-              required
-              onChange={(e) => updateForm(e)}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Salary</label>
-            <input
-              placeholder="Enter your salary"
-              name="salary"
-              onChange={(e) => updateForm(e)}
-              required
-              value={form.salary}
-            />
-          </Form.Field>
-          <Form.Field>
-            <label>Hobby</label>
-            <input
-              placeholder="Enter your hobby"
-              name="hobby"
-              onChange={(e) => updateForm(e)}
-              value={form.hobby}
-              required
-            />
-          </Form.Field>
-
           <Button color="blue" type="submit" onClick={(e) => onSubmitForm(e)}>
             Submit
           </Button>
