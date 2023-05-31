@@ -1,0 +1,45 @@
+.form {
+  width: 500px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  position: relative;
+  height: 100vh;
+}
+
+h2.ui.header {
+  font-size: 45px;
+}
+
+.ui.fluid.container {
+  width: 35%;
+}
+
+.ui.container {
+  display: flex;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: fit-content;
+  padding: 50px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.compare {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.compare input {
+  text-align: center;
+}

@@ -1,52 +1,44 @@
 import axios from "axios";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import { Button, Form, Container, Header } from "semantic-ui-react";
 import swal from "sweetalert";
 import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
+import "../Style/Form.css";
+import NumericInput from "../Utilities/Regex";
+import ClickableImage from "../components/MainNavMenu/ClickableImg/ClickableImg";
+
+const RowData = {
+  Id: "",
+  response1: "",
+  response2: "",
+};
 
 export const FormComponent: React.FC<{}> = (props) => {
-  /**
-   *@interface {GoogleSheetForm}
-   *we usually use interface to create spesific type, in this case we want to use this type for our form
-   * if you try to add more type it will throw error, that is exactly how it becomse easy to remember the type of your object
-   *
-   */
   interface GoogleSheetForm {
     id: string;
-    age: string;
-    salary: string;
-    hobby: string;
+    response1?: string;
+    salary?: string;
+    hobby?: string;
   }
 
   const [form, setForm] = useState<GoogleSheetForm>({
     id: "",
-    age: "",
-    salary: "",
-    hobby: "",
   });
 
-  /**
-   * @function updateForm
-   * @param event
-   * @returns {object} contains form data
-   */
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value;
+    const numericValue = inputValue.replace(/\D/g, "");
 
-  const updateForm: Function = (event: ChangeEvent<HTMLInputElement>) => {
     setForm({
       ...form,
-      [event.target.name]: event.target.value,
+      [event.target.name]: numericValue,
     });
   };
-  /**
-   * @function onSubmitForm
-   * @param emty
-   * send a post request to the google sheets api and save the Form object in it.
-   * @returns {string<Promise>}
-   */
+
   const onSubmitForm: Function = () => {
     if (
       form.id !== "" ||
-      form.age !== "" ||
+      form.response1 !== "" ||
       form.hobby !== "" ||
       form.salary !== ""
     ) {
@@ -62,25 +54,63 @@ export const FormComponent: React.FC<{}> = (props) => {
   };
 
   return (
-    <div>
+    <>
       <Container fluid className="container">
-        <Header as="h2">React Google Sheets!</Header>
-        <Form className="form">
-          <Form.Field>
-            <label>Numer</label>
-            <input
-              placeholder="Wpisz przypisany numer"
-              name="id"
-              onChange={(e) => updateForm(e)}
-              value={form.id}
-              required
-            />
-          </Form.Field>
-          <Button color="blue" type="submit" onClick={(e) => onSubmitForm(e)}>
-            Submit
-          </Button>
-        </Form>
+        <div className="box">
+          <Header as="h2">Kwestionariusz</Header>
+          <Form className="form">
+            <Form.Field>
+              <label>Numer</label>
+              <input
+                placeholder="Wpisz przypisany numer"
+                name="id"
+                onChange={(e) => handleInputChange(e)}
+                value={form.id}
+                required
+                pattern="[0-9]*"
+              />
+            </Form.Field>
+            <div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta,
+                magnam ea et aspernatur laudantium numquam culpa harum deserunt
+                reiciendis accusantium ut quae at illum blanditiis maxime
+                maiores modi ullam ipsa!
+              </p>
+              <br />
+            </div>
+            <Button color="blue" type="submit" onClick={(e) => onSubmitForm(e)}>
+              Submit
+            </Button>
+          </Form>
+
+          <Header as="h2">Pytanie 1</Header>
+          <Form className="form">
+            <Form.Field>
+              <input
+                placeholder="Wpisz przypisany numer"
+                name="id"
+                onChange={(e) => handleInputChange(e)}
+                value={form.id}
+                required
+                pattern="[0-9]*"
+              />
+            </Form.Field>
+            <div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta,
+                magnam ea et aspernatur laudantium numquam culpa harum deserunt
+                reiciendis accusantium ut quae at illum blanditiis maxime
+                maiores modi ullam ipsa!
+              </p>
+              <br />
+            </div>
+            <Button color="blue" type="submit" onClick={(e) => onSubmitForm(e)}>
+              Submit
+            </Button>
+          </Form>
+        </div>
       </Container>
-    </div>
+    </>
   );
 };

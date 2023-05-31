@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+#google sheet api link
+../src/Utilities/api.ts
+./Utilities/api.ts
+.api.ts
+
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
