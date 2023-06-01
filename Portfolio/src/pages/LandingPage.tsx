@@ -6,7 +6,7 @@ import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 import "../Style/Form.css";
 import NumericInput from "../Utilities/Regex";
 import ClickableImage from "../components/MainNavMenu/ClickableImg/ClickableImg";
-import { Task } from "../components/Tasks/Task";
+// import { Task } from "../components/Tasks/Task";
 
 const RowData = {
   Id: "",
@@ -24,6 +24,7 @@ export const FormComponent: React.FC<{}> = (props) => {
 
   const [form, setForm] = useState<GoogleSheetForm>({
     id: "",
+    response1: "",
   });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -84,30 +85,18 @@ export const FormComponent: React.FC<{}> = (props) => {
               Submit
             </Button>
           </Form>
-
-          <Header as="h2">Pytanie 1</Header>
           <Form className="form">
-            <div className="box">
-              <Form.Field>
-                <input
-                  placeholder="Wpisz przypisany numer"
-                  name="id"
-                  onChange={(e) => handleInputChange(e)}
-                  value={form.response1}
-                  type="checkbox"
-                />
-              </Form.Field>
-              <Form.Field>
-                <input
-                  placeholder="Wpisz przypisany numer"
-                  name="id"
-                  onChange={(e) => handleInputChange(e)}
-                  value={form.response1false}
-                  type="checkbox"
-                />
-              </Form.Field>
-            </div>
-
+            <Form.Field>
+              <label>Pytanie 1</label>
+              <input
+                placeholder="Wpisz przypisany numer"
+                name="response1"
+                onChange={(e) => handleInputChange(e)}
+                value={form.response1}
+                required
+                pattern="[0-9]*"
+              />
+            </Form.Field>
             <div>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta,
@@ -121,7 +110,6 @@ export const FormComponent: React.FC<{}> = (props) => {
               Submit
             </Button>
           </Form>
-          <Task />
         </div>
       </Container>
     </>
