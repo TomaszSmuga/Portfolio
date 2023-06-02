@@ -1,18 +1,27 @@
 import React, { ChangeEvent, useState, useEffect } from "react";
-
-import { Button, Form, Container, Header } from "semantic-ui-react";
+import { Button, Form, Container, Label, Input } from "semantic-ui-react";
 import swal from "sweetalert";
 import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 import "../Style/Form.css";
-import { Task1 } from "../components/Tasks/Task1";
-import { CheckOnSubmit } from "../components/SendData/SendData";
+import {
+  Task1,
+  Task2,
+  Task3,
+  Task4,
+  Task5,
+  Task6,
+} from "../components/Tasks/Task1";
+import NumericInput from "../Utilities/Regex";
 import axios from "axios";
 
 export const Test: React.FC<{}> = (props) => {
   const [id, setId] = useState("");
   const [response1, setResponse1] = useState<boolean | null>(null);
-  const [response2, setResponse2] = useState("");
-  const [response3, setResponse3] = useState("");
+  const [response2, setResponse2] = useState<boolean | null>(null);
+  const [response3, setResponse3] = useState<boolean | null>(null);
+  const [response4, setResponse4] = useState<boolean | null>(null);
+  const [response5, setResponse5] = useState<boolean | null>(null);
+  const [response6, setResponse6] = useState<boolean | null>(null);
   const [showOverlay, setShowOverlay] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -27,21 +36,33 @@ export const Test: React.FC<{}> = (props) => {
   }, []);
 
   const onNextStep = () => {
-    if (currentStep < 3) {
+    if (currentStep < 5) {
       setCurrentStep((prevStep) => prevStep + 1);
     }
   };
 
-  const onSubmitForm = (e) => {
-    e.preventDefault();
+  const onSubmitForm = () => {
     console.log("Ale Ty umiesz wciskać");
-    if (currentStep === 3 && response1 !== null) {
-      const response1Value = response1 ? "Brawo" : "Dupa";
+    if (
+      currentStep === 5 &&
+      response1 !== null &&
+      response2 !== null &&
+      response3 !== null
+    ) {
+      const response1Value = response1 ? "True" : "False";
+      const response2Value = response2 ? "True" : "False";
+      const response3Value = response3 ? "True" : "False";
+      const response4Value = response4 ? "True" : "False";
+      const response5Value = response5 ? "True" : "False";
+      const response6Value = response6 ? "True" : "False";
       const form = {
         id,
         response1: response1Value,
-        response2,
-        response3,
+        response2: response2Value,
+        response3: response3Value,
+        // response4: response4Value
+        // response5: response5Value
+        // response6: response6Value
       };
       axios
         .post(GOOGLE_SHEET_API_LINK, form)
@@ -51,8 +72,11 @@ export const Test: React.FC<{}> = (props) => {
           // Reset form data
           setId("");
           setResponse1(null);
-          setResponse2("");
-          setResponse3("");
+          setResponse2(null);
+          setResponse3(null);
+          setResponse4(null);
+          setResponse5(null);
+          setResponse6(null);
         })
         .catch((err) => {
           console.log("chujowo");
@@ -69,8 +93,9 @@ export const Test: React.FC<{}> = (props) => {
         return (
           <>
             <Form.Field>
-              <label>Numer</label>
-              <input
+              <Label size="massive">Numer identyfikacyjny</Label>
+              <Input
+                size="massive"
                 placeholder="Wpisz przypisany numer"
                 name="id"
                 onChange={(e) => setId(e.target.value)}
@@ -84,10 +109,8 @@ export const Test: React.FC<{}> = (props) => {
       case 2:
         return (
           <>
-            {/* {showOverlay && <Task1 cla/> && } */}
-
+            {showOverlay && <Task1 />}
             <Form.Field>
-              <label>Odpowiedź 1</label>
               {currentStep === 2 && (
                 <>
                   <div className="tasks">
@@ -122,26 +145,106 @@ export const Test: React.FC<{}> = (props) => {
       case 3:
         return (
           <>
+            {showOverlay && <Task2 />}
             <Form.Field>
-              <label>Odpowiedź 1</label>
               {currentStep === 3 && (
                 <>
-                  <Form.Field
-                    label="dupa"
-                    value={response2}
-                    onChange={(e: any) => setResponse2(e.target.value)}
-                  />
-                  {/* <Form.Checkbox
-                    label="Wybór 1"
-                    checked={response2 === true}
-                    onChange={() => setResponse2(true)}
-                  />
-
-                  <Form.Checkbox
-                    label="Wybór 2"
-                    checked={response2 === false}
-                    onChange={() => setResponse2(false)}
-                  /> */}
+                  <div className="tasks">
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 1"
+                        checked={response2 === true}
+                        onChange={() => setResponse2(true)}
+                      />
+                    </div>
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 2"
+                        checked={response2 === false}
+                        onChange={() => setResponse2(false)}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+            </Form.Field>
+          </>
+        );
+      case 4:
+        return (
+          <>
+            {showOverlay && <Task3 />}
+            <Form.Field>
+              {currentStep === 4 && (
+                <>
+                  <div className="tasks">
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 1"
+                        checked={response2 === true}
+                        onChange={() => setResponse2(true)}
+                      />
+                    </div>
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 2"
+                        checked={response2 === false}
+                        onChange={() => setResponse2(false)}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+            </Form.Field>
+          </>
+        );
+      case 5:
+        return (
+          <>
+            {showOverlay && <Task4 />}
+            <Form.Field>
+              {currentStep === 5 && (
+                <>
+                  <div className="tasks">
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 1"
+                        checked={response3 === true}
+                        onChange={() => setResponse3(true)}
+                      />
+                    </div>
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 2"
+                        checked={response3 === false}
+                        onChange={() => setResponse3(false)}
+                      />
+                    </div>
+                  </div>
                 </>
               )}
             </Form.Field>
@@ -152,39 +255,16 @@ export const Test: React.FC<{}> = (props) => {
     }
   };
 
-  const handleAxios = () => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
   return (
     <>
       <Container fluid className="container">
-        <div className="box">
-          <Header as="h2">Kwestionariusz</Header>
-          <Form className="form">
-            {renderFormStep()}
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta,
-                magnam ea et aspernatur laudantium numquam culpa harum deserunt
-                reiciendis accusantium ut quae at illum blanditiis maxime
-                maiores modi ullam ipsa!
-              </p>
-            </div>
-            <Form.Button color="blue" onClick={onSubmitForm}>
-              {currentStep === 3 ? "Submit" : "Next"}
-            </Form.Button>
-          </Form>
-          <button onClick={handleAxios}>TestAxiosa</button>
-          <CheckOnSubmit />
-        </div>
+        <Form className="form">
+          {renderFormStep()}
+
+          <Form.Button size="huge" color="blue" onClick={onSubmitForm}>
+            {currentStep === 5 ? "Wyślij" : "Dalej"}
+          </Form.Button>
+        </Form>
       </Container>
     </>
   );

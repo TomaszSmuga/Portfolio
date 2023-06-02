@@ -1,4 +1,4 @@
-/* .form {
+.form {
   width: 500px;
 }
 
@@ -12,31 +12,23 @@
   height: 100vh;
 }
 
-h2.ui.header {
-  font-size: 45px;
+h2 {
+  font-size: 60px;
 }
 
 .ui.fluid.container {
-  width: 35%;
-}
-
-.ui.container {
-  display: flex;
-}*/
-
- .box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 50px;
-  background-color: white;
-  border-radius: 5px;
-  z-index: 0;
-} 
+  width: 35%;
+  background-color: #ede5e5;
+}
 
-/* .compare {
+.ui.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.compare {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -48,6 +40,7 @@ h2.ui.header {
 
 .tasks {
   display: flex;
+  justify-content: center;
 }
 
 .task {
@@ -60,4 +53,18 @@ h2.ui.header {
 
 .ui .checkbox {
   padding-top: 20px;
-} */ */
+}
+
+.field {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 756px) {
+  .tasks {
+    flex-direction: column;
+  }
+  .ui.fluid.container {
+    flex-direction: column;
+  }
+}
