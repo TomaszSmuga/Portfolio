@@ -32,7 +32,8 @@ export const Test: React.FC<{}> = (props) => {
     }
   };
 
-  const onSubmitForm = () => {
+  const onSubmitForm = (e) => {
+    e.preventDefault();
     console.log("Ale Ty umiesz wciskać");
     if (currentStep === 3 && response1 !== null) {
       const response1Value = response1 ? "Brawo" : "Dupa";
@@ -53,7 +54,10 @@ export const Test: React.FC<{}> = (props) => {
           setResponse2("");
           setResponse3("");
         })
-        .catch((err) => swal(err.message, "Warning!", "warning"));
+        .catch((err) => {
+          console.log("chujowo");
+          swal(err.message, "Warning!", "warning");
+        });
     } else {
       onNextStep();
     }
@@ -94,7 +98,7 @@ export const Test: React.FC<{}> = (props) => {
                       />
                       <Form.Checkbox
                         label="Wybór 1"
-                        checked={response1}
+                        checked={response1 === true}
                         onChange={() => setResponse1(true)}
                       />
                     </div>
@@ -105,7 +109,7 @@ export const Test: React.FC<{}> = (props) => {
                       />
                       <Form.Checkbox
                         label="Wybór 2"
-                        checked={!response1}
+                        checked={response1 === false}
                         onChange={() => setResponse1(false)}
                       />
                     </div>
@@ -122,16 +126,22 @@ export const Test: React.FC<{}> = (props) => {
               <label>Odpowiedź 1</label>
               {currentStep === 3 && (
                 <>
-                  <Form.Checkbox
+                  <Form.Field
+                    label="dupa"
+                    value={response2}
+                    onChange={(e: any) => setResponse2(e.target.value)}
+                  />
+                  {/* <Form.Checkbox
                     label="Wybór 1"
-                    checked={response2}
+                    checked={response2 === true}
                     onChange={() => setResponse2(true)}
                   />
+
                   <Form.Checkbox
                     label="Wybór 2"
-                    checked={!response2}
+                    checked={response2 === false}
                     onChange={() => setResponse2(false)}
-                  />
+                  /> */}
                 </>
               )}
             </Form.Field>
@@ -140,6 +150,17 @@ export const Test: React.FC<{}> = (props) => {
       default:
         return null;
     }
+  };
+
+  const handleAxios = () => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -156,14 +177,12 @@ export const Test: React.FC<{}> = (props) => {
                 reiciendis accusantium ut quae at illum blanditiis maxime
                 maiores modi ullam ipsa!
               </p>
-              <button onClick={onSubmitForm} type="submit">
-                dupa
-              </button>
             </div>
             <Form.Button color="blue" onClick={onSubmitForm}>
               {currentStep === 3 ? "Submit" : "Next"}
             </Form.Button>
           </Form>
+          <button onClick={handleAxios}>TestAxiosa</button>
         </div>
       </Container>
     </>
