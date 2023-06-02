@@ -44,6 +44,9 @@ export const FormComponent: React.FC<{}> = (props) => {
         .post(GOOGLE_SHEET_API_LINK, form)
         .then(({ data }) => {
           swal("Dobra robota!", "Twój numer został przesłany");
+          setForm({
+            id: "",
+          });
         })
         .catch((err) => swal(err.message, "Warning!", "warning"));
     } else {
