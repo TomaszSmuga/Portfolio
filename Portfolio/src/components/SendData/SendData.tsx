@@ -1,34 +1,30 @@
 import axios from "axios";
-import { Button, Form, Container, Header } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import { GOOGLE_SHEET_API_LINK } from "../../Utilities/api";
+import swal from "sweetalert";
 
-const onSubmitForm = () => {
-  console.log("Ale Ty umiesz wciskać");
- 
+export const CheckOnSubmit = () => {
+  const handleFormSubmit = () => {
+    // Provide the necessary form data for the request
+    const formData = {
+      // Add your form data here
+    };
+
     axios
-      .post(GOOGLE_SHEET_API_LINK, form)
+      .post(GOOGLE_SHEET_API_LINK, formData)
       .then(({ data }) => {
         console.log("zajebiscie Ci poszło byczku");
         swal("Dobra robota!", "Twój numer został przesłany");
-        // Reset form data
-        setId("");
-        setResponse1(null);
-        setResponse2("");
-        setResponse3("");
       })
       .catch((err) => {
         console.log("chujowo");
         swal(err.message, "Warning!", "warning");
       });
-  } else {
-    onNextStep();
-  }
-};
+  };
 
-export const CheckOnSubmit = () => {
   return (
-    <Form.Button color="blue" onClick={onSubmitForm}>
+    <Button color="blue" onClick={handleFormSubmit}>
       Chuj dupa
-    </Form.Button>
+    </Button>
   );
 };

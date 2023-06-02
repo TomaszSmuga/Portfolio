@@ -5,7 +5,7 @@ import swal from "sweetalert";
 import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 import "../Style/Form.css";
 import { Task1 } from "../components/Tasks/Task1";
-
+import { CheckOnSubmit } from "../components/SendData/SendData";
 import axios from "axios";
 
 export const Test: React.FC<{}> = (props) => {
@@ -183,6 +183,7 @@ export const Test: React.FC<{}> = (props) => {
             </Form.Button>
           </Form>
           <button onClick={handleAxios}>TestAxiosa</button>
+          <CheckOnSubmit />
         </div>
       </Container>
     </>
