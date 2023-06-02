@@ -8,7 +8,7 @@ import { Test } from "./pages/TestPage";
 const App: React.FC = () => {
   return (
     <>
-      <GlobalStyles />
+      {/* <GlobalStyles /> */}
       {/* <FormComponent /> */}
       <Test />
     </>

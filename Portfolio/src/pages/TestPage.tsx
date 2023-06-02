@@ -1,9 +1,11 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, useEffect } from "react";
+
 import { Button, Form, Container, Header } from "semantic-ui-react";
 import swal from "sweetalert";
 import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 import "../Style/Form.css";
-import Task from "./Task";
+import { Task1 } from "../components/Tasks/Task1";
+
 import axios from "axios";
 
 export const Test: React.FC<{}> = (props) => {
@@ -11,14 +13,27 @@ export const Test: React.FC<{}> = (props) => {
   const [response1, setResponse1] = useState<boolean | null>(null);
   const [response2, setResponse2] = useState("");
   const [response3, setResponse3] = useState("");
-
+  const [showOverlay, setShowOverlay] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowOverlay(false);
+    }, 9000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   const onNextStep = () => {
-    setCurrentStep((prevStep) => prevStep + 1);
+    if (currentStep < 3) {
+      setCurrentStep((prevStep) => prevStep + 1);
+    }
   };
 
   const onSubmitForm = () => {
+    console.log("Ale Ty umiesz wciskać");
     if (currentStep === 3 && response1 !== null) {
       const response1Value = response1 ? "Brawo" : "Dupa";
       const form = {
@@ -30,6 +45,7 @@ export const Test: React.FC<{}> = (props) => {
       axios
         .post(GOOGLE_SHEET_API_LINK, form)
         .then(({ data }) => {
+          console.log("zajebiscie Ci poszło byczku");
           swal("Dobra robota!", "Twój numer został przesłany");
           // Reset form data
           setId("");
@@ -64,31 +80,35 @@ export const Test: React.FC<{}> = (props) => {
       case 2:
         return (
           <>
+            {/* {showOverlay && <Task1 cla/> && } */}
+
             <Form.Field>
               <label>Odpowiedź 1</label>
               {currentStep === 2 && (
                 <>
-                  <div>
-                    <img
-                      src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
-                      alt=""
-                    />
-                    <Form.Checkbox
-                      label="Wybór 1"
-                      checked={response1}
-                      onChange={() => setResponse1(true)}
-                    />
-                  </div>
-                  <div>
-                    <img
-                      src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
-                      alt=""
-                    />
-                    <Form.Checkbox
-                      label="Wybór 2"
-                      checked={!response1}
-                      onChange={() => setResponse1(false)}
-                    />
+                  <div className="tasks">
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 1"
+                        checked={response1}
+                        onChange={() => setResponse1(true)}
+                      />
+                    </div>
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 2"
+                        checked={!response1}
+                        onChange={() => setResponse1(false)}
+                      />
+                    </div>
                   </div>
                 </>
               )}
@@ -105,12 +125,12 @@ export const Test: React.FC<{}> = (props) => {
                   <Form.Checkbox
                     label="Wybór 1"
                     checked={response2}
-                    onChange={() => setResponse1(true)}
+                    onChange={() => setResponse2(true)}
                   />
                   <Form.Checkbox
                     label="Wybór 2"
                     checked={!response2}
-                    onChange={() => setResponse1(false)}
+                    onChange={() => setResponse2(false)}
                   />
                 </>
               )}
@@ -136,11 +156,13 @@ export const Test: React.FC<{}> = (props) => {
                 reiciendis accusantium ut quae at illum blanditiis maxime
                 maiores modi ullam ipsa!
               </p>
-              <br />
+              <button onClick={onSubmitForm} type="submit">
+                dupa
+              </button>
             </div>
-            <Button color="blue" type="submit" onClick={onSubmitForm}>
+            <Form.Button color="blue" onClick={onSubmitForm}>
               {currentStep === 3 ? "Submit" : "Next"}
-            </Button>
+            </Form.Button>
           </Form>
         </div>
       </Container>
