@@ -20,11 +20,14 @@ export const FormComponent: React.FC<{}> = (props) => {
     response1?: string;
     response1false?: string;
     hobby?: string;
+    salary?: string; // Dodane pole salary
   }
 
   const [form, setForm] = useState<GoogleSheetForm>({
     id: "",
     response1: "",
+    response1false: "",
+    salary: "", // Dodane pole salary
   });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -68,31 +71,6 @@ export const FormComponent: React.FC<{}> = (props) => {
                 name="id"
                 onChange={(e) => handleInputChange(e)}
                 value={form.id}
-                required
-                pattern="[0-9]*"
-              />
-            </Form.Field>
-            <div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta,
-                magnam ea et aspernatur laudantium numquam culpa harum deserunt
-                reiciendis accusantium ut quae at illum blanditiis maxime
-                maiores modi ullam ipsa!
-              </p>
-              <br />
-            </div>
-            <Button color="blue" type="submit" onClick={(e) => onSubmitForm(e)}>
-              Submit
-            </Button>
-          </Form>
-          <Form className="form">
-            <Form.Field>
-              <label>Pytanie 1</label>
-              <input
-                placeholder="Wpisz przypisany numer"
-                name="response1"
-                onChange={(e) => handleInputChange(e)}
-                value={form.response1}
                 required
                 pattern="[0-9]*"
               />
