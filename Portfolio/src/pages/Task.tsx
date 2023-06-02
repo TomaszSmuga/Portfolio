@@ -2,25 +2,22 @@ import axios from "axios";
 import React, { ChangeEvent, useState } from "react";
 import { Button, Form, Container, Header } from "semantic-ui-react";
 import swal from "sweetalert";
-import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 import "../Style/Form.css";
-import NumericInput from "../Utilities/Regex";
-import Task from "./Task";
+import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 
-export const FormComponent: React.FC<{}> = (props) => {
+interface TaskProps {
+  id: string;
+}
+
+const Task: React.FC<TaskProps> = (props) => {
   interface GoogleSheetForm {
     id: string;
     response1?: string;
-    response1false?: string;
-    hobby?: string;
-    salary?: string; // Dodane pole salary
   }
 
   const [form, setForm] = useState<GoogleSheetForm>({
-    id: "",
+    id: props.id,
     response1: "",
-    response1false: "",
-    salary: "", // Dodane pole salary
   });
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -34,14 +31,14 @@ export const FormComponent: React.FC<{}> = (props) => {
   };
 
   const onSubmitForm: Function = () => {
-    if (
-      form.id !== "" ||
-      form.response1 !== "" ||
-      form.response1false !== "" ||
-      form.salary !== ""
-    ) {
+    if (form.response1 !== "") {
+      const requestData = {
+        ...form,
+        id: props.id,
+      };
+
       axios
-        .post(GOOGLE_SHEET_API_LINK, form)
+        .post(GOOGLE_SHEET_API_LINK, requestData)
         .then(({ data }) => {
           swal("Dobra robota!", "Twój numer został przesłany");
         })
@@ -61,11 +58,10 @@ export const FormComponent: React.FC<{}> = (props) => {
               <label>Numer</label>
               <input
                 placeholder="Wpisz przypisany numer"
-                name="id"
+                name="response1"
                 onChange={(e) => handleInputChange(e)}
-                value={form.id}
+                value={form.response1}
                 required
-                pattern="[0-9]*"
               />
             </Form.Field>
             <div>
@@ -82,8 +78,9 @@ export const FormComponent: React.FC<{}> = (props) => {
             </Button>
           </Form>
         </div>
-        <Task id={form.id} />
       </Container>
     </>
   );
 };
+
+export default Task;
