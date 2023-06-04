@@ -32,7 +32,7 @@ export const Test: React.FC = () => {
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 9000);
+      }, 8500);
     }
 
     return () => {
@@ -47,8 +47,8 @@ export const Test: React.FC = () => {
         (currentStep === 3 && response2 === null) ||
         (currentStep === 4 && response3 === null) ||
         (currentStep === 5 && response4 === null) ||
-        (currentStep === 5 && response5 === null) ||
-        (currentStep === 5 && response6 === null)
+        (currentStep === 6 && response5 === null) ||
+        (currentStep === 7 && response6 === null)
       ) {
         return;
       } else {
@@ -136,7 +136,7 @@ export const Test: React.FC = () => {
                   <div className="tasks">
                     <div className="task">
                       <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/2.jpg"
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/13.jpg"
                         alt=""
                       />
                       <Form.Checkbox
@@ -147,7 +147,7 @@ export const Test: React.FC = () => {
                     </div>
                     <div className="task">
                       <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/1.jpg"
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/2.jpg"
                         alt=""
                       />
                       <Form.Checkbox
@@ -285,8 +285,8 @@ export const Test: React.FC = () => {
                       />
                       <Form.Checkbox
                         label="Wybór 1"
-                        checked={response4 === true}
-                        onChange={() => setResponse4(true)}
+                        checked={response5 === true}
+                        onChange={() => setResponse5(true)}
                       />
                     </div>
                     <div className="task">
@@ -296,8 +296,8 @@ export const Test: React.FC = () => {
                       />
                       <Form.Checkbox
                         label="Wybór 2"
-                        checked={response4 === false}
-                        onChange={() => setResponse4(false)}
+                        checked={response5 === false}
+                        onChange={() => setResponse5(false)}
                       />
                     </div>
                   </div>
@@ -321,8 +321,8 @@ export const Test: React.FC = () => {
                       />
                       <Form.Checkbox
                         label="Wybór 1"
-                        checked={response4 === false}
-                        onChange={() => setResponse4(false)}
+                        checked={response6 === false}
+                        onChange={() => setResponse6(false)}
                       />
                     </div>
                     <div className="task">
@@ -332,8 +332,8 @@ export const Test: React.FC = () => {
                       />
                       <Form.Checkbox
                         label="Wybór 2"
-                        checked={response4 === true}
-                        onChange={() => setResponse4(true)}
+                        checked={response6 === true}
+                        onChange={() => setResponse6(true)}
                       />
                     </div>
                   </div>

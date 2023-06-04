@@ -20,7 +20,7 @@ export const Task1: React.FC = () => {
         {showOverlay && (
           <div>
             <img
-              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/1.jpg"
+              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/13.jpg"
               alt=""
             />
           </div>
@@ -36,7 +36,7 @@ export const Task2: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOverlay1(false);
-    }, 900);
+    }, 500);
 
     return () => {
       clearTimeout(timer);
