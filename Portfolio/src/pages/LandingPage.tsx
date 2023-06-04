@@ -14,16 +14,14 @@ import {
 import NumericInput from "../Utilities/Regex";
 import axios from "axios";
 
-export const TestMap2: React.FC<{}> = (props) => {
+export const TestMap2 = () => {
   const [id, setId] = useState("");
-  const [responses, setResponses] = useState<(boolean | null)[]>([
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-  ]);
+  const [response1, setResponse1] = useState<boolean | null>(null);
+  const [response2, setResponse2] = useState<boolean | null>(null);
+  const [response3, setResponse3] = useState<boolean | null>(null);
+  const [response4, setResponse4] = useState<boolean | null>(null);
+  const [response5, setResponse5] = useState<boolean | null>(null);
+  const [response6, setResponse6] = useState<boolean | null>(null);
   const [showOverlay, setShowOverlay] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -47,32 +45,38 @@ export const TestMap2: React.FC<{}> = (props) => {
     console.log("Ale Ty umiesz wciskać");
     if (
       currentStep === 5 &&
-      responses[0] !== null &&
-      responses[1] !== null &&
-      responses[2] !== null
+      response1 !== null &&
+      response2 !== null &&
+      response3 !== null
     ) {
-      const responsesValues = responses.map((response) =>
-        response !== null ? "True" : "False"
-      );
-
+      const response1Value = response1 ? "True" : "False";
+      const response2Value = response2 ? "True" : "False";
+      const response3Value = response3 ? "True" : "False";
+      const response4Value = response4 ? "True" : "False";
+      const response5Value = response5 ? "True" : "False";
+      const response6Value = response6 ? "True" : "False";
       const form = {
         id,
-        response1: responsesValues[0],
-        response2: responsesValues[1],
-        response3: responsesValues[2],
-        // response4: responsesValues[3],
-        // response5: responsesValues[4],
-        // response6: responsesValues[5],
+        response1: response1Value,
+        response2: response2Value,
+        response3: response3Value,
+        response4: response4Value,
+        response5: response5Value,
+        response6: response6Value,
       };
-
       axios
         .post(GOOGLE_SHEET_API_LINK, form)
         .then(({ data }) => {
           console.log("zajebiscie Ci poszło byczku");
-          swal("Dobra robota!", "Twój numer został przesłany");
+          swal("Dobra robota!", "Twoja odpowiedź została przesłana");
           // Reset form data
           setId("");
-          setResponses(Array(6).fill(null));
+          setResponse1(null);
+          setResponse2(null);
+          setResponse3(null);
+          setResponse4(null);
+          setResponse5(null);
+          setResponse6(null);
         })
         .catch((err) => {
           console.log("chujowo");
@@ -82,24 +86,13 @@ export const TestMap2: React.FC<{}> = (props) => {
       onNextStep();
     }
   };
-
-  const renderFormStep = () => {
-    const tasks = [Task1, Task2, Task3, Task4, Task5, Task6];
-
-    const taskLabels = [
-      "Numer identyfikacyjny",
-      "Wybór 1",
-      "Wybór 2",
-      "Wybór 3",
-      "Wybór 4",
-      "Wybór 5",
-    ];
-
-    return (
-      <>
-        <Form.Field>
-          <Label size="massive">{taskLabels[currentStep - 1]}</Label>
-          {currentStep === 1 ? (
+  const formSteps = [
+    {
+      step: 1,
+      render: (
+        <>
+          <Form.Field>
+            <Label size="massive">Numer identyfikacyjny</Label>
             <Input
               size="massive"
               placeholder="Wpisz przypisany numer"
@@ -109,34 +102,92 @@ export const TestMap2: React.FC<{}> = (props) => {
               required
               pattern="[0-9]*"
             />
-          ) : (
-            <>
-              {showOverlay && React.createElement(tasks[currentStep - 2])}
-              {currentStep === 5 && (
+          </Form.Field>
+        </>
+      ),
+    },
+    {
+      step: 2,
+      render: (
+        <>
+          {showOverlay && <Task1 />}
+          <Form.Field>
+            {currentStep === 2 && (
+              <>
                 <div className="tasks">
-                  {tasks[currentStep - 2].map((task, index) => (
-                    <div className="task" key={index}>
-                      <img src={task.image} alt="" />
-                      <Form.Checkbox
-                        label={task.label}
-                        checked={responses[currentStep - 2] === task.value}
-                        onChange={() =>
-                          setResponses((prevResponses) => {
-                            const newResponses = [...prevResponses];
-                            newResponses[currentStep - 2] = task.value;
-                            return newResponses;
-                          })
-                        }
-                      />
-                    </div>
-                  ))}
+                  <div className="task">
+                    <img
+                      src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
+                      alt=""
+                    />
+                    <Form.Checkbox
+                      label="Wybór 1"
+                      checked={response1 === true}
+                      onChange={() => setResponse1(true)}
+                    />
+                  </div>
+                  <div className="task">
+                    <img
+                      src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+                      alt=""
+                    />
+                    <Form.Checkbox
+                      label="Wybór 2"
+                      checked={response1 === false}
+                      onChange={() => setResponse1(false)}
+                    />
+                  </div>
                 </div>
-              )}
-            </>
-          )}
-        </Form.Field>
-      </>
-    );
+              </>
+            )}
+          </Form.Field>
+        </>
+      ),
+    },
+    {
+      step: 3,
+      render: (
+        <>
+          {showOverlay && <Task2 />}
+          <Form.Field>
+            {currentStep === 3 && (
+              <>
+                <div className="tasks">
+                  <div className="task">
+                    <img
+                      src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/9.jpg"
+                      alt=""
+                    />
+                    <Form.Checkbox
+                      label="Wybór 1"
+                      checked={response2 === true}
+                      onChange={() => setResponse2(true)}
+                    />
+                  </div>
+                  <div className="task">
+                    <img
+                      src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/10.jpg"
+                      alt=""
+                    />
+                    <Form.Checkbox
+                      label="Wybór 2"
+                      checked={response2 === false}
+                      onChange={() => setResponse2(false)}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
+          </Form.Field>
+        </>
+      ),
+    },
+    // Add more objects for other steps
+  ];
+
+  const renderFormStep = () => {
+    const currentFormStep = formSteps.find((step) => step.step === currentStep);
+    return currentFormStep ? currentFormStep.render : null;
   };
 
   return (
@@ -146,7 +197,7 @@ export const TestMap2: React.FC<{}> = (props) => {
           {renderFormStep()}
 
           <Form.Button size="huge" color="blue" onClick={onSubmitForm}>
-            {currentStep === 5 ? "Wyślij" : "Dalej"}
+            {currentStep === 3 ? "Wyślij" : "Dalej"}
           </Form.Button>
         </Form>
       </Container>

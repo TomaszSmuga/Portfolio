@@ -23,11 +23,22 @@ export const Test: React.FC<{}> = (props) => {
   const [response5, setResponse5] = useState<boolean | null>(null);
   const [response6, setResponse6] = useState<boolean | null>(null);
   const [showOverlay, setShowOverlay] = useState(true);
+  const [showOverlay1, setShowOverlay1] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOverlay(false);
+    }, 9000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowOverlay1(false);
     }, 9000);
 
     return () => {
@@ -145,7 +156,7 @@ export const Test: React.FC<{}> = (props) => {
       case 3:
         return (
           <>
-            {showOverlay && <Task2 />}
+            {showOverlay1 && <Task2 />}
             <Form.Field>
               {currentStep === 3 && (
                 <>
