@@ -60,15 +60,15 @@ export const Test: React.FC<{}> = (props) => {
         response1: response1Value,
         response2: response2Value,
         response3: response3Value,
-        // response4: response4Value
-        // response5: response5Value
-        // response6: response6Value
+        response4: response4Value,
+        response5: response5Value,
+        response6: response6Value,
       };
       axios
         .post(GOOGLE_SHEET_API_LINK, form)
         .then(({ data }) => {
           console.log("zajebiscie Ci poszło byczku");
-          swal("Dobra robota!", "Twój numer został przesłany");
+          swal("Dobra robota!", "Twoja odpowiedź została przesłana");
           // Reset form data
           setId("");
           setResponse1(null);
@@ -193,8 +193,8 @@ export const Test: React.FC<{}> = (props) => {
                       />
                       <Form.Checkbox
                         label="Wybór 1"
-                        checked={response2 === true}
-                        onChange={() => setResponse2(true)}
+                        checked={response3 === true}
+                        onChange={() => setResponse3(true)}
                       />
                     </div>
                     <div className="task">
@@ -204,8 +204,8 @@ export const Test: React.FC<{}> = (props) => {
                       />
                       <Form.Checkbox
                         label="Wybór 2"
-                        checked={response2 === false}
-                        onChange={() => setResponse2(false)}
+                        checked={response3 === false}
+                        onChange={() => setResponse3(false)}
                       />
                     </div>
                   </div>
@@ -229,8 +229,8 @@ export const Test: React.FC<{}> = (props) => {
                       />
                       <Form.Checkbox
                         label="Wybór 1"
-                        checked={response3 === true}
-                        onChange={() => setResponse3(true)}
+                        checked={response4 === true}
+                        onChange={() => setResponse4(true)}
                       />
                     </div>
                     <div className="task">
@@ -240,8 +240,8 @@ export const Test: React.FC<{}> = (props) => {
                       />
                       <Form.Checkbox
                         label="Wybór 2"
-                        checked={response3 === false}
-                        onChange={() => setResponse3(false)}
+                        checked={response4 === false}
+                        onChange={() => setResponse4(false)}
                       />
                     </div>
                   </div>
@@ -269,3 +269,5 @@ export const Test: React.FC<{}> = (props) => {
     </>
   );
 };
+
+export default Test;

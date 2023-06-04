@@ -4,12 +4,13 @@ import "./App.css";
 import { GlobalStyles } from "./Utilities/GlobalStyles";
 import { Task } from "./pages/Task";
 import { Test } from "./pages/TestPage";
+import { TestMap2 } from "./pages/LandingPage";
 
 const App: React.FC = () => {
   return (
     <>
       {/* <GlobalStyles /> */}
-      {/* <FormComponent /> */}
+      {/* <TestMap2 /> */}
       <Test />
     </>
   );

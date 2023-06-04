@@ -31,11 +31,11 @@ export const Task1: React.FC = () => {
 };
 
 export const Task2: React.FC = () => {
-  const [showOverlay, setShowOverlay] = useState(true);
+  const [showOverlay1, setShowOverlay1] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowOverlay(false);
+      setShowOverlay1(false);
     }, 900);
 
     return () => {
@@ -46,7 +46,7 @@ export const Task2: React.FC = () => {
   return (
     <>
       <TaskImg>
-        {showOverlay && (
+        {showOverlay1 && (
           <div>
             <img
               src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
@@ -78,7 +78,7 @@ export const Task3: React.FC = () => {
         {showOverlay && (
           <div>
             <img
-              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/6.jpg"
               alt=""
             />
           </div>
@@ -107,7 +107,7 @@ export const Task4: React.FC = () => {
         {showOverlay && (
           <div>
             <img
-              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
               alt=""
             />
           </div>
@@ -136,7 +136,7 @@ export const Task5: React.FC = () => {
         {showOverlay && (
           <div>
             <img
-              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/9.jpg"
               alt=""
             />
           </div>
@@ -165,7 +165,7 @@ export const Task6: React.FC = () => {
         {showOverlay && (
           <div>
             <img
-              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/10.jpg"
               alt=""
             />
           </div>
