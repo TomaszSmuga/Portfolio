@@ -112,18 +112,20 @@ export const Test: React.FC = () => {
       case 1:
         return (
           <>
-            <Form.Field>
-              <Label size="massive">Numer identyfikacyjny</Label>
-              <Input
-                size="massive"
-                placeholder="Wpisz przypisany numer"
-                name="id"
-                onChange={(e) => setId(e.target.value)}
-                value={id}
-                required
-                pattern="[0-9]*"
-              />
-            </Form.Field>
+            <div className="flex">
+              <form action="">
+                <h2>Numer Identyfikacyjny</h2>
+                <input
+                  type="text"
+                  placeholder="Wpisz przypisany numer"
+                  name="id"
+                  onChange={(e) => setId(e.target.value)}
+                  value={id}
+                  required
+                  pattern="[0-9]*"
+                />
+              </form>
+            </div>
           </>
         );
       case 2:

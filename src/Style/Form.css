@@ -12,8 +12,23 @@
   height: 100vh;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 h2 {
+  font-size: 4rem;
+}
+
+.ui.blue.button {
+  margin: 20px;
+}
+
+.flex form input {
   font-size: 60px;
+  height: 5vh;
 }
 
 .ui.fluid.container {
