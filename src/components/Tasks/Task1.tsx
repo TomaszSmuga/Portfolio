@@ -7,7 +7,7 @@ export const Task1: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOverlay(false);
-    }, 900);
+    }, 400);
 
     return () => {
       clearTimeout(timer);
@@ -36,7 +36,7 @@ export const Task2: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOverlay1(false);
-    }, 500);
+    }, 400);
 
     return () => {
       clearTimeout(timer);
@@ -65,7 +65,7 @@ export const Task3: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOverlay(false);
-    }, 900);
+    }, 400);
 
     return () => {
       clearTimeout(timer);
@@ -94,7 +94,7 @@ export const Task4: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOverlay(false);
-    }, 900);
+    }, 400);
 
     return () => {
       clearTimeout(timer);
@@ -123,7 +123,7 @@ export const Task5: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOverlay(false);
-    }, 900);
+    }, 400);
 
     return () => {
       clearTimeout(timer);
@@ -152,7 +152,7 @@ export const Task6: React.FC = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowOverlay(false);
-    }, 900);
+    }, 400);
 
     return () => {
       clearTimeout(timer);
