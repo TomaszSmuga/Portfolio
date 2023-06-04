@@ -1,5 +1,5 @@
-import React, { ChangeEvent, useState, useEffect } from "react";
-import { Button, Form, Container, Label, Input } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { Form, Container, Label, Input } from "semantic-ui-react";
 import swal from "sweetalert";
 import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 import "../Style/Form.css";
@@ -8,13 +8,13 @@ import {
   Task2,
   Task3,
   Task4,
-  Task5,
-  Task6,
+  // Task5,
+  // Task6,
 } from "../components/Tasks/Task1";
-import NumericInput from "../Utilities/Regex";
+// import NumericInput from "../Utilities/Regex";
 import axios from "axios";
 
-export const Test: React.FC<{}> = (props) => {
+export const Test: React.FC = () => {
   const [id, setId] = useState("");
   const [response1, setResponse1] = useState<boolean | null>(null);
   const [response2, setResponse2] = useState<boolean | null>(null);
@@ -85,7 +85,7 @@ export const Test: React.FC<{}> = (props) => {
       };
       axios
         .post(GOOGLE_SHEET_API_LINK, form)
-        .then(({ data }) => {
+        .then(() => {
           console.log("zajebiscie Ci poszło byczku");
           swal("Dobra robota!", "Twoja odpowiedź została przesłana");
           // Reset form data
