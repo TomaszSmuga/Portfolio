@@ -8,8 +8,8 @@ import {
   Task2,
   Task3,
   Task4,
-  // Task5,
-  // Task6,
+  Task5,
+  Task6,
 } from "../components/Tasks/Task1";
 // import NumericInput from "../Utilities/Regex";
 import axios from "axios";
@@ -41,20 +41,20 @@ export const Test: React.FC = () => {
   }, [showOverlay]);
 
   const onNextStep = () => {
-    if (currentStep < 5) {
+    if (currentStep < 7) {
       if (
         (currentStep === 2 && response1 === null) ||
         (currentStep === 3 && response2 === null) ||
         (currentStep === 4 && response3 === null) ||
-        (currentStep === 5 && response4 === null)
+        (currentStep === 5 && response4 === null) ||
+        (currentStep === 5 && response5 === null) ||
+        (currentStep === 5 && response6 === null)
       ) {
-        // At least one checkbox is not checked, so disable the button and return
-
         return;
       } else {
         setCurrentStep((prevStep) => prevStep + 1);
         setShowOverlay(true);
-        setIsButtonDisabled(false); // Re-enable the button
+        setIsButtonDisabled(false);
       }
     }
   };
@@ -62,11 +62,13 @@ export const Test: React.FC = () => {
   const onSubmitForm = () => {
     console.log("Ale Ty umiesz wciskać");
     if (
-      currentStep === 5 &&
+      currentStep === 7 &&
       response1 !== null &&
       response2 !== null &&
       response3 !== null &&
-      response4 !== null
+      response4 !== null &&
+      response5 !== null &&
+      response6 !== null
     ) {
       const response1Value = response1 ? "True" : "False";
       const response2Value = response2 ? "True" : "False";
@@ -98,8 +100,7 @@ export const Test: React.FC = () => {
           setResponse6(null);
         })
         .catch((err) => {
-          console.log("chujowo");
-          swal(err.message, "Warning!", "warning");
+          swal(err.message, "Błąd", "Błąd");
         });
     } else {
       onNextStep();
@@ -135,7 +136,7 @@ export const Test: React.FC = () => {
                   <div className="tasks">
                     <div className="task">
                       <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/2.jpg"
                         alt=""
                       />
                       <Form.Checkbox
@@ -146,7 +147,7 @@ export const Test: React.FC = () => {
                     </div>
                     <div className="task">
                       <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/1.jpg"
                         alt=""
                       />
                       <Form.Checkbox
@@ -171,24 +172,24 @@ export const Test: React.FC = () => {
                   <div className="tasks">
                     <div className="task">
                       <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/3.jpg"
                         alt=""
                       />
                       <Form.Checkbox
                         label="Wybór 1"
-                        checked={response2 === true}
-                        onChange={() => setResponse2(true)}
+                        checked={response2 === false}
+                        onChange={() => setResponse2(false)}
                       />
                     </div>
                     <div className="task">
                       <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/4.jpg"
                         alt=""
                       />
                       <Form.Checkbox
                         label="Wybór 2"
-                        checked={response2 === false}
-                        onChange={() => setResponse2(false)}
+                        checked={response2 === true}
+                        onChange={() => setResponse2(true)}
                       />
                     </div>
                   </div>
@@ -207,24 +208,24 @@ export const Test: React.FC = () => {
                   <div className="tasks">
                     <div className="task">
                       <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/6.jpg"
                         alt=""
                       />
                       <Form.Checkbox
                         label="Wybór 1"
-                        checked={response3 === true}
-                        onChange={() => setResponse3(true)}
+                        checked={response3 === false}
+                        onChange={() => setResponse3(false)}
                       />
                     </div>
                     <div className="task">
                       <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/5.jpg"
                         alt=""
                       />
                       <Form.Checkbox
                         label="Wybór 2"
-                        checked={response3 === false}
-                        onChange={() => setResponse3(false)}
+                        checked={response3 === true}
+                        onChange={() => setResponse3(true)}
                       />
                     </div>
                   </div>
@@ -243,7 +244,7 @@ export const Test: React.FC = () => {
                   <div className="tasks">
                     <div className="task">
                       <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
                         alt=""
                       />
                       <Form.Checkbox
@@ -254,13 +255,85 @@ export const Test: React.FC = () => {
                     </div>
                     <div className="task">
                       <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
                         alt=""
                       />
                       <Form.Checkbox
                         label="Wybór 2"
                         checked={response4 === false}
                         onChange={() => setResponse4(false)}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+            </Form.Field>
+          </>
+        );
+      case 6:
+        return (
+          <>
+            {showOverlay && <Task5 />}
+            <Form.Field>
+              {currentStep === 6 && (
+                <>
+                  <div className="tasks">
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/9.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 1"
+                        checked={response4 === true}
+                        onChange={() => setResponse4(true)}
+                      />
+                    </div>
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/10.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 2"
+                        checked={response4 === false}
+                        onChange={() => setResponse4(false)}
+                      />
+                    </div>
+                  </div>
+                </>
+              )}
+            </Form.Field>
+          </>
+        );
+      case 7:
+        return (
+          <>
+            {showOverlay && <Task6 />}
+            <Form.Field>
+              {currentStep === 7 && (
+                <>
+                  <div className="tasks">
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/12.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 1"
+                        checked={response4 === false}
+                        onChange={() => setResponse4(false)}
+                      />
+                    </div>
+                    <div className="task">
+                      <img
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/11.jpg"
+                        alt=""
+                      />
+                      <Form.Checkbox
+                        label="Wybór 2"
+                        checked={response4 === true}
+                        onChange={() => setResponse4(true)}
                       />
                     </div>
                   </div>
@@ -285,7 +358,7 @@ export const Test: React.FC = () => {
             color="blue"
             onClick={onSubmitForm}
             disabled={isButtonDisabled}>
-            {currentStep === 5 ? "Wyślij" : "Dalej"}
+            {currentStep === 7 ? "Wyślij" : "Dalej"}
           </Form.Button>
         </Form>
       </Container>
