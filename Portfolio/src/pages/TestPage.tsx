@@ -27,19 +27,13 @@ export const Test: React.FC<{}> = (props) => {
   const [currentStep, setCurrentStep] = useState(1);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowOverlay(false);
-    }, 9000);
+    let timer: number;
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowOverlay1(false);
-    }, 9000);
+    if (showOverlay) {
+      timer = setTimeout(() => {
+        setShowOverlay(false);
+      }, 2000);
+    }
 
     return () => {
       clearTimeout(timer);
@@ -49,6 +43,7 @@ export const Test: React.FC<{}> = (props) => {
   const onNextStep = () => {
     if (currentStep < 5) {
       setCurrentStep((prevStep) => prevStep + 1);
+      setShowOverlay(true);
     }
   };
 
@@ -58,7 +53,8 @@ export const Test: React.FC<{}> = (props) => {
       currentStep === 5 &&
       response1 !== null &&
       response2 !== null &&
-      response3 !== null
+      response3 !== null &&
+      response4 !== null
     ) {
       const response1Value = response1 ? "True" : "False";
       const response2Value = response2 ? "True" : "False";
@@ -156,7 +152,7 @@ export const Test: React.FC<{}> = (props) => {
       case 3:
         return (
           <>
-            {showOverlay1 && <Task2 />}
+            {showOverlay && <Task2 />}
             <Form.Field>
               {currentStep === 3 && (
                 <>
