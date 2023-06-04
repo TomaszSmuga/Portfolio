@@ -23,8 +23,8 @@ export const Test: React.FC<{}> = (props) => {
   const [response5, setResponse5] = useState<boolean | null>(null);
   const [response6, setResponse6] = useState<boolean | null>(null);
   const [showOverlay, setShowOverlay] = useState(true);
-  const [showOverlay1, setShowOverlay1] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(true);
 
   useEffect(() => {
     let timer: number;
@@ -38,12 +38,23 @@ export const Test: React.FC<{}> = (props) => {
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [showOverlay]);
 
   const onNextStep = () => {
     if (currentStep < 5) {
-      setCurrentStep((prevStep) => prevStep + 1);
-      setShowOverlay(true);
+      if (currentStep === 2 && response1 === null) {
+        setIsCheckboxChecked(false);
+      } else if (currentStep === 3 && response2 === null) {
+        setIsCheckboxChecked(false);
+      } else if (currentStep === 4 && response3 === null) {
+        setIsCheckboxChecked(false);
+      } else if (currentStep === 5 && response4 === null) {
+        setIsCheckboxChecked(false);
+      } else {
+        setCurrentStep((prevStep) => prevStep + 1);
+        setShowOverlay(true);
+        setIsCheckboxChecked(true);
+      }
     }
   };
 
@@ -268,7 +279,11 @@ export const Test: React.FC<{}> = (props) => {
         <Form className="form">
           {renderFormStep()}
 
-          <Form.Button size="huge" color="blue" onClick={onSubmitForm}>
+          <Form.Button
+            size="huge"
+            color="blue"
+            onClick={onSubmitForm}
+            disabled={!isCheckboxChecked}>
             {currentStep === 5 ? "Wyślij" : "Dalej"}
           </Form.Button>
         </Form>
