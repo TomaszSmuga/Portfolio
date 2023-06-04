@@ -136,7 +136,7 @@ export const Test: React.FC = () => {
                   <div className="tasks">
                     <div className="task">
                       <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/13.jpg"
+                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/16.jpg"
                         alt=""
                       />
                       <Form.Checkbox

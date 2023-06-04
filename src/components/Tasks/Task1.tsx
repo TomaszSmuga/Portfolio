@@ -20,7 +20,7 @@ export const Task1: React.FC = () => {
         {showOverlay && (
           <div>
             <img
-              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/13.jpg"
+              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/16.jpg"
               alt=""
             />
           </div>
