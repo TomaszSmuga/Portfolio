@@ -13,6 +13,7 @@ import {
 } from "../components/Tasks/Task1";
 // import NumericInput from "../Utilities/Regex";
 import axios from "axios";
+import { Ticker } from "../components/CountDowns/CountDowns";
 
 export const Test: React.FC = () => {
   const [id, setId] = useState("");
@@ -131,7 +132,7 @@ export const Test: React.FC = () => {
       case 2:
         return (
           <>
-            {showOverlay && <Task1 />}
+            {showOverlay && <Ticker seconds={3} />}
             <Form.Field>
               {currentStep === 2 && (
                 <>

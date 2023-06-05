@@ -1,8 +1,13 @@
 import { TaskImg } from "./Task.styled";
 import React, { useState, useEffect } from "react";
+// import { Ticker } from "../CountDowns/CountDowns";
+interface CountDown {
+  seconds: number;
+}
 
-export const Task1: React.FC = () => {
+export const Task1: React.FC<CountDown> = ({ seconds = 3 }) => {
   const [showOverlay, setShowOverlay] = useState(true);
+  // const [time, setTime] = useState<CountDown>({ seconds });
 
   useEffect(() => {
     const timer = setTimeout(() => {
