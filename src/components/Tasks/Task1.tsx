@@ -1,36 +1,15 @@
 import { TaskImg } from "./Task.styled";
 import React, { useState, useEffect } from "react";
-// import { Ticker } from "../CountDowns/CountDowns";
+import { Ticker } from "../CountDowns/CountDowns";
+import { ImgLinks } from "../../Utilities/Link";
 interface CountDown {
   seconds: number;
 }
 
-export const Task1: React.FC<CountDown> = ({ seconds = 3 }) => {
-  const [showOverlay, setShowOverlay] = useState(true);
-  // const [time, setTime] = useState<CountDown>({ seconds });
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowOverlay(false);
-    }, 400);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
-
+export const Task1: React.FC<CountDown> = () => {
   return (
     <>
-      <TaskImg>
-        {showOverlay && (
-          <div>
-            <img
-              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/16.jpg"
-              alt=""
-            />
-          </div>
-        )}
-      </TaskImg>
+      <Ticker seconds={3} imgLinks={ImgLinks} imgIndex={0} />
     </>
   );
 };

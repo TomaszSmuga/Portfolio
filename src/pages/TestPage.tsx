@@ -14,6 +14,7 @@ import {
 // import NumericInput from "../Utilities/Regex";
 import axios from "axios";
 import { Ticker } from "../components/CountDowns/CountDowns";
+import { ImgLinks } from "../Utilities/Link";
 
 export const Test: React.FC = () => {
   const [id, setId] = useState("");
@@ -33,7 +34,7 @@ export const Test: React.FC = () => {
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 8500);
+      }, 11500);
     }
 
     return () => {
@@ -132,16 +133,13 @@ export const Test: React.FC = () => {
       case 2:
         return (
           <>
-            {showOverlay && <Ticker seconds={3} />}
+            {showOverlay && <Task1 seconds={3} />}
             <Form.Field>
               {currentStep === 2 && (
                 <>
                   <div className="tasks">
                     <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/16.jpg"
-                        alt=""
-                      />
+                      <img src={ImgLinks[0]} alt="" />
                       <Form.Checkbox
                         label="Wybór 1"
                         checked={response1 === true}

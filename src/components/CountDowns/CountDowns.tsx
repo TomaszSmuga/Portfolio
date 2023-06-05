@@ -1,58 +1,66 @@
 import { useState, useEffect } from "react";
 import { TaskImg } from "../Tasks/Task.styled";
 import { Count } from "./CountDown.styled";
+import { ImgLinks } from "../../Utilities/Link";
 
 interface CountDown {
   seconds: number;
+  imgLinks: string[];
+  imgIndex: number;
 }
 
-export const Ticker = ({ seconds = 3 }: CountDown): JSX.Element => {
-  const [time, setTime] = useState<CountDown>({ seconds });
+export const Ticker = ({
+  seconds = 3,
+  imgLinks,
+  imgIndex,
+}: CountDown): JSX.Element => {
+  const [time, setTime] = useState<CountDown>({ seconds, imgLinks, imgIndex });
   const [showOverlay, setShowOverlay] = useState(false);
-  const [countdownFinished, setCountdownFinished] = useState(false);
-
+  const [showTicker, setShowTicker] = useState(true);
   const tick = () => {
-    if (time.seconds === 0) {
-      setTime({ ...time, seconds: 0 });
-      setCountdownFinished(true);
-    } else {
-      setTime((prevTime) => ({
-        ...prevTime,
-        seconds: prevTime.seconds - 1,
-      }));
-    }
+    setTime((prevTime) => ({
+      ...prevTime,
+      seconds: prevTime.seconds - 1,
+    }));
   };
 
   useEffect(() => {
-    const timerId = setInterval(() => tick(), 1000);
-    return () => {
-      clearInterval(timerId);
-    };
-  }, []);
+    const timerId = setInterval(() => {
+      tick();
+    }, 1000);
 
-  useEffect(() => {
-    if (countdownFinished) {
-      const timeOut = setTimeout(() => {
-        setShowOverlay(true);
+    let timeoutId: number;
+    let ticker: number;
+
+    if (time.seconds === 0) {
+      clearInterval(timerId);
+      setShowOverlay(true);
+      timeoutId = setTimeout(() => {
+        setShowOverlay(false);
       }, 400);
-      return () => {
-        clearTimeout(timeOut);
-      };
+      ticker = setTimeout(() => {
+        setShowTicker(false);
+      }, 0);
     }
-  }, [countdownFinished]);
+    return () => {
+      clearTimeout(timeoutId);
+      clearInterval(timerId);
+      clearTimeout(ticker);
+    };
+  }, [time.seconds]);
 
   return (
     <>
-      <div>
-        <Count>{`${time.seconds.toString()}`}</Count>
-      </div>
       <TaskImg>
+        {showTicker && (
+          <div>
+            <Count>{`${time.seconds.toString()}`}</Count>
+          </div>
+        )}
+
         {showOverlay && (
           <div>
-            <img
-              src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/16.jpg"
-              alt=""
-            />
+            <img src={ImgLinks[imgIndex]} alt="" />
           </div>
         )}
       </TaskImg>
