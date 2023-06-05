@@ -147,10 +147,7 @@ export const Test: React.FC = () => {
                       />
                     </div>
                     <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/15.jpg"
-                        alt=""
-                      />
+                      <img src={ImgLinks[1]} alt="" />
                       <Form.Checkbox
                         label="Wybór 2"
                         checked={response1 === false}
