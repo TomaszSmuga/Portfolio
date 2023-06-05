@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Container, Label, Input } from "semantic-ui-react";
+import { Form, Container } from "semantic-ui-react";
 import swal from "sweetalert";
 import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 import "../Style/Form.css";
@@ -13,7 +13,6 @@ import {
 } from "../components/Tasks/Task1";
 // import NumericInput from "../Utilities/Regex";
 import axios from "axios";
-import { Ticker } from "../components/CountDowns/CountDowns";
 import { ImgLinks } from "../Utilities/Link";
 
 export const Test: React.FC = () => {
