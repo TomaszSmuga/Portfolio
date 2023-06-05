@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form, Container } from "semantic-ui-react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 import "../Style/Form.css";
 import {
@@ -89,9 +89,18 @@ export const Test: React.FC = () => {
       axios
         .post(GOOGLE_SHEET_API_LINK, form)
         .then(() => {
-          console.log("zajebiscie Ci poszło byczku");
-          swal("Dobra robota!", "Twoja odpowiedź została przesłana");
-          // Reset form data
+          Swal.fire({
+            title: "Dobra robota!",
+            text: "Twoja odpowiedź została przesłana. ",
+            html: "<p>Dziękuję za udział w badaniu</p>",
+            icon: "success",
+            confirmButtonText: "Zamknij",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href = "https://www.google.com/";
+            }
+          });
+
           setId("");
           setResponse1(null);
           setResponse2(null);
@@ -101,7 +110,7 @@ export const Test: React.FC = () => {
           setResponse6(null);
         })
         .catch((err) => {
-          swal(err.message, "Błąd", "Błąd");
+          Swal.fire(err.message, "Błąd");
         });
     } else {
       onNextStep();
