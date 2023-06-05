@@ -1,5 +1,3 @@
-import { TaskImg } from "./Task.styled";
-import React, { useState, useEffect } from "react";
 import { Ticker } from "../CountDowns/CountDowns";
 import { ImgLinks } from "../../Utilities/Link";
 interface CountDown {
