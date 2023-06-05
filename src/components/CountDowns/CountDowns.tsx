@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { TaskImg } from "../Tasks/Task.styled";
-import { Count } from "./CountDown.styled";
+import { StyledCount } from "./CountDown.styled";
 import { ImgLinks } from "../../Utilities/Link";
-
 interface CountDown {
   seconds: number;
   imgLinks: string[];
@@ -13,7 +12,7 @@ export const Ticker = ({
   seconds = 3,
   imgLinks,
   imgIndex,
-}: CountDown): JSX.Element => {
+}: CountDown): JSX.Element | null => {
   const [time, setTime] = useState<CountDown>({ seconds, imgLinks, imgIndex });
   const [showOverlay, setShowOverlay] = useState(false);
   const [showTicker, setShowTicker] = useState(true);
@@ -32,7 +31,7 @@ export const Ticker = ({
     let timeoutId: number;
     let ticker: number;
 
-    if (time.seconds === 0) {
+    if (time.seconds <= 0) {
       clearInterval(timerId);
       setShowOverlay(true);
       timeoutId = setTimeout(() => {
@@ -40,7 +39,7 @@ export const Ticker = ({
       }, 400);
       ticker = setTimeout(() => {
         setShowTicker(false);
-      }, 0);
+      }, -1);
     }
     return () => {
       clearTimeout(timeoutId);
@@ -54,7 +53,10 @@ export const Ticker = ({
       <TaskImg>
         {showTicker && (
           <div>
-            <Count>{`${time.seconds.toString()}`}</Count>
+            <StyledCount
+              isZero={
+                time.seconds === 0
+              }>{`${time.seconds.toString()}`}</StyledCount>
           </div>
         )}
 

@@ -11,6 +11,7 @@ export const TaskImg = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 2;
+  flex-direction: column;
 
   div {
     /* height: 100vh;
