@@ -35,7 +35,7 @@ export const Test: React.FC = () => {
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 11500);
+      }, 100);
     }
 
     return () => {
@@ -124,7 +124,8 @@ export const Test: React.FC = () => {
       case 1:
         return (
           <>
-            {/* <Randomizer /> */}
+            <Randomizer />
+
             <div className="flex">
               <form action="">
                 <h2>Numer Identyfikacyjny</h2>
@@ -148,6 +149,11 @@ export const Test: React.FC = () => {
             <Form.Field>
               {currentStep === 2 && (
                 <>
+                  {/* <CustomForm
+                    imgLinks={ImgLinks[0]}
+                    checked={response1 === true}
+                    onChange={() => setResponse1(true)}
+                  /> */}
                   <div className="tasks">
                     <div className="task">
                       <img src={ImgLinks[0]} alt="" />
