@@ -14,6 +14,8 @@ import {
 // import NumericInput from "../Utilities/Regex";
 import axios from "axios";
 import { ImgLinks } from "../Utilities/Link";
+import { Randomizer } from "../components/Form/Form";
+// import CustomForm from "../components/Form/Form";
 
 export const Test: React.FC = () => {
   const [id, setId] = useState("");
@@ -95,8 +97,8 @@ export const Test: React.FC = () => {
             html: "<p>Dziękuję za udział w badaniu</p>",
             icon: "success",
             confirmButtonText: "Zamknij",
-          }).then((result) => {
-            if (result.isConfirmed) {
+          }).then((dupa) => {
+            if (dupa.isConfirmed) {
               window.location.href = "https://www.google.com/";
             }
           });
@@ -122,6 +124,7 @@ export const Test: React.FC = () => {
       case 1:
         return (
           <>
+            {/* <Randomizer /> */}
             <div className="flex">
               <form action="">
                 <h2>Numer Identyfikacyjny</h2>
@@ -172,6 +175,7 @@ export const Test: React.FC = () => {
         return (
           <>
             {showOverlay && <Task2 />}
+
             <Form.Field>
               {currentStep === 3 && (
                 <>
