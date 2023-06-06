@@ -4,35 +4,24 @@ import { Rando } from "./Form.styled";
 import { useState } from "react";
 
 interface CustomForm {
-  imgLinks: string;
-  checked: boolean | null;
+  imgLinks?: string;
+  value: boolean | undefined;
   onChange: (value: boolean) => void;
+  src: string;
 }
 
-const CustomForm: React.FC<CustomForm> = ({ imgLinks, checked, onChange }) => {
+const CustomForm: React.FC<CustomForm> = ({ src, value }) => {
   return (
-    <Form.Field>
-      <>
-        <div className="tasks">
-          <div className="task">
-            <img src={imgLinks[0]} alt="" />
-            <Form.Checkbox
-              label="Wybór 1"
-              checked={checked === true}
-              onChange={() => onChange(true)}
-            />
-          </div>
-          <div className="task">
-            <img src={imgLinks[1]} alt="" />
-            <Form.Checkbox
-              label="Wybór 2"
-              checked={checked === false}
-              onChange={() => onChange(false)}
-            />
-          </div>
-        </div>
-      </>
-    </Form.Field>
+    <>
+      <div className="task">
+        <img src={src} />
+        <Form.Checkbox
+          label="Wybór 1"
+          checked={value}
+          //   onChange={() => onChange()}
+        />
+      </div>
+    </>
   );
 };
 

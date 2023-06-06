@@ -150,9 +150,10 @@ export const Test: React.FC = () => {
               {currentStep === 2 && (
                 <>
                   {/* <CustomForm
-                    imgLinks={ImgLinks[0]}
+                    src={ImgLinks[0]}
                     checked={response1 === true}
                     onChange={() => setResponse1(true)}
+                    
                   /> */}
                   <div className="tasks">
                     <div className="task">
