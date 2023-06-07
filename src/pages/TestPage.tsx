@@ -15,7 +15,7 @@ import {
 import axios from "axios";
 import { ImgLinks } from "../Utilities/Link";
 import { Randomizer } from "../components/Form/Form";
-// import CustomForm from "../components/Form/Form";
+import CustomForm from "../components/Form/Form";
 
 export const Test: React.FC = () => {
   const [id, setId] = useState("");
@@ -149,29 +149,19 @@ export const Test: React.FC = () => {
             <Form.Field>
               {currentStep === 2 && (
                 <>
-                  {/* <CustomForm
-                    src={ImgLinks[0]}
-                    checked={response1 === true}
-                    onChange={() => setResponse1(true)}
-                    
-                  /> */}
                   <div className="tasks">
-                    <div className="task">
-                      <img src={ImgLinks[0]} alt="" />
-                      <Form.Checkbox
-                        label="Wybór 1"
-                        checked={response1 === true}
-                        onChange={() => setResponse1(true)}
-                      />
-                    </div>
-                    <div className="task">
-                      <img src={ImgLinks[1]} alt="" />
-                      <Form.Checkbox
-                        label="Wybór 2"
-                        checked={response1 === false}
-                        onChange={() => setResponse1(false)}
-                      />
-                    </div>
+                    <CustomForm
+                      src={ImgLinks[0]}
+                      value={response1 === true}
+                      onChange={() => setResponse1(true)}
+                      label="Wybór 1"
+                    />
+                    <CustomForm
+                      src={ImgLinks[1]}
+                      value={response1 === false}
+                      onChange={() => setResponse1(false)}
+                      label="Wybór 2"
+                    />
                   </div>
                 </>
               )}
@@ -187,28 +177,18 @@ export const Test: React.FC = () => {
               {currentStep === 3 && (
                 <>
                   <div className="tasks">
-                    <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/3.jpg"
-                        alt=""
-                      />
-                      <Form.Checkbox
-                        label="Wybór 1"
-                        checked={response2 === false}
-                        onChange={() => setResponse2(false)}
-                      />
-                    </div>
-                    <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/4.jpg"
-                        alt=""
-                      />
-                      <Form.Checkbox
-                        label="Wybór 2"
-                        checked={response2 === true}
-                        onChange={() => setResponse2(true)}
-                      />
-                    </div>
+                    <CustomForm
+                      src={ImgLinks[2]}
+                      value={response2 === true}
+                      onChange={() => setResponse2(true)}
+                      label="Wybór 1"
+                    />
+                    <CustomForm
+                      src={ImgLinks[3]}
+                      value={response2 === false}
+                      onChange={() => setResponse2(false)}
+                      label="Wybór 2"
+                    />
                   </div>
                 </>
               )}
@@ -223,28 +203,18 @@ export const Test: React.FC = () => {
               {currentStep === 4 && (
                 <>
                   <div className="tasks">
-                    <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/6.jpg"
-                        alt=""
-                      />
-                      <Form.Checkbox
-                        label="Wybór 1"
-                        checked={response3 === false}
-                        onChange={() => setResponse3(false)}
-                      />
-                    </div>
-                    <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/5.jpg"
-                        alt=""
-                      />
-                      <Form.Checkbox
-                        label="Wybór 2"
-                        checked={response3 === true}
-                        onChange={() => setResponse3(true)}
-                      />
-                    </div>
+                    <CustomForm
+                      src={ImgLinks[5]}
+                      value={response3 === false}
+                      onChange={() => setResponse3(false)}
+                      label="Wybór 1"
+                    />
+                    <CustomForm
+                      src={ImgLinks[4]}
+                      value={response3 === true}
+                      onChange={() => setResponse3(true)}
+                      label="Wybór 2"
+                    />
                   </div>
                 </>
               )}
@@ -259,28 +229,18 @@ export const Test: React.FC = () => {
               {currentStep === 5 && (
                 <>
                   <div className="tasks">
-                    <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg"
-                        alt=""
-                      />
-                      <Form.Checkbox
-                        label="Wybór 1"
-                        checked={response4 === true}
-                        onChange={() => setResponse4(true)}
-                      />
-                    </div>
-                    <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
-                        alt=""
-                      />
-                      <Form.Checkbox
-                        label="Wybór 2"
-                        checked={response4 === false}
-                        onChange={() => setResponse4(false)}
-                      />
-                    </div>
+                    <CustomForm
+                      src={ImgLinks[6]}
+                      value={response4 === true}
+                      onChange={() => setResponse4(true)}
+                      label="Wybór 1"
+                    />
+                    <CustomForm
+                      src={ImgLinks[7]}
+                      value={response4 === false}
+                      onChange={() => setResponse4(false)}
+                      label="Wybór 2"
+                    />
                   </div>
                 </>
               )}
@@ -295,28 +255,18 @@ export const Test: React.FC = () => {
               {currentStep === 6 && (
                 <>
                   <div className="tasks">
-                    <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/9.jpg"
-                        alt=""
-                      />
-                      <Form.Checkbox
-                        label="Wybór 1"
-                        checked={response5 === true}
-                        onChange={() => setResponse5(true)}
-                      />
-                    </div>
-                    <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/10.jpg"
-                        alt=""
-                      />
-                      <Form.Checkbox
-                        label="Wybór 2"
-                        checked={response5 === false}
-                        onChange={() => setResponse5(false)}
-                      />
-                    </div>
+                    <CustomForm
+                      src={ImgLinks[8]}
+                      value={response5 === true}
+                      onChange={() => setResponse5(true)}
+                      label="Wybór 1"
+                    />
+                    <CustomForm
+                      src={ImgLinks[9]}
+                      value={response5 === false}
+                      onChange={() => setResponse5(false)}
+                      label="Wybór 2"
+                    />
                   </div>
                 </>
               )}
@@ -331,28 +281,18 @@ export const Test: React.FC = () => {
               {currentStep === 7 && (
                 <>
                   <div className="tasks">
-                    <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/12.jpg"
-                        alt=""
-                      />
-                      <Form.Checkbox
-                        label="Wybór 1"
-                        checked={response6 === false}
-                        onChange={() => setResponse6(false)}
-                      />
-                    </div>
-                    <div className="task">
-                      <img
-                        src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/11.jpg"
-                        alt=""
-                      />
-                      <Form.Checkbox
-                        label="Wybór 2"
-                        checked={response6 === true}
-                        onChange={() => setResponse6(true)}
-                      />
-                    </div>
+                    <CustomForm
+                      src={ImgLinks[11]}
+                      value={response6 === false}
+                      onChange={() => setResponse6(false)}
+                      label="Wybór 1"
+                    />
+                    <CustomForm
+                      src={ImgLinks[10]}
+                      value={response6 === true}
+                      onChange={() => setResponse6(true)}
+                      label="Wybór 2"
+                    />
                   </div>
                 </>
               )}

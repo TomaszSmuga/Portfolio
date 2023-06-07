@@ -4,24 +4,22 @@ import { Rando } from "./Form.styled";
 import { useState } from "react";
 
 interface CustomForm {
-  imgLinks?: string;
   value: boolean | undefined;
   onChange: (value: boolean) => void;
   src: string;
+  label: string;
 }
 
-const CustomForm: React.FC<CustomForm> = ({ src, value }) => {
+const CustomForm: React.FC<CustomForm> = ({ src, value, onChange, label }) => {
   return (
-    <>
-      <div className="task">
-        <img src={src} />
-        <Form.Checkbox
-          label="Wybór 1"
-          checked={value}
-          //   onChange={() => onChange()}
-        />
-      </div>
-    </>
+    <div className="task">
+      <img src={src} alt="" />
+      <Form.Checkbox
+        checked={value}
+        onChange={() => onChange(!value)}
+        label={label}
+      />
+    </div>
   );
 };
 
@@ -32,7 +30,8 @@ const generateRandomNumber = () => {
 };
 
 export const Randomizer = () => {
-  const [random, setRandom] = useState(generateRandomNumber());
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [random] = useState(generateRandomNumber());
 
   return (
     <>
