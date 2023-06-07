@@ -6,15 +6,26 @@ interface Radio {
   id: number;
   label: string;
   checked: boolean;
+  value: number;
+}
+interface RadioQuestionnaireProps {
+  onRadioChange: (value: number) => void;
 }
 
-export const RadioQuestionnaire: React.FC = () => {
+export const RadioQuestionnaire: React.FC<RadioQuestionnaireProps> = ({
+  onRadioChange,
+}) => {
   const [radios, setRadios] = useState<Radio[]>([
-    { id: 1, label: "zdecydowanie się nie zgadzam", checked: false },
-    { id: 2, label: "nie zgadzam się", checked: false },
-    { id: 3, label: "Ani się zgadzam ani się nie zgadzam", checked: false },
-    { id: 4, label: "zgadzam się", checked: false },
-    { id: 5, label: "zdecydowanie się  zgadzam", checked: false },
+    { id: 1, label: "zdecydowanie się nie zgadzam", checked: false, value: 1 },
+    { id: 2, label: "nie zgadzam się", checked: false, value: 2 },
+    {
+      id: 3,
+      label: "Ani się zgadzam ani się nie zgadzam",
+      checked: false,
+      value: 3,
+    },
+    { id: 4, label: "zgadzam się", checked: false, value: 4 },
+    { id: 5, label: "zdecydowanie się  zgadzam", checked: false, value: 5 },
   ]);
 
   const handleCheckbox = (id: number) => {
@@ -23,6 +34,10 @@ export const RadioQuestionnaire: React.FC = () => {
       checked: radio.id === id,
     }));
     setRadios(updatedItems);
+    const selectedValue = radios.find((radio) => radio.id === id)?.value;
+    if (selectedValue !== undefined) {
+      onRadioChange(selectedValue);
+    }
   };
   return (
     <>
@@ -33,6 +48,7 @@ export const RadioQuestionnaire: React.FC = () => {
             label={radio.label}
             checked={radio.checked}
             onChange={() => handleCheckbox(radio.id)}
+            value={radio.value}
           />
         ))}
       </StyledDiv>

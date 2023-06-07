@@ -121,6 +121,10 @@ export const Test: React.FC = () => {
     }
   };
 
+  const handleRadio1 = (value: number) => {
+    console.log("Chuj dupa nr", value);
+  };
+
   const renderFormStep = () => {
     switch (currentStep) {
       case 1:
@@ -140,7 +144,7 @@ export const Test: React.FC = () => {
                   required
                   pattern="[0-9]*"
                 />
-                <RadioQuestionnaire />
+                <RadioQuestionnaire onRadioChange={handleRadio1} />
                 {/* <GroupIdentification /> */}
               </form>
             </div>
