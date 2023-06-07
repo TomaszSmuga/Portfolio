@@ -17,7 +17,7 @@ import { ImgLinks } from "../Utilities/Link";
 import { Randomizer } from "../components/Form/Form";
 import CustomForm from "../components/Form/Form";
 // import { GroupIdentification } from "../components/Input/Input";
-// import { RadioQuestionnaire } from "../components/Input/Checkbox";
+import { RadioQuestionnaire } from "../components/Input/Checkbox";
 
 export const Test: React.FC = () => {
   const [id, setId] = useState("");
@@ -37,7 +37,7 @@ export const Test: React.FC = () => {
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 11500);
+      }, 100);
     }
 
     return () => {
@@ -134,13 +134,13 @@ export const Test: React.FC = () => {
                 <input
                   type="text"
                   placeholder="Wpisz przypisany numer"
-                  name="id"
+                  name="dupa"
                   onChange={(e) => setId(e.target.value)}
                   value={id}
                   required
                   pattern="[0-9]*"
                 />
-                {/* <RadioQuestionnaire /> */}
+                <RadioQuestionnaire />
                 {/* <GroupIdentification /> */}
               </form>
             </div>

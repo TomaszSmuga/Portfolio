@@ -1,56 +1,41 @@
 import { useState } from "react";
-import { Radio, RadioProps } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
+import { StyledDiv } from "./Checkbox.styled";
 
-interface Questionnaire {
-  label?: string;
-  value?: number;
-  name?: string;
-  checked: number | boolean;
-  onChange?: (value: number) => void;
+interface Radio {
+  id: number;
+  label: string;
+  checked: boolean;
 }
 
-export const RadioQuestionnaire: React.FC<Questionnaire> = ({
-  label,
-  value,
-  name,
-  onChange,
-}) => {
-  const [checked, setChecked] = useState<number | undefined>(value);
+export const RadioQuestionnaire: React.FC = () => {
+  const [radios, setRadios] = useState<Radio[]>([
+    { id: 1, label: "zdecydowanie się nie zgadzam", checked: false },
+    { id: 2, label: "nie zgadzam się", checked: false },
+    { id: 3, label: "Ani się zgadzam ani się nie zgadzam", checked: false },
+    { id: 4, label: "zgadzam się", checked: false },
+    { id: 5, label: "zdecydowanie się  zgadzam", checked: false },
+  ]);
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement & HTMLInputElement>,
-    data: RadioProps
-  ) => {
-    const newValue = parseInt(data.value as string);
-    setChecked(newValue);
-    if (onChange && typeof onChange === "function") {
-      onChange(newValue);
-    }
+  const handleCheckbox = (id: number) => {
+    const updatedItems = radios.map((radio) => ({
+      ...radio,
+      checked: radio.id === id,
+    }));
+    setRadios(updatedItems);
   };
-
   return (
     <>
-      <Radio
-        label={label}
-        value={1}
-        name={name}
-        onChange={handleChange}
-        checked={checked === 1}
-      />
-      <Radio
-        label={label}
-        value={2}
-        name={name}
-        onChange={handleChange}
-        checked={checked === 2}
-      />
-      <Radio
-        label={label}
-        value={3}
-        name={name}
-        onChange={handleChange}
-        checked={checked === 3}
-      />
+      <StyledDiv>
+        {radios.map((radio) => (
+          <Form.Radio
+            key={radio.id}
+            label={radio.label}
+            checked={radio.checked}
+            onChange={() => handleCheckbox(radio.id)}
+          />
+        ))}
+      </StyledDiv>
     </>
   );
 };
