@@ -30,6 +30,10 @@ export const Test: React.FC = () => {
   const [showOverlay, setShowOverlay] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [CSES1, setCSES1] = useState<number | null>(null);
+  const [CSES2, setCSES2] = useState<number | null>(null);
+  const [CSES3, setCSES3] = useState<number | null>(null);
+  const [CSES4, setCSES4] = useState<number | null>(null);
 
   useEffect(() => {
     let timer: number;
@@ -73,7 +77,11 @@ export const Test: React.FC = () => {
       response3 !== null &&
       response4 !== null &&
       response5 !== null &&
-      response6 !== null
+      response6 !== null &&
+      CSES1 !== null &&
+      CSES2 !== null &&
+      CSES3 !== null &&
+      CSES4 !== null
     ) {
       const response1Value = response1 ? "True" : "False";
       const response2Value = response2 ? "True" : "False";
@@ -83,6 +91,10 @@ export const Test: React.FC = () => {
       const response6Value = response6 ? "True" : "False";
       const form = {
         id,
+        CSES1: CSES1,
+        CSES2: CSES2,
+        CSES3: CSES3,
+        CSES4: CSES4,
         response1: response1Value,
         response2: response2Value,
         response3: response3Value,
@@ -121,8 +133,17 @@ export const Test: React.FC = () => {
     }
   };
 
-  const handleRadio1 = (value: number) => {
-    console.log("Chuj dupa n", value);
+  const handleCSES1 = (value: number) => {
+    setCSES1(value);
+  };
+  const handleCSES2 = (value: number) => {
+    setCSES2(value);
+  };
+  const handleCSES3 = (value: number) => {
+    setCSES3(value);
+  };
+  const handleCSES4 = (value: number) => {
+    setCSES4(value);
   };
 
   const renderFormStep = () => {
@@ -144,8 +165,23 @@ export const Test: React.FC = () => {
                   required
                   pattern="[0-9]*"
                 />
-                <RadioQuestionnaire onRadioChange={handleRadio1} />
-                {/* <GroupIdentification /> */}
+                <RadioQuestionnaire
+                  title="Bycie osobą starszą jest dla mnie ważne."
+                  onRadioChange={handleCSES1}
+                />
+                <RadioQuestionnaire
+                  title="Bycie osobą starszą nie jest ważne dla mojego poczucia jaką osobą jestem."
+                  onRadioChange={handleCSES2}
+                />
+                <RadioQuestionnaire
+                  title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem. 
+                  "
+                  onRadioChange={handleCSES3}
+                />
+                <RadioQuestionnaire
+                  title="Bycie osobą starszą ma bardzo niewiele wspólnego z tym, jak się czuję względem siebie"
+                  onRadioChange={handleCSES4}
+                />
               </form>
             </div>
           </>
