@@ -4,6 +4,9 @@ export const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: fit-content;
+  background-color: #fdfdfd;
+  border-radius: 4%;
+
   padding: 20px;
 `;
 
@@ -17,5 +20,15 @@ export const Wrapper = styled.div`
   height: 200px;
   h4 {
     text-align: center;
+  }
+`;
+
+export const JustDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  label {
+    display: flex;
+    align-items: center;
   }
 `;

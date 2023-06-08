@@ -52,6 +52,11 @@ export const Test: React.FC = () => {
   const onNextStep = () => {
     if (currentStep < 7) {
       if (
+        (currentStep === 1 &&
+          (CSES1 === null ||
+            CSES2 === null ||
+            CSES3 === null ||
+            CSES4 === null)) ||
         (currentStep === 2 && response1 === null) ||
         (currentStep === 3 && response2 === null) ||
         (currentStep === 4 && response3 === null) ||
