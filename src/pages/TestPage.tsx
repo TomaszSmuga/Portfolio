@@ -122,7 +122,7 @@ export const Test: React.FC = () => {
   };
 
   const handleRadio1 = (value: number) => {
-    console.log("Chuj dupa nr", value);
+    console.log("Chuj dupa n", value);
   };
 
   const renderFormStep = () => {
