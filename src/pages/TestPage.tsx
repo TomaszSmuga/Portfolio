@@ -35,6 +35,7 @@ export const Test: React.FC = () => {
   const [CSES2, setCSES2] = useState<number | null>(null);
   const [CSES3, setCSES3] = useState<number | null>(null);
   const [CSES4, setCSES4] = useState<number | null>(null);
+  const [consent, setConsent] = useState<boolean | null>(null);
 
   useEffect(() => {
     let timer: number;
@@ -155,16 +156,7 @@ export const Test: React.FC = () => {
   const renderFormStep = () => {
     switch (currentStep) {
       case 1:
-        return (
-          <>
-            {currentStep === 1 && (
-              <Consent
-                label="Wyrażam zgodę na udział w badaniu"
-                label1="Nie wyrażam zgody na udział w badaniu"
-              />
-            )}
-          </>
-        );
+        return <>{currentStep === 1 && <Consent />}</>;
       case 2:
         return (
           <>
@@ -179,7 +171,10 @@ export const Test: React.FC = () => {
                       type="text"
                       placeholder="Wpisz przypisany numer"
                       name="dupa"
-                      onChange={(e) => setId(e.target.value)}
+                      onChange={(e) => {
+                        e.preventDefault();
+                        setId(e.target.value);
+                      }}
                       value={id}
                       required
                       pattern="[0-9]*"
