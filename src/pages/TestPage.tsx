@@ -18,6 +18,7 @@ import { Randomizer } from "../components/Form/Form";
 import CustomForm from "../components/Form/Form";
 // import { GroupIdentification } from "../components/Input/Input";
 import { RadioQuestionnaire } from "../components/Input/Checkbox";
+import { Consent } from "../components/InformedConsent/InformedConsent";
 
 export const Test: React.FC = () => {
   const [id, setId] = useState("");
@@ -50,19 +51,19 @@ export const Test: React.FC = () => {
   }, [showOverlay]);
 
   const onNextStep = () => {
-    if (currentStep < 7) {
+    if (currentStep < 8) {
       if (
-        (currentStep === 1 &&
+        (currentStep === 2 &&
           (CSES1 === null ||
             CSES2 === null ||
             CSES3 === null ||
             CSES4 === null)) ||
-        (currentStep === 2 && response1 === null) ||
-        (currentStep === 3 && response2 === null) ||
-        (currentStep === 4 && response3 === null) ||
-        (currentStep === 5 && response4 === null) ||
-        (currentStep === 6 && response5 === null) ||
-        (currentStep === 7 && response6 === null)
+        (currentStep === 3 && response1 === null) ||
+        (currentStep === 4 && response2 === null) ||
+        (currentStep === 5 && response3 === null) ||
+        (currentStep === 6 && response4 === null) ||
+        (currentStep === 7 && response5 === null) ||
+        (currentStep === 8 && response6 === null)
       ) {
         return;
       } else {
@@ -76,7 +77,7 @@ export const Test: React.FC = () => {
   const onSubmitForm = () => {
     console.log("Ale Ty umiesz wciskać");
     if (
-      currentStep === 7 &&
+      currentStep === 8 &&
       response1 !== null &&
       response2 !== null &&
       response3 !== null &&
@@ -154,49 +155,55 @@ export const Test: React.FC = () => {
   const renderFormStep = () => {
     switch (currentStep) {
       case 1:
+        return <>{currentStep === 1 && <Consent />}</>;
+      case 2:
         return (
           <>
-            <Randomizer />
+            {currentStep === 2 && (
+              <>
+                <Randomizer />
 
-            <div className="flex">
-              <form action="">
-                <h2>Numer Identyfikacyjny</h2>
-                <input
-                  type="text"
-                  placeholder="Wpisz przypisany numer"
-                  name="dupa"
-                  onChange={(e) => setId(e.target.value)}
-                  value={id}
-                  required
-                  pattern="[0-9]*"
-                />
-                <RadioQuestionnaire
-                  title="Bycie osobą starszą jest dla mnie ważne."
-                  onRadioChange={handleCSES1}
-                />
-                <RadioQuestionnaire
-                  title="Bycie osobą starszą nie jest ważne dla mojego poczucia jaką osobą jestem."
-                  onRadioChange={handleCSES2}
-                />
-                <RadioQuestionnaire
-                  title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem. 
-                  "
-                  onRadioChange={handleCSES3}
-                />
-                <RadioQuestionnaire
-                  title="Bycie osobą starszą ma bardzo niewiele wspólnego z tym, jak się czuję względem siebie"
-                  onRadioChange={handleCSES4}
-                />
-              </form>
-            </div>
+                <div className="flex">
+                  <form action="">
+                    <h2>Numer Identyfikacyjny</h2>
+                    <input
+                      type="text"
+                      placeholder="Wpisz przypisany numer"
+                      name="dupa"
+                      onChange={(e) => setId(e.target.value)}
+                      value={id}
+                      required
+                      pattern="[0-9]*"
+                    />
+                    <RadioQuestionnaire
+                      title="Bycie osobą starszą jest dla mnie ważne."
+                      onRadioChange={handleCSES1}
+                    />
+                    <RadioQuestionnaire
+                      title="Bycie osobą starszą nie jest ważne dla mojego poczucia jaką osobą jestem."
+                      onRadioChange={handleCSES2}
+                    />
+                    <RadioQuestionnaire
+                      title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem. 
+      "
+                      onRadioChange={handleCSES3}
+                    />
+                    <RadioQuestionnaire
+                      title="Bycie osobą starszą ma bardzo niewiele wspólnego z tym, jak się czuję względem siebie"
+                      onRadioChange={handleCSES4}
+                    />
+                  </form>
+                </div>
+              </>
+            )}
           </>
         );
-      case 2:
+      case 3:
         return (
           <>
             {showOverlay && <Task1 seconds={3} />}
             <Form.Field>
-              {currentStep === 2 && (
+              {currentStep === 3 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -217,13 +224,13 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 3:
+      case 4:
         return (
           <>
             {showOverlay && <Task2 />}
 
             <Form.Field>
-              {currentStep === 3 && (
+              {currentStep === 4 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -244,12 +251,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 4:
+      case 5:
         return (
           <>
             {showOverlay && <Task3 />}
             <Form.Field>
-              {currentStep === 4 && (
+              {currentStep === 5 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -270,12 +277,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 5:
+      case 6:
         return (
           <>
             {showOverlay && <Task4 />}
             <Form.Field>
-              {currentStep === 5 && (
+              {currentStep === 6 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -296,12 +303,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 6:
+      case 7:
         return (
           <>
             {showOverlay && <Task5 />}
             <Form.Field>
-              {currentStep === 6 && (
+              {currentStep === 7 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -322,12 +329,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 7:
+      case 8:
         return (
           <>
             {showOverlay && <Task6 />}
             <Form.Field>
-              {currentStep === 7 && (
+              {currentStep === 8 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -364,7 +371,7 @@ export const Test: React.FC = () => {
             color="blue"
             onClick={onSubmitForm}
             disabled={isButtonDisabled}>
-            {currentStep === 7 ? "Wyślij" : "Dalej"}
+            {currentStep === 8 ? "Wyślij" : "Dalej"}
           </Form.Button>
         </Form>
       </Container>
