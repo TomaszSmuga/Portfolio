@@ -16,7 +16,7 @@ import axios from "axios";
 import { ImgLinks } from "../Utilities/Link";
 import { Randomizer } from "../components/Form/Form";
 import CustomForm from "../components/Form/Form";
-// import { GroupIdentification } from "../components/Input/Input";
+
 import { RadioQuestionnaire } from "../components/Input/Checkbox";
 import { Consent } from "../components/InformedConsent/InformedConsent";
 
@@ -35,7 +35,7 @@ export const Test: React.FC = () => {
   const [CSES2, setCSES2] = useState<number | null>(null);
   const [CSES3, setCSES3] = useState<number | null>(null);
   const [CSES4, setCSES4] = useState<number | null>(null);
-  const [consent, setConsent] = useState<boolean | null>(null);
+  // const [consent, setConsent] = useState<boolean | null>(null);
 
   useEffect(() => {
     let timer: number;
