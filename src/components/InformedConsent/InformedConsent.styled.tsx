@@ -8,6 +8,7 @@ export const ConsentWrapper = styled.div`
 
 export const ConsentDiv = styled.div`
   height: 80vh;
+  width: 60vh;
   overflow-y: auto;
   ::-webkit-scrollbar {
     width: 8px;
@@ -21,5 +22,9 @@ export const ConsentDiv = styled.div`
   }
   ::-webkit-scrollbar-thumb:hover {
     background-color: #555;
+  }
+
+  p {
+    font-size: 25px;
   }
 `;

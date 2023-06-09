@@ -1,6 +1,12 @@
 import { ConsentWrapper, ConsentDiv } from "./InformedConsent.styled";
+import { Checkbox } from "semantic-ui-react";
 
-export const Consent = () => {
+interface Consent {
+  label: string;
+  label1: string;
+}
+
+export const Consent: React.FC<Consent> = (label, label1) => {
   return (
     <>
       <ConsentWrapper>
@@ -66,6 +72,8 @@ export const Consent = () => {
             19/31 w Warszawie (03-815) w celu realizacji mojego uczestnictwa w
             badaniu i dla potrzeb realizacji jego celów.
           </p>
+          <Checkbox label={label} />
+          <Checkbox label={label1} />
         </ConsentDiv>
       </ConsentWrapper>
     </>

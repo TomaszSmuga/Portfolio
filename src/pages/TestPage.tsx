@@ -155,7 +155,16 @@ export const Test: React.FC = () => {
   const renderFormStep = () => {
     switch (currentStep) {
       case 1:
-        return <>{currentStep === 1 && <Consent />}</>;
+        return (
+          <>
+            {currentStep === 1 && (
+              <Consent
+                label="Wyrażam zgodę na udział w badaniu"
+                label1="Nie wyrażam zgody na udział w badaniu"
+              />
+            )}
+          </>
+        );
       case 2:
         return (
           <>
