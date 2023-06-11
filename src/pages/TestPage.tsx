@@ -16,7 +16,7 @@ import axios from "axios";
 import { ImgLinks } from "../Utilities/Link";
 import { Randomizer } from "../components/Form/Form";
 import CustomForm from "../components/Form/Form";
-
+import { CheckboxDiv } from "../components/Input/Checkbox.styled";
 import { RadioQuestionnaire } from "../components/Input/Checkbox";
 import { Consent } from "../components/InformedConsent/InformedConsent";
 
@@ -35,7 +35,12 @@ export const Test: React.FC = () => {
   const [CSES2, setCSES2] = useState<number | null>(null);
   const [CSES3, setCSES3] = useState<number | null>(null);
   const [CSES4, setCSES4] = useState<number | null>(null);
-  // const [consent, setConsent] = useState<boolean | null>(null);
+  const [STS1, setSTS1] = useState<number | null>(null);
+  const [STS2, setSTS2] = useState<number | null>(null);
+  const [STS3, setSTS3] = useState<number | null>(null);
+  const [STS4, setSTS4] = useState<number | null>(null);
+  const [STS5, setSTS5] = useState<number | null>(null);
+  const [consent, setConsent] = useState<boolean | null>(null);
 
   useEffect(() => {
     let timer: number;
@@ -52,19 +57,27 @@ export const Test: React.FC = () => {
   }, [showOverlay]);
 
   const onNextStep = () => {
-    if (currentStep < 8) {
+    if (currentStep < 9) {
       if (
-        (currentStep === 2 &&
-          (CSES1 === null ||
-            CSES2 === null ||
-            CSES3 === null ||
-            CSES4 === null)) ||
-        (currentStep === 3 && response1 === null) ||
-        (currentStep === 4 && response2 === null) ||
-        (currentStep === 5 && response3 === null) ||
-        (currentStep === 6 && response4 === null) ||
-        (currentStep === 7 && response5 === null) ||
-        (currentStep === 8 && response6 === null)
+        // (currentStep === 1 && consent === null)
+        //   (currentStep === 2 &&
+        //     (STS1 === null ||
+        //       STS2 === null ||
+        //       STS3 === null ||
+        //       STS4 === null ||
+        //       STS5 === null))
+        // ) ||
+        // (currentStep === 3 &&
+        //   (CSES1 === null ||
+        //     CSES2 === null ||
+        //     CSES3 === null ||
+        //     CSES4 === null)) ||
+        (currentStep === 4 && response1 === null) ||
+        (currentStep === 5 && response2 === null) ||
+        (currentStep === 6 && response3 === null) ||
+        (currentStep === 7 && response4 === null) ||
+        (currentStep === 8 && response5 === null) ||
+        (currentStep === 9 && response6 === null)
       ) {
         return;
       } else {
@@ -78,7 +91,7 @@ export const Test: React.FC = () => {
   const onSubmitForm = () => {
     console.log("Ale Ty umiesz wciskać");
     if (
-      currentStep === 8 &&
+      currentStep === 9 &&
       response1 !== null &&
       response2 !== null &&
       response3 !== null &&
@@ -88,7 +101,12 @@ export const Test: React.FC = () => {
       CSES1 !== null &&
       CSES2 !== null &&
       CSES3 !== null &&
-      CSES4 !== null
+      CSES4 !== null &&
+      STS1 !== null &&
+      STS2 !== null &&
+      STS3 !== null &&
+      STS4 !== null &&
+      STS5 !== null
     ) {
       const response1Value = response1 ? "True" : "False";
       const response2Value = response2 ? "True" : "False";
@@ -102,6 +120,11 @@ export const Test: React.FC = () => {
         CSES2: CSES2,
         CSES3: CSES3,
         CSES4: CSES4,
+        STS1: STS1,
+        STS2: STS2,
+        STS3: STS3,
+        STS4: STS4,
+        STS5: STS5,
         response1: response1Value,
         response2: response2Value,
         response3: response3Value,
@@ -153,14 +176,77 @@ export const Test: React.FC = () => {
     setCSES4(value);
   };
 
+  const handleSTS1 = (value: number) => {
+    setSTS1(value);
+  };
+  const handleSTS2 = (value: number) => {
+    setSTS2(value);
+  };
+  const handleSTS3 = (value: number) => {
+    setSTS3(value);
+  };
+  const handleSTS4 = (value: number) => {
+    setSTS4(value);
+  };
+  const handleSTS5 = (value: number) => {
+    setSTS5(value);
+  };
+
   const renderFormStep = () => {
     switch (currentStep) {
       case 1:
-        return <>{currentStep === 1 && <Consent />}</>;
+        return (
+          <>
+            {currentStep === 1 && (
+              <Consent
+                label="Wyrażam zgodę na udział w badaniu"
+                value={consent === true}
+                onChange={() => setConsent(true)}
+              />
+            )}
+          </>
+        );
       case 2:
         return (
           <>
             {currentStep === 2 && (
+              <>
+                <Randomizer />
+
+                <div className="flex">
+                  <form action="">
+                    <CheckboxDiv>
+                      <RadioQuestionnaire
+                        title="Inni uważają, że ze względu na wiek mam gorszą pamięć"
+                        onRadioChange={handleSTS1}
+                      />
+                      <RadioQuestionnaire
+                        title="Inni uważają, że z uwagi na mój wiek mam mniej do zaoferowania"
+                        onRadioChange={handleSTS2}
+                      />
+                      <RadioQuestionnaire
+                        title="Inni ludzie uważają, że mój wiek ogranicza moje możliwości zapamiętywania"
+                        onRadioChange={handleSTS3}
+                      />
+                      <RadioQuestionnaire
+                        title="Sądzę, że ze względu na mój wiek, mam możliwości rozwoju intelektualnego"
+                        onRadioChange={handleSTS4}
+                      />
+                      <RadioQuestionnaire
+                        title="Osoby w moim wieku często są oceniane w sposób tendencyjny"
+                        onRadioChange={handleSTS5}
+                      />
+                    </CheckboxDiv>
+                  </form>
+                </div>
+              </>
+            )}
+          </>
+        );
+      case 3:
+        return (
+          <>
+            {currentStep === 3 && (
               <>
                 <Randomizer />
 
@@ -179,35 +265,37 @@ export const Test: React.FC = () => {
                       required
                       pattern="[0-9]*"
                     />
-                    <RadioQuestionnaire
-                      title="Bycie osobą starszą jest dla mnie ważne."
-                      onRadioChange={handleCSES1}
-                    />
-                    <RadioQuestionnaire
-                      title="Bycie osobą starszą nie jest ważne dla mojego poczucia jaką osobą jestem."
-                      onRadioChange={handleCSES2}
-                    />
-                    <RadioQuestionnaire
-                      title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem. 
-      "
-                      onRadioChange={handleCSES3}
-                    />
-                    <RadioQuestionnaire
-                      title="Bycie osobą starszą ma bardzo niewiele wspólnego z tym, jak się czuję względem siebie"
-                      onRadioChange={handleCSES4}
-                    />
+                    <CheckboxDiv>
+                      <RadioQuestionnaire
+                        title="Bycie osobą starszą jest dla mnie ważne."
+                        onRadioChange={handleCSES1}
+                      />
+                      <RadioQuestionnaire
+                        title="Bycie osobą starszą nie jest ważne dla mojego poczucia jaką osobą jestem."
+                        onRadioChange={handleCSES2}
+                      />
+                      <RadioQuestionnaire
+                        title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem. 
+        "
+                        onRadioChange={handleCSES3}
+                      />
+                      <RadioQuestionnaire
+                        title="Bycie osobą starszą ma bardzo niewiele wspólnego z tym, jak się czuję względem siebie"
+                        onRadioChange={handleCSES4}
+                      />
+                    </CheckboxDiv>
                   </form>
                 </div>
               </>
             )}
           </>
         );
-      case 3:
+      case 4:
         return (
           <>
             {showOverlay && <Task1 seconds={3} />}
             <Form.Field>
-              {currentStep === 3 && (
+              {currentStep === 4 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -228,13 +316,13 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 4:
+      case 5:
         return (
           <>
             {showOverlay && <Task2 />}
 
             <Form.Field>
-              {currentStep === 4 && (
+              {currentStep === 5 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -255,12 +343,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 5:
+      case 6:
         return (
           <>
             {showOverlay && <Task3 />}
             <Form.Field>
-              {currentStep === 5 && (
+              {currentStep === 6 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -281,12 +369,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 6:
+      case 7:
         return (
           <>
             {showOverlay && <Task4 />}
             <Form.Field>
-              {currentStep === 6 && (
+              {currentStep === 7 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -307,12 +395,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 7:
+      case 8:
         return (
           <>
             {showOverlay && <Task5 />}
             <Form.Field>
-              {currentStep === 7 && (
+              {currentStep === 8 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -333,12 +421,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 8:
+      case 9:
         return (
           <>
             {showOverlay && <Task6 />}
             <Form.Field>
-              {currentStep === 8 && (
+              {currentStep === 9 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -375,7 +463,7 @@ export const Test: React.FC = () => {
             color="blue"
             onClick={onSubmitForm}
             disabled={isButtonDisabled}>
-            {currentStep === 8 ? "Wyślij" : "Dalej"}
+            {currentStep === 9 ? "Wyślij" : "Dalej"}
           </Form.Button>
         </Form>
       </Container>
