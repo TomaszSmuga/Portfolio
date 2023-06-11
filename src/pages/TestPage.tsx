@@ -59,19 +59,18 @@ export const Test: React.FC = () => {
   const onNextStep = () => {
     if (currentStep < 9) {
       if (
-        // (currentStep === 1 && consent === null)
-        //   (currentStep === 2 &&
-        //     (STS1 === null ||
-        //       STS2 === null ||
-        //       STS3 === null ||
-        //       STS4 === null ||
-        //       STS5 === null))
-        // ) ||
-        // (currentStep === 3 &&
-        //   (CSES1 === null ||
-        //     CSES2 === null ||
-        //     CSES3 === null ||
-        //     CSES4 === null)) ||
+        (currentStep === 1 && consent === null) ||
+        (currentStep === 2 &&
+          (STS1 === null ||
+            STS2 === null ||
+            STS3 === null ||
+            STS4 === null ||
+            STS5 === null)) ||
+        (currentStep === 3 &&
+          (CSES1 === null ||
+            CSES2 === null ||
+            CSES3 === null ||
+            CSES4 === null)) ||
         (currentStep === 4 && response1 === null) ||
         (currentStep === 5 && response2 === null) ||
         (currentStep === 6 && response3 === null) ||
