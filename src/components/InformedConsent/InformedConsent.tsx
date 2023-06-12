@@ -7,10 +7,20 @@ import {
 interface ConsentProps {
   label?: string;
   onChange: (value: boolean) => void;
+  onDecline: (value: boolean) => void;
   value: boolean | undefined;
+  label2: string;
+  value2: boolean | undefined;
 }
 
-export const Consent: React.FC<ConsentProps> = ({ onChange, value, label }) => {
+export const Consent: React.FC<ConsentProps> = ({
+  onChange,
+  value,
+  label,
+  label2,
+  onDecline,
+  value2,
+}) => {
   return (
     <>
       <ConsentWrapper>
@@ -85,6 +95,11 @@ export const Consent: React.FC<ConsentProps> = ({ onChange, value, label }) => {
             label={label}
             checked={value}
             onChange={() => onChange(!value)}
+          />
+          <StyledCheckbox
+            label={label2}
+            onChange={() => onDecline(!value)}
+            checked={value2}
           />
         </ConsentDiv>
       </ConsentWrapper>

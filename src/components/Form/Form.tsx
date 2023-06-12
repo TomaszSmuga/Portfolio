@@ -3,17 +3,29 @@ import React from "react";
 import { Rando } from "./Form.styled";
 import { useState } from "react";
 
-interface CustomForm {
+interface CustomFormProps {
   value: boolean | undefined;
   onChange: (value: boolean) => void;
   src: string;
   label: string;
 }
+const getRandomRotation = () => {
+  const rotationArray = [90, 180, 270, 360];
+  const randomIndex = Math.floor(Math.random() * rotationArray.length);
+  return rotationArray[randomIndex];
+};
 
-const CustomForm: React.FC<CustomForm> = ({ src, value, onChange, label }) => {
+const CustomForm: React.FC<CustomFormProps> = ({
+  src,
+  value,
+  onChange,
+  label,
+}) => {
+  const [random] = useState(getRandomRotation);
+
   return (
     <div className="task">
-      <img src={src} alt="" />
+      <img src={src} alt="" style={{ transform: `rotate(${random}deg)` }} />
       <Form.Checkbox
         checked={value}
         onChange={() => onChange(!value)}
@@ -26,7 +38,7 @@ const CustomForm: React.FC<CustomForm> = ({ src, value, onChange, label }) => {
 export default CustomForm;
 
 const generateRandomNumber = () => {
-  return Math.floor(Math.random() * 100000);
+  return Math.floor(Math.random() * 1000000);
 };
 
 export const Randomizer = () => {

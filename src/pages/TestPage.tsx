@@ -48,7 +48,7 @@ export const Test: React.FC = () => {
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 100);
+      }, 10000);
     }
 
     return () => {
@@ -58,6 +58,10 @@ export const Test: React.FC = () => {
 
   const onNextStep = () => {
     if (currentStep < 9) {
+      if (consent === false) {
+        window.location.href = "https://www.google.com/";
+        return;
+      }
       if (
         (currentStep === 1 && consent === null) ||
         (currentStep === 2 &&
@@ -201,6 +205,9 @@ export const Test: React.FC = () => {
                 label="Wyrażam zgodę na udział w badaniu"
                 value={consent === true}
                 onChange={() => setConsent(true)}
+                label2="Nie wyrażam zgody na udział w badaniu"
+                onDecline={() => setConsent(false)}
+                value2={consent === false}
               />
             )}
           </>

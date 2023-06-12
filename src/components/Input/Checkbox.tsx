@@ -27,16 +27,33 @@ export const RadioQuestionnaire: React.FC<RadioQuestionnaireProps> = ({
     { identification: 2, label: "nie zgadzam się", checked: false, value: 2 },
     {
       identification: 3,
-      label: "Ani się zgadzam ani się nie zgadzam",
+      label: "Raczej się nie zgadzam",
       checked: false,
       value: 3,
     },
-    { identification: 4, label: "zgadzam się", checked: false, value: 4 },
+    {
+      identification: 4,
+      label: "Ani się zgadzam ani się nie zgadzam",
+      checked: false,
+      value: 4,
+    },
     {
       identification: 5,
-      label: "zdecydowanie się  zgadzam",
+      label: "Raczej się zgadzam",
       checked: false,
       value: 5,
+    },
+    {
+      identification: 6,
+      label: "Zgadzam się",
+      checked: false,
+      value: 6,
+    },
+    {
+      identification: 7,
+      label: "Zdecydowanie się  zgadzam",
+      checked: false,
+      value: 7,
     },
   ]);
 
