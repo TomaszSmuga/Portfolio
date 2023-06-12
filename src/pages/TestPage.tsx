@@ -210,8 +210,6 @@ export const Test: React.FC = () => {
           <>
             {currentStep === 2 && (
               <>
-                <Randomizer />
-
                 <div className="flex">
                   <form action="">
                     <CheckboxDiv>
