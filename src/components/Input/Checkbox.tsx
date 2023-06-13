@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form } from "semantic-ui-react";
-import { StyledDiv, Wrapper, JustDiv, StyledRadio } from "./Checkbox.styled";
+import { StyledDiv, Wrapper, JustDiv } from "./Checkbox.styled";
 
 interface Radio {
   identification: number;
