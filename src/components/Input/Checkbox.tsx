@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form } from "semantic-ui-react";
-import { StyledDiv, Wrapper, JustDiv } from "./Checkbox.styled";
+import { StyledDiv, Wrapper, JustDiv, StyledRadio } from "./Checkbox.styled";
 
 interface Radio {
   identification: number;
@@ -73,11 +73,10 @@ export const RadioQuestionnaire: React.FC<RadioQuestionnaireProps> = ({
   return (
     <>
       <Wrapper>
-        <div>
-          <h4>{title}</h4>
-        </div>
-
         <StyledDiv>
+          <div>
+            <h4>{title}</h4>
+          </div>
           {radios.map((radio) => (
             <JustDiv>
               <Form.Radio

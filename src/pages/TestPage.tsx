@@ -218,30 +218,32 @@ export const Test: React.FC = () => {
             {currentStep === 2 && (
               <>
                 <div className="flex">
-                  <form action="">
-                    <CheckboxDiv>
-                      <RadioQuestionnaire
-                        title="Inni uważają, że ze względu na wiek mam gorszą pamięć"
-                        onRadioChange={handleSTS1}
-                      />
-                      <RadioQuestionnaire
-                        title="Inni uważają, że z uwagi na mój wiek mam mniej do zaoferowania"
-                        onRadioChange={handleSTS2}
-                      />
-                      <RadioQuestionnaire
-                        title="Inni ludzie uważają, że mój wiek ogranicza moje możliwości zapamiętywania"
-                        onRadioChange={handleSTS3}
-                      />
-                      <RadioQuestionnaire
-                        title="Sądzę, że ze względu na mój wiek, mam możliwości rozwoju intelektualnego"
-                        onRadioChange={handleSTS4}
-                      />
-                      <RadioQuestionnaire
-                        title="Osoby w moim wieku często są oceniane w sposób tendencyjny"
-                        onRadioChange={handleSTS5}
-                      />
-                    </CheckboxDiv>
-                  </form>
+                  <CheckboxDiv>
+                    <h2 style={{ textAlign: "center" }}>
+                      Przeczytaj uważnie stwierdzenia i odpowiedz zgodnie z tym
+                      w jakim stopniu odnoszą się do Ciebie
+                    </h2>
+                    <RadioQuestionnaire
+                      title="Inni uważają, że ze względu na wiek mam gorszą pamięć"
+                      onRadioChange={handleSTS1}
+                    />
+                    <RadioQuestionnaire
+                      title="Inni uważają, że z uwagi na mój wiek mam mniej do zaoferowania"
+                      onRadioChange={handleSTS2}
+                    />
+                    <RadioQuestionnaire
+                      title="Inni ludzie uważają, że mój wiek ogranicza moje możliwości zapamiętywania"
+                      onRadioChange={handleSTS3}
+                    />
+                    <RadioQuestionnaire
+                      title="Sądzę, że ze względu na mój wiek, mam możliwości rozwoju intelektualnego"
+                      onRadioChange={handleSTS4}
+                    />
+                    <RadioQuestionnaire
+                      title="Osoby w moim wieku często są oceniane w sposób tendencyjny"
+                      onRadioChange={handleSTS5}
+                    />
+                  </CheckboxDiv>
                 </div>
               </>
             )}
