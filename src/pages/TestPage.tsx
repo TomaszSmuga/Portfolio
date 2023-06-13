@@ -258,16 +258,13 @@ export const Test: React.FC = () => {
                   <form action="">
                     <h3>Numer Identyfikacyjny</h3>
                     <input
-                      type="text"
-                      placeholder="Wpisz przypisany numer"
-                      name="dupa"
-                      onChange={(e) => {
-                        e.preventDefault();
-                        setId(e.target.value);
-                      }}
-                      value={id}
-                      required
-                      pattern="[0-9]*"
+                    // placeholder="Wpisz przypisany numer"
+                    // name="dupa"
+                    // onChange={(e) => {
+                    //   e.preventDefault();
+                    //   setId(e.target.value);
+                    // }}
+                    // value={id}
                     />
 
                     <CheckboxDiv>

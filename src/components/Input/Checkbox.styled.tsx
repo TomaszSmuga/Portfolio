@@ -1,10 +1,24 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+  margin-top: 4vh;
+  display: flex;
+  padding: 3vh 0;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: auto;
+
+  h4 {
+    text-align: center;
+  }
+`;
+
 export const CheckboxDiv = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
-  height: auto;
+  height: 100vh;
   width: 60vh;
   overflow-y: auto;
   ::-webkit-scrollbar {
@@ -29,28 +43,18 @@ export const CheckboxDiv = styled.div`
 export const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  width: fit-content;
+  width: inherit;
+  flex-direction: column;
   background-color: #fdfdfd;
   border-radius: 4%;
   padding: 20px;
 `;
 
-export const Wrapper = styled.div`
-  display: flex;
-  padding: 3vh 0;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: auto;
-
-  h4 {
-    text-align: center;
-  }
-`;
-
 export const JustDiv = styled.div`
   display: flex;
   flex-direction: column;
+  margin: 5px;
+  width: inherit;
 
   label {
     display: flex;
