@@ -19,9 +19,14 @@ import CustomForm from "../components/Form/Form";
 import { CheckboxDiv } from "../components/Input/Checkbox.styled";
 import { RadioQuestionnaire } from "../components/Input/Checkbox";
 import { Consent } from "../components/InformedConsent/InformedConsent";
+import {
+  SocioEconomicFormNumbers,
+  SocioEconomicForm,
+} from "../components/formField/FormField";
 
 export const Test: React.FC = () => {
   const [id, setId] = useState("");
+  const [age, setAge] = useState("");
   const [response1, setResponse1] = useState<boolean | null>(null);
   const [response2, setResponse2] = useState<boolean | null>(null);
   const [response3, setResponse3] = useState<boolean | null>(null);
@@ -48,7 +53,7 @@ export const Test: React.FC = () => {
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 10000);
+      }, 1);
     }
 
     return () => {
@@ -127,7 +132,7 @@ export const Test: React.FC = () => {
         STS2: STS2,
         STS3: STS3,
         STS4: STS4,
-        STS5: STS5,
+        STS5,
         response1: response1Value,
         response2: response2Value,
         response3: response3Value,
@@ -218,11 +223,24 @@ export const Test: React.FC = () => {
             {currentStep === 2 && (
               <>
                 <div className="flex">
+                  <Randomizer />
+                  <SocioEconomicFormNumbers
+                    placeholder="numer identyfikacyjny"
+                    onChange={(value) => setId(value)}
+                    value={id}
+                    label="Numer Identyfikacyjny"
+                  />
+                  <SocioEconomicFormNumbers
+                    placeholder="swój wiek"
+                    onChange={(value) => setAge(value)}
+                    value={age}
+                    label="Wiek"
+                  />
                   <CheckboxDiv>
-                    <h2 style={{ textAlign: "center" }}>
+                    <h3 style={{ textAlign: "center" }}>
                       Przeczytaj uważnie stwierdzenia i odpowiedz zgodnie z tym
                       w jakim stopniu odnoszą się do Ciebie
-                    </h2>
+                    </h3>
                     <RadioQuestionnaire
                       title="Inni uważają, że ze względu na wiek mam gorszą pamięć"
                       onRadioChange={handleSTS1}
@@ -254,42 +272,25 @@ export const Test: React.FC = () => {
           <>
             {currentStep === 3 && (
               <>
-                <Randomizer />
-
-                <div className="flex">
-                  <form action="">
-                    <h3>Numer Identyfikacyjny</h3>
-                    <input
-                    // placeholder="Wpisz przypisany numer"
-                    // name="dupa"
-                    // onChange={(e) => {
-                    //   e.preventDefault();
-                    //   setId(e.target.value);
-                    // }}
-                    // value={id}
-                    />
-
-                    <CheckboxDiv>
-                      <RadioQuestionnaire
-                        title="Bycie osobą starszą jest dla mnie ważne."
-                        onRadioChange={handleCSES1}
-                      />
-                      <RadioQuestionnaire
-                        title="Bycie osobą starszą nie jest ważne dla mojego poczucia jaką osobą jestem."
-                        onRadioChange={handleCSES2}
-                      />
-                      <RadioQuestionnaire
-                        title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem. 
+                <CheckboxDiv>
+                  <RadioQuestionnaire
+                    title="Bycie osobą starszą jest dla mnie ważne."
+                    onRadioChange={handleCSES1}
+                  />
+                  <RadioQuestionnaire
+                    title="Bycie osobą starszą nie jest ważne dla mojego poczucia jaką osobą jestem."
+                    onRadioChange={handleCSES2}
+                  />
+                  <RadioQuestionnaire
+                    title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem. 
         "
-                        onRadioChange={handleCSES3}
-                      />
-                      <RadioQuestionnaire
-                        title="Bycie osobą starszą ma bardzo niewiele wspólnego z tym, jak się czuję względem siebie"
-                        onRadioChange={handleCSES4}
-                      />
-                    </CheckboxDiv>
-                  </form>
-                </div>
+                    onRadioChange={handleCSES3}
+                  />
+                  <RadioQuestionnaire
+                    title="Bycie osobą starszą ma bardzo niewiele wspólnego z tym, jak się czuję względem siebie"
+                    onRadioChange={handleCSES4}
+                  />
+                </CheckboxDiv>
               </>
             )}
           </>
