@@ -41,14 +41,18 @@ const generateRandomNumber = () => {
   return Math.floor(Math.random() * 1000000);
 };
 
-export const Randomizer = () => {
+interface RandomizerProps {
+  id?: number;
+}
+
+export const Randomizer: React.FC<RandomizerProps> = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [random] = useState(generateRandomNumber());
 
   return (
     <>
       <Rando>
-        <h1> Przykładowe Id</h1>
+        <h1> Twój numer indetyfikacyjny</h1>
         <h2>{random.toString()}</h2>
       </Rando>
     </>

@@ -144,8 +144,8 @@ export const Test: React.FC = () => {
             html: "<p>Dziękuję za udział w badaniu</p>",
             icon: "success",
             confirmButtonText: "Zamknij",
-          }).then((dupa) => {
-            if (dupa.isConfirmed) {
+          }).then((response) => {
+            if (response.isConfirmed) {
               window.location.href = "https://www.google.com/";
             }
           });
@@ -256,7 +256,7 @@ export const Test: React.FC = () => {
 
                 <div className="flex">
                   <form action="">
-                    <h2>Numer Identyfikacyjny</h2>
+                    <h3>Numer Identyfikacyjny</h3>
                     <input
                       type="text"
                       placeholder="Wpisz przypisany numer"
@@ -269,6 +269,7 @@ export const Test: React.FC = () => {
                       required
                       pattern="[0-9]*"
                     />
+
                     <CheckboxDiv>
                       <RadioQuestionnaire
                         title="Bycie osobą starszą jest dla mnie ważne."
