@@ -21,7 +21,7 @@ import { RadioQuestionnaire } from "../components/Input/Checkbox";
 import { Consent } from "../components/InformedConsent/InformedConsent";
 import {
   SocioEconomicFormNumbers,
-  SocioEconomicForm,
+  // SocioEconomicForm,
 } from "../components/formField/FormField";
 
 export const Test: React.FC = () => {
@@ -171,34 +171,41 @@ export const Test: React.FC = () => {
     }
   };
 
-  const handleCSES1 = (value: number) => {
-    setCSES1(value);
-  };
-  const handleCSES2 = (value: number) => {
-    setCSES2(value);
-  };
-  const handleCSES3 = (value: number) => {
-    setCSES3(value);
-  };
-  const handleCSES4 = (value: number) => {
-    setCSES4(value);
-  };
+  const createHandleCSES =
+    (setCSESCallback: (value: number) => void) => (value: number) => {
+      setCSESCallback(value);
+    };
 
-  const handleSTS1 = (value: number) => {
-    setSTS1(value);
-  };
-  const handleSTS2 = (value: number) => {
-    setSTS2(value);
-  };
-  const handleSTS3 = (value: number) => {
-    setSTS3(value);
-  };
-  const handleSTS4 = (value: number) => {
-    setSTS4(value);
-  };
-  const handleSTS5 = (value: number) => {
-    setSTS5(value);
-  };
+  const CSESCallbacks = [setCSES1, setCSES2, setCSES3, setCSES4];
+  const handleCSES = CSESCallbacks.map(createHandleCSES);
+  // const handleCSES1 = createHandleCSES(setCSES1);
+  // const handleCSES2 = createHandleCSES(setCSES2);
+  // const handleCSES3 = createHandleCSES(setCSES3);
+  // const handleCSES4 = createHandleCSES(setCSES4);
+
+  const createHandleSTS =
+    (setSTSCallback: (value: number) => void) => (value: number) => {
+      setSTSCallback(value);
+    };
+
+  const STSCallbacks = [setSTS1, setSTS2, setSTS3, setSTS4, setSTS5];
+  const handleSTS = STSCallbacks.map(createHandleCSES);
+
+  // const handleSTS1 = (value: number) => {
+  //   setSTS1(value);
+  // };
+  // const handleSTS2 = (value: number) => {
+  //   setSTS2(value);
+  // };
+  // const handleSTS3 = (value: number) => {
+  //   setSTS3(value);
+  // };
+  // const handleSTS4 = (value: number) => {
+  //   setSTS4(value);
+  // };
+  // const handleSTS5 = (value: number) => {
+  //   setSTS5(value);
+  // };
 
   const renderFormStep = () => {
     switch (currentStep) {
@@ -243,23 +250,23 @@ export const Test: React.FC = () => {
                     </h3>
                     <RadioQuestionnaire
                       title="Inni uważają, że ze względu na wiek mam gorszą pamięć"
-                      onRadioChange={handleSTS1}
+                      onRadioChange={handleSTS[0]}
                     />
                     <RadioQuestionnaire
                       title="Inni uważają, że z uwagi na mój wiek mam mniej do zaoferowania"
-                      onRadioChange={handleSTS2}
+                      onRadioChange={handleSTS[1]}
                     />
                     <RadioQuestionnaire
                       title="Inni ludzie uważają, że mój wiek ogranicza moje możliwości zapamiętywania"
-                      onRadioChange={handleSTS3}
+                      onRadioChange={handleSTS[2]}
                     />
                     <RadioQuestionnaire
                       title="Sądzę, że ze względu na mój wiek, mam możliwości rozwoju intelektualnego"
-                      onRadioChange={handleSTS4}
+                      onRadioChange={handleSTS[3]}
                     />
                     <RadioQuestionnaire
                       title="Osoby w moim wieku często są oceniane w sposób tendencyjny"
-                      onRadioChange={handleSTS5}
+                      onRadioChange={handleSTS[4]}
                     />
                   </CheckboxDiv>
                 </div>
@@ -275,20 +282,20 @@ export const Test: React.FC = () => {
                 <CheckboxDiv>
                   <RadioQuestionnaire
                     title="Bycie osobą starszą jest dla mnie ważne."
-                    onRadioChange={handleCSES1}
+                    onRadioChange={handleCSES[0]}
                   />
                   <RadioQuestionnaire
                     title="Bycie osobą starszą nie jest ważne dla mojego poczucia jaką osobą jestem."
-                    onRadioChange={handleCSES2}
+                    onRadioChange={handleCSES[1]}
                   />
                   <RadioQuestionnaire
                     title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem. 
         "
-                    onRadioChange={handleCSES3}
+                    onRadioChange={handleCSES[2]}
                   />
                   <RadioQuestionnaire
                     title="Bycie osobą starszą ma bardzo niewiele wspólnego z tym, jak się czuję względem siebie"
-                    onRadioChange={handleCSES4}
+                    onRadioChange={handleCSES[3]}
                   />
                 </CheckboxDiv>
               </>
