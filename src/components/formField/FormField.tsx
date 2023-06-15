@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
-
+import { FormField } from "semantic-ui-react";
+import Form from "semantic-ui-react";
 interface SocioEconomicFormProps {
   placeholder: string;
   label: string;
@@ -21,14 +22,16 @@ export const SocioEconomicFormNumbers: React.FC<SocioEconomicFormProps> = ({
   };
   return (
     <>
-      <form action="">
-        <label>{label}</label>
-        <input
-          placeholder={`Tutaj wpisz swój ${placeholder}`}
-          onChange={handleInputChange}
-          value={value}
-        />
-      </form>
+      <FormField>
+        <form action="">
+          <label>{label}</label>
+          <input
+            placeholder={`Tutaj wpisz swój ${placeholder}`}
+            onChange={handleInputChange}
+            value={value}
+          />
+        </form>
+      </FormField>
     </>
   );
 };

@@ -39,4 +39,9 @@ export const ConsentDiv = styled.div`
   p {
     font-size: 25px;
   }
+
+  @media screen and (max-width: 768px) {
+    height: auto;
+    width: auto;
+  }
 `;
