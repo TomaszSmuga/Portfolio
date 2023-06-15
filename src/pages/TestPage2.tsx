@@ -24,9 +24,56 @@ import {
   // SocioEconomicForm,
 } from "../components/formField/FormField";
 
-export const Test: React.FC = () => {
+export const Test2: React.FC = () => {
   const [id, setId] = useState("");
   const [age, setAge] = useState("");
+  const TaskArray = [
+    <Task1 seconds={3} />,
+    <Task2 />,
+    <Task3 />,
+    <Task4 />,
+    <Task5 />,
+    <Task6 />,
+  ];
+  const responseStateArray = [
+    {
+      id: 1,
+      src: ImgLinks[0],
+      src1: ImgLinks[1],
+      state: useState<boolean | null>(null),
+    }, // response1
+    {
+      id: 2,
+      src: ImgLinks[2],
+      src1: ImgLinks[3],
+      state: useState<boolean | null>(null),
+    }, // response2
+    {
+      id: 3,
+      src: ImgLinks[4],
+      src1: ImgLinks[5],
+      state: useState<boolean | null>(null),
+    }, // response3
+    {
+      id: 4,
+      src: ImgLinks[6],
+      src1: ImgLinks[7],
+      state: useState<boolean | null>(null),
+    }, // response4
+    {
+      id: 5,
+      src: ImgLinks[8],
+      src1: ImgLinks[9],
+      state: useState<boolean | null>(null),
+    }, // response5
+    {
+      id: 6,
+      src: ImgLinks[10],
+      src1: ImgLinks[11],
+      state: useState<boolean | null>(null),
+    }, // response6
+  ];
+
   const [response1, setResponse1] = useState<boolean | null>(null);
   const [response2, setResponse2] = useState<boolean | null>(null);
   const [response3, setResponse3] = useState<boolean | null>(null);
@@ -280,31 +327,7 @@ export const Test: React.FC = () => {
           </>
         );
       case 4:
-        return (
-          <>
-            {showOverlay && <Task1 seconds={3} />}
-            <Form.Field>
-              {currentStep === 4 && (
-                <>
-                  <div className="tasks">
-                    <CustomForm
-                      src={ImgLinks[0]}
-                      value={response1 === true}
-                      onChange={() => setResponse1(true)}
-                      label="Wybór 1"
-                    />
-                    <CustomForm
-                      src={ImgLinks[1]}
-                      value={response1 === false}
-                      onChange={() => setResponse1(false)}
-                      label="Wybór 2"
-                    />
-                  </div>
-                </>
-              )}
-            </Form.Field>
-          </>
-        );
+        return <>{currentStep >= 4 && currentStep <= 9 && <>{}</>}</>;
       case 5:
         return (
           <>
@@ -460,4 +483,4 @@ export const Test: React.FC = () => {
   );
 };
 
-export default Test;
+export default Test2;
