@@ -1,1 +1,47 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
 
+.ui.input {
+  width: 75%;
+}
+
+.field {
+  padding: 5px;
+  margin: 5px;
+}
+
+.ui.radio.checkbox {
+  display: flex;
+  justify-self: center;
+  background-color: white;
+  width: 100vh;
+  border-radius: 5px;
+  transition: ease-in-out 0.2s all;
+  padding: 10px;
+}
+
+.ui.radio.checkbox:hover {
+  background-color: rgb(162, 244, 165);
+  transition: ease-in-out 0.2s all;
+}
+
+.title h4 {
+  font-size: 2rem;
+}
+
+.ui.checkbox label {
+  font-size: 2rem;
+  transition: ease-in-out 0.2s all;
+}
+
+/* .ui.container {
+  display: flex;
+  justify-content: flex-start;
+} */
+
+/* .ui.container div {
+  display: flex;
+} */
