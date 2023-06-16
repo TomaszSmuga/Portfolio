@@ -48,6 +48,10 @@ export const StyledDiv = styled.div`
   width: inherit;
   flex-direction: column;
   padding: 20px;
+
+  h4 {
+    margin-bottom: 25px;
+  }
 `;
 
 export const JustDiv = styled.div`
@@ -59,6 +63,11 @@ export const JustDiv = styled.div`
   padding: 5px;
   background-color: #fdfdfd;
   border-radius: 10px;
+
+  @media screen and (max-width: 765px) {
+    padding: 10px auto;
+    margin: 10px auto;
+  }
 `;
 
 export const StyledRadio = styled(Form.Radio)`

@@ -231,33 +231,35 @@ export const Test: React.FC = () => {
           <>
             {currentStep === 2 && (
               <>
-                <Randomizer />
-                <CheckboxDiv>
-                  <SocioEconomicFormNumbers
-                    placeholder="numer identyfikacyjny"
-                    onChange={(value) => setId(value)}
-                    value={id}
-                    label="Numer Identyfikacyjny"
-                  />
-                  <SocioEconomicFormNumbers
-                    placeholder="swój wiek"
-                    onChange={(value) => setAge(value)}
-                    value={age}
-                    label="Wiek"
-                  />
-                  <GenderCheckbox
-                    title="Płeć"
-                    onRadioChange={handleSocioEconomic[0]}
-                  />
-                  <CityCheckbox
-                    title="Miejsce zamieszkania"
-                    onRadioChange={handleSocioEconomic[1]}
-                  />
-                  <EducationCheckbox
-                    title="Edukacja"
-                    onRadioChange={handleSocioEconomic[2]}
-                  />
-                </CheckboxDiv>
+                <div className="flex">
+                  <Randomizer />
+                  <CheckboxDiv>
+                    <SocioEconomicFormNumbers
+                      placeholder="numer identyfikacyjny"
+                      onChange={(value) => setId(value)}
+                      value={id}
+                      label="Numer Identyfikacyjny"
+                    />
+                    <SocioEconomicFormNumbers
+                      placeholder="swój wiek"
+                      onChange={(value) => setAge(value)}
+                      value={age}
+                      label="Wiek"
+                    />
+                    <GenderCheckbox
+                      title="Płeć"
+                      onRadioChange={handleSocioEconomic[0]}
+                    />
+                    <CityCheckbox
+                      title="Miejsce zamieszkania"
+                      onRadioChange={handleSocioEconomic[1]}
+                    />
+                    <EducationCheckbox
+                      title="Edukacja"
+                      onRadioChange={handleSocioEconomic[2]}
+                    />
+                  </CheckboxDiv>
+                </div>
               </>
             )}
           </>

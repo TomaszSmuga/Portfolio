@@ -84,5 +84,7 @@ h2 {
   .ui.fluid.container {
     padding-top: 25px;
     flex-direction: column;
+    height: fit-content;
+    width: fit-content;
   }
 }

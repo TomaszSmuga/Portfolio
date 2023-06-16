@@ -1,11 +1,11 @@
-// import styled from "styled-components";
+import styled from "styled-components";
 
-// export const FormField = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   width: inherit;
+export const StyledForm = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: inherit;
 
-//   input {
-//     width: 75vh;
-//   }
-// `;
+  input {
+    width: auto;
+  }
+`;
