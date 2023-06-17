@@ -41,6 +41,16 @@ export const CheckboxDiv = styled.div`
   p {
     font-size: 25px;
   }
+
+  @media (max-width: 756px) {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome and Safari */
+    }
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 `;
 
 export const StyledDiv = styled.div`
