@@ -497,8 +497,8 @@ export const Test: React.FC = () => {
     <>
       <Grid>
         <Grid.Row>
-          <Grid.Column width={4}></Grid.Column>
-          <Grid.Column width={8}>
+          <Grid.Column mobile={1} computer={4} tablet={3}></Grid.Column>
+          <Grid.Column mobile={14} computer={8} tablet={10}>
             <Form className="form">
               {renderFormStep()}
 
@@ -511,7 +511,7 @@ export const Test: React.FC = () => {
               </Form.Button>
             </Form>
           </Grid.Column>
-          <Grid.Column width={4}></Grid.Column>
+          <Grid.Column mobile={1} computer={4} tablet={3}></Grid.Column>
         </Grid.Row>
       </Grid>
     </>
