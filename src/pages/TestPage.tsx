@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Container } from "semantic-ui-react";
+import { Form, Container, Grid } from "semantic-ui-react";
 import Swal from "sweetalert2";
 import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 import "../Style/Form.css";
@@ -59,7 +59,7 @@ export const Test: React.FC = () => {
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 1);
+      }, 11500);
     }
 
     return () => {
@@ -271,10 +271,12 @@ export const Test: React.FC = () => {
               <>
                 <div className="flex">
                   <CheckboxDiv>
-                    <h3 style={{ textAlign: "center" }}>
-                      Przeczytaj uważnie stwierdzenia i odpowiedz zgodnie z tym
-                      w jakim stopniu odnoszą się do Ciebie
-                    </h3>
+                    <div>
+                      <h2 style={{ textAlign: "center" }}>
+                        Przeczytaj uważnie stwierdzenia i odpowiedz zgodnie z
+                        tym w jakim stopniu odnoszą się do Ciebie
+                      </h2>
+                    </div>
                     <RadioQuestionnaire
                       title="Inni uważają, że ze względu na wiek mam gorszą pamięć"
                       onRadioChange={handleSTS[0]}
@@ -493,19 +495,25 @@ export const Test: React.FC = () => {
 
   return (
     <>
-      <Container fluid className="container">
-        <Form className="form">
-          {renderFormStep()}
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={4}></Grid.Column>
+          <Grid.Column width={8}>
+            <Form className="form">
+              {renderFormStep()}
 
-          <Form.Button
-            size="huge"
-            color="blue"
-            onClick={onSubmitForm}
-            disabled={isButtonDisabled}>
-            {currentStep === 10 ? "Wyślij" : "Dalej"}
-          </Form.Button>
-        </Form>
-      </Container>
+              <Form.Button
+                size="huge"
+                color="blue"
+                onClick={onSubmitForm}
+                disabled={isButtonDisabled}>
+                {currentStep === 10 ? "Wyślij" : "Dalej"}
+              </Form.Button>
+            </Form>
+          </Grid.Column>
+          <Grid.Column width={4}></Grid.Column>
+        </Grid.Row>
+      </Grid>
     </>
   );
 };

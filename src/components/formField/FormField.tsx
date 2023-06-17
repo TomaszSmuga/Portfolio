@@ -23,16 +23,20 @@ export const SocioEconomicFormNumbers: React.FC<SocioEconomicFormProps> = ({
   };
   return (
     <>
-      <Form>
-        <Form.Field>
-          <label>{label}</label>
-          <Input
-            placeholder={`Tutaj wpisz swój ${placeholder}`}
-            onChange={handleInputChange}
-            value={value}
-          />
-        </Form.Field>
-      </Form>
+      <Container>
+        <Form>
+          <Form.Field>
+            <div className="socioInput">
+              <h4>{label}</h4>
+            </div>
+            <Input
+              placeholder={`Tutaj wpisz swój ${placeholder}`}
+              onChange={handleInputChange}
+              value={value}
+            />
+          </Form.Field>
+        </Form>
+      </Container>
     </>
   );
 };

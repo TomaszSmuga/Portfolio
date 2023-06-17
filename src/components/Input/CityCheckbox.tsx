@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Form } from "semantic-ui-react";
-import { StyledDiv, Wrapper, JustDiv } from "./Checkbox.styled";
+import { Container, Form, Radio } from "semantic-ui-react";
+import "../formField/form.css";
 
 interface Radio {
   identification: number;
@@ -65,24 +65,27 @@ export const CityCheckbox: React.FC<RadioQuestionnaireProps> = ({
   };
   return (
     <>
-      <Wrapper>
-        <StyledDiv>
-          <div>
+      <Container>
+        <Container>
+          <div className="socioInput">
             <h4>{title}</h4>
           </div>
           {radios.map((radio) => (
-            <JustDiv>
-              <Form.Radio
-                key={radio.identification}
-                label={radio.label}
-                checked={radio.checked}
-                onChange={() => handleCheckbox(radio.identification)}
-                value={radio.value}
-              />
-            </JustDiv>
+            <Form fluid>
+              <Form.Field>
+                <Form.Radio
+                  key={radio.identification}
+                  className={radio.checked ? "checkedBox" : "notchecked"}
+                  label={radio.label}
+                  checked={radio.checked}
+                  onChange={() => handleCheckbox(radio.identification)}
+                  value={radio.value}
+                />
+              </Form.Field>
+            </Form>
           ))}
-        </StyledDiv>
-      </Wrapper>
+        </Container>
+      </Container>
     </>
   );
 };

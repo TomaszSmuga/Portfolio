@@ -1,5 +1,5 @@
 .form {
-  width: 500px;
+  width: 100%;
 }
 
 .container {
@@ -25,6 +25,9 @@ h2 {
 
 .ui.blue.button {
   margin: 20px;
+  width: 10%;
+  display: flex;
+  justify-content: center;
 }
 
 .flex form input {
@@ -35,14 +38,32 @@ h2 {
 .ui.fluid.container {
   display: flex;
   flex-direction: column;
-  width: 100vh;
+  width: 100%;
   height: 110vh;
-  background-color: #f4f4f4;
 }
 
+.ui.grid {
+  margin: 10vh 0;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+
+.ui.grid > .row > [class*="eight wide"].column {
+  width: 50% !important;
+  display: flex;
+  margin: 10vh 0;
+}
 .ui.form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui.form .field:last-child {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .compare {
@@ -75,6 +96,7 @@ h2 {
 .field {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 @media screen and (max-width: 756px) {
@@ -87,4 +109,89 @@ h2 {
     height: fit-content;
     width: fit-content;
   }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field {
+  padding: 5px;
+  margin: 5px;
+}
+
+.ui.radio.checkbox {
+  display: flex;
+  justify-self: center;
+  width: 100%;
+  border-radius: 5px;
+  transition: ease-in-out 0.2s all;
+  padding: 10px;
+}
+
+.notchecked:hover {
+  background-color: rgb(162, 244, 165);
+  transition: ease-in-out 0.2s all;
+  -webkit-box-shadow: 0px 0px 24px 0px rgba(190, 190, 190, 1);
+  -moz-box-shadow: 0px 0px 24px 0px rgba(190, 190, 190, 1);
+  box-shadow: 0px 0px 24px 0px rgba(190, 190, 190, 1);
+}
+
+.notchecked {
+  background-color: white;
+  border-radius: 5px;
+  transition: ease-in-out 0.2s all;
+  -webkit-box-shadow: 0px 0px 38px 3px rgba(229, 229, 229, 0.85);
+  -moz-box-shadow: 0px 0px 38px 3px rgba(229, 229, 229, 0.85);
+  box-shadow: 0px 0px 38px 3px rgba(229, 229, 229, 0.85);
+}
+
+.checkedBox {
+  background-color: rgb(162, 244, 165);
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 24px 0px rgba(190, 190, 190, 1);
+  -moz-box-shadow: 0px 0px 24px 0px rgba(190, 190, 190, 1);
+  box-shadow: 0px 0px 24px 0px rgba(190, 190, 190, 1);
+}
+
+.ui.checkbox label {
+  font-size: 2rem;
+  transition: ease-in-out 0.2s all;
+}
+
+.ui.checkbox input.hidden + label {
+  font-size: 1.5rem;
+}
+
+.ui.checkbox input:checked ~ label:before {
+  size: 2rem;
+}
+
+.ui.container div {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.ui.container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.socioInput {
+  width: 95%;
+  margin-left: 3.5vh;
+}
+
+.socioInput {
+  padding: 0;
+  margin: 0;
+}
+
+.socioInput h4 {
+  display: flex;
+  align-items: flex-start;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 2vh 0;
 }

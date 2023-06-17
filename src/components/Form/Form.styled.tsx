@@ -10,6 +10,7 @@ export const Rando = styled.div`
   h1 {
     padding: 0;
     margin: 0;
+    text-align: center;
   }
 
   h2 {

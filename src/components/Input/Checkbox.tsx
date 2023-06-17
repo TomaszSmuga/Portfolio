@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import { Container, Form, Radio } from "semantic-ui-react";
 
 interface Radio {
@@ -74,13 +73,14 @@ export const RadioQuestionnaire: React.FC<RadioQuestionnaireProps> = ({
     <>
       <Container>
         <Container>
-          <div className="title">
+          <div className="socioInput">
             <h4>{title}</h4>
           </div>
           {radios.map((radio) => (
             <Form fluid>
               <Form.Field>
                 <Form.Radio
+                  className={radio.checked ? "checkedBox" : "notchecked"}
                   key={radio.identification}
                   label={radio.label}
                   checked={radio.checked}
