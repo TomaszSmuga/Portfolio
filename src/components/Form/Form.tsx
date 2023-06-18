@@ -52,7 +52,7 @@ export const Randomizer: React.FC<RandomizerProps> = () => {
   return (
     <>
       <Rando>
-        <h1> Twój numer indetyfikacyjny</h1>
+        <h1> Twój numer indentyfikacyjny</h1>
         <h2>{random.toString()}</h2>
       </Rando>
     </>

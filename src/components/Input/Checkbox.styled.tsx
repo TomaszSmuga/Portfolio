@@ -23,6 +23,7 @@ export const CheckboxDiv = styled.div`
   height: 77vh;
   width: inherit;
   overflow-y: auto;
+  cursor: grab;
 
   ::-webkit-scrollbar {
     width: 8px;
@@ -36,6 +37,11 @@ export const CheckboxDiv = styled.div`
   }
   ::-webkit-scrollbar-thumb:hover {
     background-color: #555;
+    z-index: 5;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    cursor: grabbing;
   }
 
   p {
@@ -50,6 +56,8 @@ export const CheckboxDiv = styled.div`
     }
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+
+    height: fit-content;
   }
 `;
 

@@ -18,7 +18,10 @@ import { Randomizer } from "../components/Form/Form";
 import CustomForm from "../components/Form/Form";
 import { CheckboxDiv } from "../components/Input/Checkbox.styled";
 import { RadioQuestionnaire } from "../components/Input/Checkbox";
-import { Consent } from "../components/InformedConsent/InformedConsent";
+import {
+  Consent,
+  Instruction,
+} from "../components/InformedConsent/InformedConsent";
 import {
   SocioEconomicFormNumbers,
   // SocioEconomicForm,
@@ -59,7 +62,7 @@ export const Test: React.FC = () => {
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 11500);
+      }, 1);
     }
 
     return () => {
@@ -68,7 +71,7 @@ export const Test: React.FC = () => {
   }, [showOverlay]);
 
   const onNextStep = () => {
-    if (currentStep < 10) {
+    if (currentStep < 11) {
       if (consent === false) {
         window.location.href = "https://www.google.com/";
         return;
@@ -88,12 +91,12 @@ export const Test: React.FC = () => {
             CSES2 === null ||
             CSES3 === null ||
             CSES4 === null)) ||
-        (currentStep === 5 && response1 === null) ||
-        (currentStep === 6 && response2 === null) ||
-        (currentStep === 7 && response3 === null) ||
-        (currentStep === 8 && response4 === null) ||
-        (currentStep === 9 && response5 === null) ||
-        (currentStep === 10 && response6 === null)
+        (currentStep === 6 && response1 === null) ||
+        (currentStep === 7 && response2 === null) ||
+        (currentStep === 8 && response3 === null) ||
+        (currentStep === 9 && response4 === null) ||
+        (currentStep === 10 && response5 === null) ||
+        (currentStep === 11 && response6 === null)
       ) {
         return;
       } else {
@@ -106,7 +109,7 @@ export const Test: React.FC = () => {
   const onSubmitForm = () => {
     console.log("Ale Ty umiesz wciskać");
     if (
-      currentStep === 10 &&
+      currentStep === 11 &&
       response1 !== null &&
       response2 !== null &&
       response3 !== null &&
@@ -215,14 +218,16 @@ export const Test: React.FC = () => {
         return (
           <>
             {currentStep === 1 && (
-              <Consent
-                label="Wyrażam zgodę na udział w badaniu"
-                value={consent === true}
-                onChange={() => setConsent(true)}
-                label2="Nie wyrażam zgody na udział w badaniu"
-                onDecline={() => setConsent(false)}
-                value2={consent === false}
-              />
+              <>
+                <Consent
+                  label="Wyrażam zgodę na udział w badaniu"
+                  value={consent === true}
+                  onChange={() => setConsent(true)}
+                  label2="Nie wyrażam zgody na udział w badaniu"
+                  onDecline={() => setConsent(false)}
+                  value2={consent === false}
+                />
+              </>
             )}
           </>
         );
@@ -332,11 +337,14 @@ export const Test: React.FC = () => {
           </>
         );
       case 5:
+        return <>{currentStep === 5 && <Instruction />}</>;
+
+      case 6:
         return (
           <>
             {showOverlay && <Task1 seconds={3} />}
             <Form.Field>
-              {currentStep === 5 && (
+              {currentStep === 6 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -357,13 +365,13 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 6:
+      case 7:
         return (
           <>
             {showOverlay && <Task2 />}
 
             <Form.Field>
-              {currentStep === 6 && (
+              {currentStep === 7 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -384,12 +392,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 7:
+      case 8:
         return (
           <>
             {showOverlay && <Task3 />}
             <Form.Field>
-              {currentStep === 7 && (
+              {currentStep === 8 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -410,12 +418,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 8:
+      case 9:
         return (
           <>
             {showOverlay && <Task4 />}
             <Form.Field>
-              {currentStep === 8 && (
+              {currentStep === 9 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -436,12 +444,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 9:
+      case 10:
         return (
           <>
             {showOverlay && <Task5 />}
             <Form.Field>
-              {currentStep === 9 && (
+              {currentStep === 10 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -462,12 +470,12 @@ export const Test: React.FC = () => {
             </Form.Field>
           </>
         );
-      case 10:
+      case 11:
         return (
           <>
             {showOverlay && <Task6 />}
             <Form.Field>
-              {currentStep === 10 && (
+              {currentStep === 11 && (
                 <>
                   <div className="tasks">
                     <CustomForm
@@ -507,7 +515,7 @@ export const Test: React.FC = () => {
                 color="blue"
                 onClick={onSubmitForm}
                 disabled={isButtonDisabled}>
-                {currentStep === 10 ? "Wyślij" : "Dalej"}
+                {currentStep === 11 ? "Wyślij" : "Dalej"}
               </Form.Button>
             </Form>
           </Grid.Column>

@@ -106,3 +106,47 @@ export const Consent: React.FC<ConsentProps> = ({
     </>
   );
 };
+
+export const Instruction: React.FC = () => {
+  return (
+    <>
+      <ConsentWrapper>
+        <h1>Instrukacja do badania</h1>
+        <ConsentDiv>
+          <ol>
+            <li>
+              Po nacisnięciu przycisku <strong>"Dalej"</strong> zobaczą Państwo
+              odliczanie.
+            </li>
+            <li>
+              Gdy licznik dotrze do 0 przez <strong>400ms</strong> wyświelti się
+              matryca 16 kwadratów.
+            </li>
+            <li>
+              Państwa zadaniem jest{" "}
+              <strong>zapamiętać ułożenie tych kwadratów.</strong>
+            </li>
+            <li>
+              Następnie wyświetlony zostanie{" "}
+              <strong>przez 8s czarny ekran.</strong>{" "}
+            </li>
+            <li>
+              Będą mieli państwo do wyboru dwie matryce:{" "}
+              <strong>jedną, wyświetlaną wcześniej i drugą nową.</strong>
+            </li>
+            <li>
+              Matryce będą <strong>losowo obrócone</strong> o 90, 180, 270 lub
+              270 stopni
+            </li>
+            <li>
+              <strong>
+                Państwa zadaniem jest wybrać tę matrycę, którą widzeli Państwo
+                przez 400ms 8s wcześniej
+              </strong>
+            </li>
+          </ol>
+        </ConsentDiv>
+      </ConsentWrapper>
+    </>
+  );
+};

@@ -40,6 +40,12 @@ export const ConsentDiv = styled.div`
     font-size: 25px;
   }
 
+  li {
+    font-size: 25px;
+    line-height: 2.5rem;
+    padding: 2rem 0;
+  }
+
   @media screen and (max-width: 768px) {
     height: auto;
     width: auto;
