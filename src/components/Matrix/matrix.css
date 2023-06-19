@@ -1,0 +1,17 @@
+.square {
+  width: 2vh;
+  height: 2vh;
+  background-color: yellow;
+}
+
+.red {
+  width: 2vh;
+  height: 2vh;
+  background-color: red;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}

@@ -29,6 +29,7 @@ import {
 import { CityCheckbox } from "../components/Input/CityCheckbox";
 import { EducationCheckbox } from "../components/Input/Education";
 import { GenderCheckbox } from "../components/Input/GenderCheckbox";
+import { Matrix } from "../components/Matrix/Matrix";
 
 export const Test: React.FC = () => {
   const [id, setId] = useState("");
@@ -62,7 +63,7 @@ export const Test: React.FC = () => {
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 11500);
+      }, 1150);
     }
 
     return () => {
@@ -219,14 +220,15 @@ export const Test: React.FC = () => {
           <>
             {currentStep === 1 && (
               <>
-                <Consent
+                {/* <Consent
                   label="Wyrażam zgodę na udział w badaniu"
                   value={consent === true}
                   onChange={() => setConsent(true)}
                   label2="Nie wyrażam zgody na udział w badaniu"
                   onDecline={() => setConsent(false)}
                   value2={consent === false}
-                />
+                /> */}
+                <Matrix />
               </>
             )}
           </>
