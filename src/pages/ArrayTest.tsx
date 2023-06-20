@@ -32,7 +32,7 @@ import { GenderCheckbox } from "../components/Input/GenderCheckbox";
 // import { Matrix } from "../components/Matrix/Matrix";
 import { Ticker } from "../components/CountDowns/CountDowns";
 
-export const Test: React.FC = () => {
+export const ArrayTest: React.FC = () => {
   const [id, setId] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState<number | null>(null);
@@ -57,6 +57,45 @@ export const Test: React.FC = () => {
   const [STS4, setSTS4] = useState<number | null>(null);
   const [STS5, setSTS5] = useState<number | null>(null);
   const [consent, setConsent] = useState<boolean | null>(null);
+  const cases = [
+    {
+      id: 6,
+      responseState: response1,
+      setResponseState: setResponse1,
+      img: ImgLinks,
+      responseValue: true,
+    },
+    {
+      id: 7,
+      responseState: response2,
+      setResponseState: setResponse2,
+      img: ImgLinks,
+      responseValue: true,
+    },
+    {
+      id: 8,
+      responseState: response3,
+      setResponseState: setResponse3,
+      img: ImgLinks,
+      responseValue: true,
+    },
+    {
+      id: 9,
+      responseState: response4,
+      setResponseState: setResponse4,
+      img: ImgLinks,
+      responseValue: true,
+    },
+    {
+      id: 9,
+      responseState: response1,
+      setResponseState: setResponse1,
+      img: ImgLinks,
+      responseValue: true,
+    },
+  ];
+
+  const caseIds = [6, 7, 8, 9];
 
   useEffect(() => {
     let timer: number;
@@ -530,4 +569,4 @@ export const Test: React.FC = () => {
   );
 };
 
-export default Test;
+export default ArrayTest;
