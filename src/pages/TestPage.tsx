@@ -481,7 +481,7 @@ export const Test: React.FC = () => {
             <Form.Field>
               {currentStep === 11 && (
                 <>
-                  <div className="tasksss">
+                  <div className="tasks">
                     <CustomForm
                       src={ImgLinks[11]}
                       value={response6 === false}
