@@ -19,11 +19,11 @@ export const RadioQuestionnaire: React.FC<RadioQuestionnaireProps> = ({
   const [radios, setRadios] = useState<Radio[]>([
     {
       identification: 1,
-      label: "zdecydowanie się nie zgadzam",
+      label: "Zdecydowanie się nie zgadzam",
       checked: false,
       value: 1,
     },
-    { identification: 2, label: "nie zgadzam się", checked: false, value: 2 },
+    { identification: 2, label: "Nie zgadzam się", checked: false, value: 2 },
     {
       identification: 3,
       label: "Raczej się nie zgadzam",

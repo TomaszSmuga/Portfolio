@@ -19,25 +19,25 @@ export const EducationCheckbox: React.FC<RadioQuestionnaireProps> = ({
   const [radios, setRadios] = useState<Radio[]>([
     {
       identification: 1,
-      label: "podstawowe",
+      label: "Podstawowe",
       checked: false,
       value: 1,
     },
     {
       identification: 2,
-      label: "średnie",
+      label: "Średnie",
       checked: false,
       value: 2,
     },
     {
       identification: 3,
-      label: "policealne",
+      label: "Policealne",
       checked: false,
       value: 3,
     },
     {
       identification: 4,
-      label: "wyższe",
+      label: "Wyższe",
       checked: false,
       value: 4,
     },
