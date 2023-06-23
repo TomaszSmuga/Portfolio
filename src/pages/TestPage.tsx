@@ -64,7 +64,7 @@ export const Test: React.FC = () => {
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 1150);
+      }, 10);
     }
 
     return () => {
