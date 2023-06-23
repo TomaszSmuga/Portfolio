@@ -31,8 +31,11 @@ import { EducationCheckbox } from "../components/Input/Education";
 import { GenderCheckbox } from "../components/Input/GenderCheckbox";
 // import { Matrix } from "../components/Matrix/Matrix";
 import { Ticker } from "../components/CountDowns/CountDowns";
+import {Step6, Step6Option} from '../pages/Step6';
 
 export const ArrayTest: React.FC = () => {
+  const [step6Answers, setStep6Answers] = useState<Step6Option[]>([]);
+
   const [id, setId] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState<number | null>(null);
@@ -199,8 +202,21 @@ export const ArrayTest: React.FC = () => {
         response5: response5Value,
         response6: response6Value,
       };
+
+      const step6AnswersRequestObj:any = {};
+
+     const step6AnswerRequest = step6Answers.map((ans, index) => {
+        const newKey = `response${index}`;
+        step6AnswersRequestObj[newKey] = ans.answer;
+      })
+
+      const request = {
+        ...form,
+        ...step6AnswerRequest
+      };
+
       axios
-        .post(GOOGLE_SHEET_API_LINK, form)
+        .post(GOOGLE_SHEET_API_LINK, request)
         .then(() => {
           Swal.fire({
             title: "Dobra robota!",
@@ -364,7 +380,7 @@ export const ArrayTest: React.FC = () => {
                     onRadioChange={handleCSES[1]}
                   />
                   <RadioQuestionnaire
-                    title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem. 
+                    title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem.
         "
                     onRadioChange={handleCSES[2]}
                   />
@@ -382,31 +398,32 @@ export const ArrayTest: React.FC = () => {
 
       case 6:
         return (
-          <>
-            {showOverlay && (
-              <Ticker seconds={3} imgLinks={ImgLinks} imgIndex={0} />
-            )}
-            <Form.Field>
-              {currentStep === 6 && (
-                <>
-                  <div className="tasks">
-                    <CustomForm
-                      src={ImgLinks[0]}
-                      value={response1 === true}
-                      onChange={() => setResponse1(true)}
-                      label="Wybór 1"
-                    />
-                    <CustomForm
-                      src={ImgLinks[1]}
-                      value={response1 === false}
-                      onChange={() => setResponse1(false)}
-                      label="Wybór 2"
-                    />
-                  </div>
-                </>
-              )}
-            </Form.Field>
-          </>
+            <Step6/>
+          // <>
+          //   {showOverlay && (
+          //     <Ticker seconds={3} imgLinks={ImgLinks} imgIndex={0} />
+          //   )}
+          //   <Form.Field>
+          //     {currentStep === 6 && (
+          //       <>
+          //         <div className="tasks">
+          //           <CustomForm
+          //             src={ImgLinks[0]}
+          //             value={response1 === true}
+          //             onChange={() => setResponse1(true)}
+          //             label="Wybór 1"
+          //           />
+          //           <CustomForm
+          //             src={ImgLinks[1]}
+          //             value={response1 === false}
+          //             onChange={() => setResponse1(false)}
+          //             label="Wybór 2"
+          //           />
+          //         </div>
+          //       </>
+          //     )}
+          //   </Form.Field>
+          // </>
         );
       case 7:
         return (
@@ -544,6 +561,12 @@ export const ArrayTest: React.FC = () => {
     }
   };
 
+
+  const handleStep6Answers = (answers: Step6Option[]): void => {
+    setStep6Answers(answers);
+    console.log(answers);
+  }
+
   return (
     <>
       <Grid>
@@ -551,7 +574,10 @@ export const ArrayTest: React.FC = () => {
           <Grid.Column mobile={1} computer={4} tablet={3}></Grid.Column>
           <Grid.Column mobile={14} computer={8} tablet={10}>
             <Form className="form">
-              {renderFormStep()}
+              {/*{renderFormStep()}*/}
+
+             <h1>current step: {currentStep}</h1>
+              <Step6 onInnerCurrentStepChange={() =>{}} onAnswersChange={handleStep6Answers}/>
 
               <Form.Button
                 size="huge"
