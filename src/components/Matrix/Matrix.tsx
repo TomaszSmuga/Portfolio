@@ -3,7 +3,7 @@
 
 // interface Square {
 //   id: number;
-//   select: boolean;
+//  ect: boolean;
 //   value: boolean;
 // }
 
