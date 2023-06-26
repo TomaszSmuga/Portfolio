@@ -1,45 +1,54 @@
-import {Step6Option} from '../pages/Step6';
-import {FC, useEffect, useState} from 'react';
-import {Form} from 'semantic-ui-react';
+import { Step6Option } from "../pages/Step6";
+import { FC, useEffect, useState } from "react";
+import { Form } from "semantic-ui-react";
 
 type Step6TaskProps = {
-    data: Step6Option;
-    onChange: (value: Step6Option) => void
-}
+  data: Step6Option;
+  onChange: (value: Step6Option) => void;
+  checkedIndex: number;
+};
 
-export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
-    const [answer, setAnswer] = useState<number>(0);
+export const Step6Task: FC<Step6TaskProps> = ({
+  data,
+  onChange,
+  checkedIndex,
+}) => {
+  const [answer, setAnswer] = useState<boolean | undefined>(undefined);
 
+  const handleChange = (): void => {
+    const newAnswer = !answer;
+    setAnswer(newAnswer);
+    onChange({ ...data, answer: newAnswer });
+  };
 
-    // @ts-ignore
-    const handleChange = (e, { value }) => {
-        const a = Boolean(value);
-        setAnswer(a);
-        onChange({ ...data, answer: a });
-    };
+  useEffect(() => {
+    if (data && data.answer !== undefined) {
+      setAnswer(data.answer);
+    }
+  }, [data]);
 
-    useEffect(() => {
-        setAnswer(Number(data.answer));
-    }, []);
-
-    return (
-        <>
-            <Form.Group inline>
-                <Form.Radio
-                    label="Wybór 1"
-                    value={1}
-                    checked={1 == answer}
-                    // @ts-ignore
-                    onChange={handleChange}
-                />
-                <Form.Radio
-                    label="Wybór 2"
-                    value={0}
-                    checked={0 == answer}
-                    // @ts-ignore
-                    onChange={handleChange}
-                />
-            </Form.Group>
-        </>
-    );
+  return (
+    <>
+      <Form.Group inline>
+        <Form.Radio
+          label="Wybór 1"
+          checked={
+            checkedIndex === data.questionNumber && answer !== undefined
+              ? answer
+              : false
+          }
+          onChange={handleChange}
+        />
+        <Form.Radio
+          label="Wybór 2"
+          checked={
+            checkedIndex === data.questionNumber && answer !== undefined
+              ? !answer
+              : false
+          }
+          onChange={handleChange}
+        />
+      </Form.Group>
+    </>
+  );
 };
