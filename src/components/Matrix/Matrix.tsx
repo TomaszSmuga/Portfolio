@@ -1,13 +1,11 @@
 import "../Matrix/matrix.css";
 import { useState, useEffect } from "react";
-
-interface Square {
-  id: number;
-  select: boolean;
-  value: boolean;
+import { Square } from "./Generator";
+interface TrueMatrixProps {
+  squares: Square[];
 }
 
-export const TrueMatrix: React.FC = () => {
+export const TrueMatrix: React.FC<TrueMatrixProps> = () => {
   const [squares, setSquares] = useState([
     {
       id: 1,

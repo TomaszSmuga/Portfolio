@@ -1,68 +1,63 @@
-import { useState, useEffect } from "react";
-import { TaskImg } from "../Tasks/Task.styled";
-import { StyledCount, Grid } from "./CountDown.styled";
-import { ImgLinks } from "../../Utilities/Link";
+import React, { useState, useEffect } from "react";
+import { StyledCount } from "./CountDown.styled";
 import { TrueMatrix } from "../Matrix/Matrix";
 import "../Matrix/matrix.css";
-interface CountDown {
+import { Square } from "../Matrix/Generator";
+import { Provider, useSelector } from "react-redux";
+import { store } from "../../redux/store";
+interface TickerProps {
   seconds: number;
   imgLinks: string[];
   imgIndex: number;
+  matrixToShow: Square[];
 }
 
-export const Ticker = ({
+export const Ticker: React.FC<TickerProps> = ({
   seconds = 3,
-  imgLinks,
-  imgIndex,
-}: CountDown): JSX.Element | null => {
-  const [time, setTime] = useState<CountDown>({ seconds, imgLinks, imgIndex });
+  matrixToShow,
+}) => {
+  const [time, setTime] = useState(seconds);
   const [showOverlay, setShowOverlay] = useState(false);
   const [showTicker, setShowTicker] = useState(true);
-  const tick = () => {
-    setTime((prevTime) => ({
-      ...prevTime,
-      seconds: prevTime.seconds - 1,
-    }));
-  };
+  const squares = useSelector((state) => state.squares.squares);
 
   useEffect(() => {
     const timerId = setInterval(() => {
-      tick();
+      setTime((prevTime) => prevTime - 1);
     }, 1000);
 
-    let timeoutId: number;
-    let ticker: number;
-
-    if (time.seconds <= 0) {
+    if (time <= 0) {
       clearInterval(timerId);
       setShowOverlay(true);
-      timeoutId = setTimeout(() => {
+      setTimeout(() => {
         setShowOverlay(false);
       }, 400);
-      ticker = setTimeout(() => {
+      setTimeout(() => {
         setShowTicker(false);
       }, -1);
     }
+
     return () => {
-      clearTimeout(timeoutId);
       clearInterval(timerId);
-      clearTimeout(ticker);
     };
-  }, [time.seconds]);
+  }, [time]);
 
   return (
     <>
-      <div className="taskImg ticker-grid">
-        {showTicker && (
-          <div>
-            <StyledCount
-              isZero={
-                time.seconds === 0
-              }>{`${time.seconds.toString()}`}</StyledCount>
-          </div>
-        )}
-        <div>{showOverlay && <TrueMatrix />}</div>
-      </div>
+      <Provider store={store}>
+        <div className="taskImg ticker-grid">
+          {showTicker && (
+            <div>
+              <StyledCount isZero={time === 0}>{time.toString()}</StyledCount>
+            </div>
+          )}
+          {showOverlay && (
+            <div>
+              <TrueMatrix squares={squares} />
+            </div>
+          )}
+        </div>
+      </Provider>
     </>
   );
 };

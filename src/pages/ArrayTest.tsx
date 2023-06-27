@@ -425,137 +425,6 @@ export const ArrayTest: React.FC = () => {
       //   </Form.Field>
       // </>
 
-      case 7:
-        return (
-          <>
-            {showOverlay && <Task2 />}
-
-            <Form.Field>
-              {currentStep === 7 && (
-                <>
-                  <div className="tasks">
-                    <CustomForm
-                      src={ImgLinks[2]}
-                      value={response2 === true}
-                      onChange={() => setResponse2(true)}
-                      label="Wybór 1"
-                    />
-                    <CustomForm
-                      src={ImgLinks[3]}
-                      value={response2 === false}
-                      onChange={() => setResponse2(false)}
-                      label="Wybór 2"
-                    />
-                  </div>
-                </>
-              )}
-            </Form.Field>
-          </>
-        );
-      case 8:
-        return (
-          <>
-            {showOverlay && <Task3 />}
-            <Form.Field>
-              {currentStep === 8 && (
-                <>
-                  <div className="tasks">
-                    <CustomForm
-                      src={ImgLinks[5]}
-                      value={response3 === false}
-                      onChange={() => setResponse3(false)}
-                      label="Wybór 1"
-                    />
-                    <CustomForm
-                      src={ImgLinks[4]}
-                      value={response3 === true}
-                      onChange={() => setResponse3(true)}
-                      label="Wybór 2"
-                    />
-                  </div>
-                </>
-              )}
-            </Form.Field>
-          </>
-        );
-      case 9:
-        return (
-          <>
-            {showOverlay && <Task4 />}
-            <Form.Field>
-              {currentStep === 9 && (
-                <>
-                  <div className="tasks">
-                    <CustomForm
-                      src={ImgLinks[6]}
-                      value={response4 === true}
-                      onChange={() => setResponse4(true)}
-                      label="Wybór 1"
-                    />
-                    <CustomForm
-                      src={ImgLinks[7]}
-                      value={response4 === false}
-                      onChange={() => setResponse4(false)}
-                      label="Wybór 2"
-                    />
-                  </div>
-                </>
-              )}
-            </Form.Field>
-          </>
-        );
-      case 10:
-        return (
-          <>
-            {showOverlay && <Task5 />}
-            <Form.Field>
-              {currentStep === 10 && (
-                <>
-                  <div className="tasks">
-                    <CustomForm
-                      src={ImgLinks[8]}
-                      value={response5 === true}
-                      onChange={() => setResponse5(true)}
-                      label="Wybór 1"
-                    />
-                    <CustomForm
-                      src={ImgLinks[9]}
-                      value={response5 === false}
-                      onChange={() => setResponse5(false)}
-                      label="Wybór 2"
-                    />
-                  </div>
-                </>
-              )}
-            </Form.Field>
-          </>
-        );
-      case 11:
-        return (
-          <>
-            {showOverlay && <Task6 />}
-            <Form.Field>
-              {currentStep === 11 && (
-                <>
-                  <div className="tasks">
-                    <CustomForm
-                      src={ImgLinks[11]}
-                      value={response6 === false}
-                      onChange={() => setResponse6(false)}
-                      label="Wybór 1"
-                    />
-                    <CustomForm
-                      src={ImgLinks[10]}
-                      value={response6 === true}
-                      onChange={() => setResponse6(true)}
-                      label="Wybór 2"
-                    />
-                  </div>
-                </>
-              )}
-            </Form.Field>
-          </>
-        );
       default:
         return null;
     }
@@ -585,7 +454,7 @@ export const ArrayTest: React.FC = () => {
                 color="blue"
                 onClick={onSubmitForm}
                 disabled={isButtonDisabled}>
-                {currentStep === 11 ? "Wyślij" : "Dalej"}
+                {currentStep === 6 ? "Wyślij" : "Dalej"}
               </Form.Button>
             </Form>
           </Grid.Column>

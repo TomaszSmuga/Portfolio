@@ -1,8 +1,10 @@
-import { FC, useEffect, useState } from "react";
-import { Step6Task } from "../pages/Step6Task";
-import { Ticker } from "../components/CountDowns/CountDowns";
+import React, { FC, useEffect, useState } from "react";
+import { Form } from "semantic-ui-react";
 import { ImgLinks } from "../Utilities/Link";
-import React from "react";
+
+import { Ticker } from "../components/CountDowns/CountDowns";
+import { Square } from "../components/Matrix/Generator";
+import { Step6Task } from "./Step6Task";
 
 type Step6Props = {
   onInnerCurrentStepChange: (value: number) => void;
@@ -14,7 +16,7 @@ export interface Step6Option {
   answer: boolean | undefined;
 }
 
-const STEP_NUMBER = 90;
+const STEP_NUMBER = 5;
 
 export const Step6: FC<Step6Props> = ({
   onInnerCurrentStepChange,
@@ -23,6 +25,8 @@ export const Step6: FC<Step6Props> = ({
   const [innerCurrentStep, setInnerCurrentStep] = useState<number>(0);
   const [answers, setAnswers] = useState<Step6Option[]>([]);
   const [showOverlay, setShowOverlay] = useState(true);
+  const [generatedSquares, setGeneratedSquares] = useState<Square[]>([]);
+  const [matrixToShow, setMatrixToShow] = useState<Square[]>([]);
 
   useEffect(() => {
     const ans = [];
@@ -37,7 +41,7 @@ export const Step6: FC<Step6Props> = ({
   }, [innerCurrentStep]);
 
   useEffect(() => {
-    let timer: number;
+    let timer: NodeJS.Timeout;
 
     if (showOverlay) {
       timer = setTimeout(() => {
@@ -72,13 +76,18 @@ export const Step6: FC<Step6Props> = ({
           {index === innerCurrentStep && (
             <>
               {showOverlay && (
-                <Ticker seconds={3} imgLinks={ImgLinks} imgIndex={0} />
+                <Ticker
+                  seconds={3}
+                  imgLinks={ImgLinks}
+                  imgIndex={0}
+                  matrixToShow={matrixToShow}
+                />
               )}
               <div>Current Step: {index}</div>
               <Step6Task
                 data={answer}
                 onChange={handleStep6TaskChange}
-                checkedIndex={innerCurrentStep}
+                matrixToShow={matrixToShow}
               />
             </>
           )}
