@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { Step6Task } from "../pages/Step6Task";
 import { Ticker } from "../components/CountDowns/CountDowns";
 import { ImgLinks } from "../Utilities/Link";
+import React from "react";
 
 type Step6Props = {
   onInnerCurrentStepChange: (value: number) => void;
@@ -59,25 +60,30 @@ export const Step6: FC<Step6Props> = ({
 
   const handleNextStep = (): void => {
     setInnerCurrentStep((prev) => prev + 1);
+    setShowOverlay(true);
   };
 
   const currentStep = answers[innerCurrentStep];
 
   return (
     <>
-      {showOverlay && <Ticker seconds={3} imgLinks={ImgLinks} imgIndex={0} />}
-      {innerCurrentStep < answers.length && (
-        <>
-          <div>Current Step: {innerCurrentStep}</div>
-
-          <Step6Task
-            data={currentStep}
-            onChange={handleStep6TaskChange}
-            checkedIndex={innerCurrentStep}
-          />
-        </>
-      )}
-
+      {answers.map((answer, index) => (
+        <React.Fragment key={index}>
+          {index === innerCurrentStep && (
+            <>
+              {showOverlay && (
+                <Ticker seconds={3} imgLinks={ImgLinks} imgIndex={0} />
+              )}
+              <div>Current Step: {index}</div>
+              <Step6Task
+                data={answer}
+                onChange={handleStep6TaskChange}
+                checkedIndex={innerCurrentStep}
+              />
+            </>
+          )}
+        </React.Fragment>
+      ))}
       <button
         onClick={handleNextStep}
         disabled={innerCurrentStep === answers.length}>
