@@ -6,12 +6,11 @@ import { ImgLinks } from "../Utilities/Link";
 type Step6TaskProps = {
   data: Step6Option;
   onChange: (value: Step6Option) => void;
-  imgLinks: string[] | boo;
+  imgLinks: string[];
 };
 
 export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
   const [answer, setAnswer] = useState<boolean | undefined>(data.answer);
-  const [showOverlay, setShowOverlay] = useState(true);
 
   const handleChange = (_e, { value }) => {
     const a = value === "1" ? true : false;
@@ -49,10 +48,6 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
           </>
         ) : (
           <>
-            {/* {showOverlay && (
-              <Ticker seconds={3} imgLinks={ImgLinks} imgIndex={0} />
-            )} */}
-
             <div className="task">
               <img src={ImgLinks[0]} alt="" />
               <Form.Radio
