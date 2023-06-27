@@ -12,3 +12,8 @@ export const ImgLinks = [
   "http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/12.jpg",
   "http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/11.jpg",
 ];
+
+// export const ImgLinks = imgLinks.map((link) => ({
+//   link,
+//   value: Math.random() < 0.5,
+// }));
