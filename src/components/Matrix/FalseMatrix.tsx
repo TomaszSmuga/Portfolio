@@ -7,7 +7,7 @@ interface Square {
   value: boolean;
 }
 
-export const TrueMatrix: React.FC = () => {
+export const FalseMatrix: React.FC = () => {
   const [squares, setSquares] = useState([
     {
       id: 1,

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { TaskImg } from "../Tasks/Task.styled";
-import { StyledCount } from "./CountDown.styled";
+import { StyledCount, Grid } from "./CountDown.styled";
 import { ImgLinks } from "../../Utilities/Link";
+import { TrueMatrix } from "../Matrix/Matrix";
+import "../Matrix/matrix.css";
 interface CountDown {
   seconds: number;
   imgLinks: string[];
@@ -50,7 +52,7 @@ export const Ticker = ({
 
   return (
     <>
-      <TaskImg>
+      <div className="taskImg ticker-grid">
         {showTicker && (
           <div>
             <StyledCount
@@ -59,13 +61,8 @@ export const Ticker = ({
               }>{`${time.seconds.toString()}`}</StyledCount>
           </div>
         )}
-
-        {showOverlay && (
-          <div>
-            <img src={ImgLinks[imgIndex]} alt="" />
-          </div>
-        )}
-      </TaskImg>
+        <div>{showOverlay && <TrueMatrix />}</div>
+      </div>
     </>
   );
 };

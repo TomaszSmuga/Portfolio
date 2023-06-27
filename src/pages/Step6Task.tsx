@@ -2,7 +2,8 @@ import { Step6Option } from "../pages/Step6";
 import { FC, useEffect, useState } from "react";
 import { Form } from "semantic-ui-react";
 import { ImgLinks } from "../Utilities/Link";
-
+import { TrueMatrix } from "../components/Matrix/Matrix";
+import { FalseMatrix } from "../components/Matrix/FalseMatrix";
 type Step6TaskProps = {
   data: Step6Option;
   onChange: (value: Step6Option) => void;
@@ -28,7 +29,7 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
         {data.questionNumber % 3 === 0 || data.questionNumber % 4 === 0 ? (
           <>
             <div className="task">
-              <img src={ImgLinks[0]} alt="" />
+              <TrueMatrix />
               <Form.Radio
                 label="Wybór 1"
                 value="1"
@@ -37,7 +38,7 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
               />
             </div>
             <div className="task">
-              <img src={ImgLinks[0]} alt="" />
+              <FalseMatrix />
               <Form.Radio
                 label="Wybór 2"
                 value="0"
@@ -49,7 +50,7 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
         ) : (
           <>
             <div className="task">
-              <img src={ImgLinks[0]} alt="" />
+              <FalseMatrix />
               <Form.Radio
                 label="Wybór 1"
                 value="0"
@@ -58,7 +59,7 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
               />
             </div>
             <div className="task">
-              <img src={ImgLinks[0]} alt="" />
+              <TrueMatrix />
               <Form.Radio
                 label="Wybór 2"
                 value="1"
