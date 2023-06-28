@@ -25,7 +25,7 @@ const CustomForm: React.FC<CustomFormProps> = ({
 
   return (
     <div className="task">
-      <img src={src} alt="" style={{ transform: `rotate(${random}deg)` }} />
+      <img src={src} alt="Edit" style={{ transform: `rotate(${random}deg)` }} />
       <Form.Checkbox
         checked={value}
         onChange={() => onChange(!value)}
