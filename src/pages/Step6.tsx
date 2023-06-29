@@ -70,7 +70,7 @@ export const Step6: FC<Step6Props> = ({
   const handleNextStep = (): void => {
     setShowOverlay(true);
     setInnerCurrentStep((prev) => prev + 1);
-    console.log(stepNumber);
+    console.log(innerCurrentStep);
   };
 
   const handlePrevStep = (): void => {

@@ -48,12 +48,16 @@ export const ArrayTest: React.FC = () => {
   const STEP_NUMBER = 2;
 
   useEffect(() => {
-    if (innerCurrentStep == STEP_NUMBER) {
-      setShowButton(true);
+    if (currentStep == 6) {
+      if (innerCurrentStep <= STEP_NUMBER) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
     } else {
-      setShowButton(false);
+      setShowButton(true);
     }
-  }, [innerCurrentStep, STEP_NUMBER]);
+  }, [currentStep, innerCurrentStep, STEP_NUMBER]);
 
   useEffect(() => {
     let timer: number;
