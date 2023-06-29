@@ -3,8 +3,8 @@ import { StyledCount } from "./CountDown.styled";
 import { TrueMatrix } from "../Matrix/Matrix";
 import "../Matrix/matrix.css";
 import { Square } from "../Matrix/Generator";
-import { Provider, useSelector } from "react-redux";
-import { store } from "../../redux/store";
+import { useSelector } from "react-redux";
+
 interface TickerProps {
   seconds: number;
   imgLinks: string[];
@@ -14,12 +14,14 @@ interface TickerProps {
 
 export const Ticker: React.FC<TickerProps> = ({
   seconds = 3,
+  imgLinks,
+  imgIndex,
   matrixToShow,
 }) => {
   const [time, setTime] = useState(seconds);
   const [showOverlay, setShowOverlay] = useState(false);
   const [showTicker, setShowTicker] = useState(true);
-  const squares = useSelector((state) => state.squares.squares);
+  const squares = useSelector((state: { matrix: Square[] }) => state.matrix);
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -44,20 +46,14 @@ export const Ticker: React.FC<TickerProps> = ({
 
   return (
     <>
-      <Provider store={store}>
-        <div className="taskImg ticker-grid">
-          {showTicker && (
-            <div>
-              <StyledCount isZero={time === 0}>{time.toString()}</StyledCount>
-            </div>
-          )}
-          {showOverlay && (
-            <div>
-              <TrueMatrix squares={squares} />
-            </div>
-          )}
-        </div>
-      </Provider>
+      <div className="taskImg ticker-grid">
+        {showTicker && (
+          <div>
+            <StyledCount isZero={time === 0}>{time.toString()}</StyledCount>
+          </div>
+        )}
+        {showOverlay && <TrueMatrix squares={squares} />}
+      </div>
     </>
   );
 };

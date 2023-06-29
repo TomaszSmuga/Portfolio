@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Form } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 import { ImgLinks } from "../Utilities/Link";
 
 import { Ticker } from "../components/CountDowns/CountDowns";
@@ -14,6 +14,7 @@ type Step6Props = {
 export interface Step6Option {
   questionNumber: number;
   answer: boolean | undefined;
+  matrixToShow: Square[]; // Add matrixToShow to Step6Option
 }
 
 const STEP_NUMBER = 5;
@@ -25,13 +26,16 @@ export const Step6: FC<Step6Props> = ({
   const [innerCurrentStep, setInnerCurrentStep] = useState<number>(0);
   const [answers, setAnswers] = useState<Step6Option[]>([]);
   const [showOverlay, setShowOverlay] = useState(true);
-  const [generatedSquares, setGeneratedSquares] = useState<Square[]>([]);
-  const [matrixToShow, setMatrixToShow] = useState<Square[]>([]);
+  const [squares, setSquares] = useState<Square[]>([]);
 
   useEffect(() => {
     const ans = [];
     for (let i = 0; i < STEP_NUMBER; i++) {
-      ans.push({ questionNumber: i, answer: undefined } as Step6Option);
+      ans.push({
+        questionNumber: i,
+        answer: undefined,
+        matrixToShow: [],
+      } as Step6Option);
     }
     setAnswers(ans);
   }, []);
@@ -67,8 +71,6 @@ export const Step6: FC<Step6Props> = ({
     setShowOverlay(true);
   };
 
-  const currentStep = answers[innerCurrentStep];
-
   return (
     <>
       {answers.map((answer, index) => (
@@ -80,24 +82,22 @@ export const Step6: FC<Step6Props> = ({
                   seconds={3}
                   imgLinks={ImgLinks}
                   imgIndex={0}
-                  matrixToShow={matrixToShow}
+                  matrixToShow={squares}
                 />
               )}
               <div>Current Step: {index}</div>
-              <Step6Task
-                data={answer}
-                onChange={handleStep6TaskChange}
-                matrixToShow={matrixToShow}
-              />
+              <Step6Task data={answer} onChange={handleStep6TaskChange} />
             </>
           )}
         </React.Fragment>
       ))}
-      <button
+      <Button
+        size="huge"
+        color="blue"
         onClick={handleNextStep}
         disabled={innerCurrentStep === answers.length}>
         Dalej
-      </button>
+      </Button>
     </>
   );
 };

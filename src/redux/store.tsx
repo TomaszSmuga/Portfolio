@@ -1,8 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import squaresReducer from "./reduxSlice";
-
+import matrixSlice from "./matrixSlice";
 export const store = configureStore({
   reducer: {
-    squares: squaresReducer,
+    matrix: matrixSlice,
   },
 });

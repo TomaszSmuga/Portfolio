@@ -3,17 +3,8 @@ import { Form, Grid } from "semantic-ui-react";
 import Swal from "sweetalert2";
 import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 import "../Style/Form.css";
-import {
-  Task1,
-  Task2,
-  Task3,
-  Task4,
-  Task5,
-  Task6,
-} from "../components/Tasks/Task1";
 // import NumericInput from "../Utilities/Regex";
 import axios from "axios";
-import { ImgLinks } from "../Utilities/Link";
 import { Randomizer } from "../components/Form/Form";
 import CustomForm from "../components/Form/Form";
 import { CheckboxDiv } from "../components/Input/Checkbox.styled";
@@ -41,12 +32,6 @@ export const ArrayTest: React.FC = () => {
   const [gender, setGender] = useState<number | null>(null);
   const [city, setCity] = useState<number | null>(null);
   const [education, setEducation] = useState<number | null>(null);
-  const [response1, setResponse1] = useState<boolean | null>(null);
-  const [response2, setResponse2] = useState<boolean | null>(null);
-  const [response3, setResponse3] = useState<boolean | null>(null);
-  const [response4, setResponse4] = useState<boolean | null>(null);
-  const [response5, setResponse5] = useState<boolean | null>(null);
-  const [response6, setResponse6] = useState<boolean | null>(null);
   const [showOverlay, setShowOverlay] = useState(true);
   const [currentStep, setCurrentStep] = useState(1);
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -60,45 +45,6 @@ export const ArrayTest: React.FC = () => {
   const [STS4, setSTS4] = useState<number | null>(null);
   const [STS5, setSTS5] = useState<number | null>(null);
   const [consent, setConsent] = useState<boolean | null>(null);
-  const cases = [
-    {
-      id: 6,
-      responseState: response1,
-      setResponseState: setResponse1,
-      img: ImgLinks,
-      responseValue: true,
-    },
-    {
-      id: 7,
-      responseState: response2,
-      setResponseState: setResponse2,
-      img: ImgLinks,
-      responseValue: true,
-    },
-    {
-      id: 8,
-      responseState: response3,
-      setResponseState: setResponse3,
-      img: ImgLinks,
-      responseValue: true,
-    },
-    {
-      id: 9,
-      responseState: response4,
-      setResponseState: setResponse4,
-      img: ImgLinks,
-      responseValue: true,
-    },
-    {
-      id: 9,
-      responseState: response1,
-      setResponseState: setResponse1,
-      img: ImgLinks,
-      responseValue: true,
-    },
-  ];
-
-  const caseIds = [6, 7, 8, 9];
 
   useEffect(() => {
     let timer: number;
@@ -115,7 +61,7 @@ export const ArrayTest: React.FC = () => {
   }, [showOverlay]);
 
   const onNextStep = () => {
-    if (currentStep < 11) {
+    if (currentStep < 6) {
       if (consent === false) {
         window.location.href = "https://www.google.com/";
         return;
@@ -134,13 +80,7 @@ export const ArrayTest: React.FC = () => {
           (CSES1 === null ||
             CSES2 === null ||
             CSES3 === null ||
-            CSES4 === null)) ||
-        (currentStep === 6 && response1 === null) ||
-        (currentStep === 7 && response2 === null) ||
-        (currentStep === 8 && response3 === null) ||
-        (currentStep === 9 && response4 === null) ||
-        (currentStep === 10 && response5 === null) ||
-        (currentStep === 11 && response6 === null)
+            CSES4 === null))
       ) {
         return;
       } else {
@@ -153,13 +93,7 @@ export const ArrayTest: React.FC = () => {
   const onSubmitForm = () => {
     console.log("Ale Ty umiesz wciskać");
     if (
-      currentStep === 11 &&
-      response1 !== null &&
-      response2 !== null &&
-      response3 !== null &&
-      response4 !== null &&
-      response5 !== null &&
-      response6 !== null &&
+      currentStep === 6 &&
       CSES1 !== null &&
       CSES2 !== null &&
       CSES3 !== null &&
@@ -174,50 +108,45 @@ export const ArrayTest: React.FC = () => {
       education !== null &&
       gender !== null
     ) {
-      const response1Value = response1 ? "True" : "False";
-      const response2Value = response2 ? "True" : "False";
-      const response3Value = response3 ? "True" : "False";
-      const response4Value = response4 ? "True" : "False";
-      const response5Value = response5 ? "True" : "False";
-      const response6Value = response6 ? "True" : "False";
       const form = {
         id,
         age,
         gender,
         city,
         education,
-        CSES1: CSES1,
-        CSES2: CSES2,
-        CSES3: CSES3,
-        CSES4: CSES4,
-        STS1: STS1,
-        STS2: STS2,
-        STS3: STS3,
-        STS4: STS4,
+        CSES1,
+        CSES2,
+        CSES3,
+        CSES4,
+        STS1,
+        STS2,
+        STS3,
+        STS4,
         STS5,
-        response1: response1Value,
-        response2: response2Value,
-        response3: response3Value,
-        response4: response4Value,
-        response5: response5Value,
-        response6: response6Value,
       };
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const step6AnswersRequestObj: any = {};
 
       const step6AnswerRequest = step6Answers.map((ans, index) => {
-        const newKey = `response${index}`;
-        step6AnswersRequestObj[newKey] = ans.answer;
+        const newKey = `response${index + 1}`;
+        const stringValue = ans.answer ? "True" : "False";
+
+        step6AnswersRequestObj[newKey] = stringValue;
+        return { [newKey]: stringValue };
       });
 
       const request = {
         ...form,
         ...step6AnswerRequest,
+        ...step6AnswerRequest.reduce((acc, val) => ({ ...acc, ...val }), {}),
       };
 
       axios
         .post(GOOGLE_SHEET_API_LINK, request)
         .then(() => {
+          console.log(step6AnswersRequestObj);
+          console.log(request);
           Swal.fire({
             title: "Dobra robota!",
             text: "Twoja odpowiedź została przesłana. ",
@@ -231,12 +160,6 @@ export const ArrayTest: React.FC = () => {
           });
 
           setId("");
-          setResponse1(null);
-          setResponse2(null);
-          setResponse3(null);
-          setResponse4(null);
-          setResponse5(null);
-          setResponse6(null);
         })
         .catch((err) => {
           Swal.fire(err.message, "Błąd");
@@ -396,35 +319,13 @@ export const ArrayTest: React.FC = () => {
       case 5:
         return <>{currentStep === 5 && <Instruction />}</>;
 
-      //   case 6:
-      //     return (
-      //       <Step6 />
-      // <>
-      //   {showOverlay && (
-      //     <Ticker seconds={3} imgLinks={ImgLinks} imgIndex={0} />
-      //   )}
-      //   <Form.Field>
-      //     {currentStep === 6 && (
-      //       <>
-      //         <div className="tasks">
-      //           <CustomForm
-      //             src={ImgLinks[0]}
-      //             value={response1 === true}
-      //             onChange={() => setResponse1(true)}
-      //             label="Wybór 1"
-      //           />
-      //           <CustomForm
-      //             src={ImgLinks[1]}
-      //             value={response1 === false}
-      //             onChange={() => setResponse1(false)}
-      //             label="Wybór 2"
-      //           />
-      //         </div>
-      //       </>
-      //     )}
-      //   </Form.Field>
-      // </>
-
+      case 6:
+        return (
+          <Step6
+            onInnerCurrentStepChange={() => {}}
+            onAnswersChange={handleStep6Answers}
+          />
+        );
       default:
         return null;
     }
@@ -442,12 +343,7 @@ export const ArrayTest: React.FC = () => {
           <Grid.Column mobile={1} computer={4} tablet={3}></Grid.Column>
           <Grid.Column mobile={14} computer={8} tablet={10}>
             <Form className="form">
-              {/*{renderFormStep()}*/}
-
-              <Step6
-                onInnerCurrentStepChange={() => {}}
-                onAnswersChange={handleStep6Answers}
-              />
+              {renderFormStep()}
 
               <Form.Button
                 size="huge"
