@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from "react";
 import { Form } from "semantic-ui-react";
-
 import { FalseMatrix } from "../components/Matrix/FalseMatrix";
 import { Square } from "../components/Matrix/Generator";
 import { Step6Option } from "./Step6";
 import { useSelector } from "react-redux";
+import { TrueMatrix } from "../components/Matrix/Matrix";
 
 type Step6TaskProps = {
   data: Step6Option;
@@ -31,13 +31,8 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
         {data.questionNumber % 3 === 0 || data.questionNumber % 4 === 0 ? (
           <>
             <div className="task">
-              <div className="grid">
-                {squares.map((square) => (
-                  <div
-                    key={square.id}
-                    className={`${square.select ? "red" : "yellow"}`}></div>
-                ))}
-              </div>{" "}
+              <TrueMatrix squares={squares} />
+
               <Form.Radio
                 label="Wybór 1"
                 value="1"
@@ -67,13 +62,7 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
               />
             </div>
             <div className="task">
-              <div className="grid">
-                {squares.map((square) => (
-                  <div
-                    key={square.id}
-                    className={`${square.select ? "red" : "yellow"}`}></div>
-                ))}
-              </div>
+              <TrueMatrix squares={squares} />
               <Form.Radio
                 label="Wybór 2"
                 value="1"

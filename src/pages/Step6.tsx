@@ -1,37 +1,38 @@
 import React, { FC, useEffect, useState } from "react";
 import { Button } from "semantic-ui-react";
-import { ImgLinks } from "../Utilities/Link";
-
-import { Ticker } from "../components/CountDowns/CountDowns";
 import { Square } from "../components/Matrix/Generator";
+import { ImgLinks } from "../Utilities/Link";
+import { useDispatch } from "react-redux";
+import { Ticker } from "../components/CountDowns/CountDowns";
 import { Step6Task } from "./Step6Task";
 
 type Step6Props = {
   onInnerCurrentStepChange: (value: number) => void;
   onAnswersChange: (answers: Step6Option[]) => void;
+  stepNumber: number;
 };
 
 export interface Step6Option {
   questionNumber: number;
   answer: boolean | undefined;
-  matrixToShow: Square[]; // Add matrixToShow to Step6Option
+  matrixToShow: Square[];
 }
-
-const STEP_NUMBER = 12;
 
 export const Step6: FC<Step6Props> = ({
   onInnerCurrentStepChange,
   onAnswersChange,
+  stepNumber,
 }) => {
   const [innerCurrentStep, setInnerCurrentStep] = useState<number>(0);
   const [answers, setAnswers] = useState<Step6Option[]>([]);
   const [showOverlay, setShowOverlay] = useState(true);
   const [squares, setSquares] = useState<Square[]>([]);
   const [showButton, setShowButton] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const ans = [];
-    for (let i = 0; i < STEP_NUMBER; i++) {
+    for (let i = 0; i < stepNumber; i++) {
       ans.push({
         questionNumber: i,
         answer: undefined,
@@ -39,17 +40,11 @@ export const Step6: FC<Step6Props> = ({
       } as Step6Option);
     }
     setAnswers(ans);
-  }, []);
-
-  const handleNoButton = () => {
-    if (innerCurrentStep == STEP_NUMBER - 1) {
-      setShowButton(false);
-    }
-  };
+  }, [stepNumber]);
 
   useEffect(() => {
     onInnerCurrentStepChange(innerCurrentStep);
-  }, [innerCurrentStep]);
+  }, [innerCurrentStep, onInnerCurrentStepChange]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -57,7 +52,7 @@ export const Step6: FC<Step6Props> = ({
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 4);
+      }, 4000);
     }
 
     return () => {
@@ -74,17 +69,14 @@ export const Step6: FC<Step6Props> = ({
   };
 
   const handleNextStep = (): void => {
-    if (innerCurrentStep <= STEP_NUMBER) {
-      setInnerCurrentStep((prev) => prev + 1);
-      setShowOverlay(true);
-      setShowButton(true);
-    }
+    setShowOverlay(true);
+    setInnerCurrentStep((prev) => prev + 1);
+    console.log(stepNumber);
   };
 
   const handlePrevStep = (): void => {
     setInnerCurrentStep((prev) => prev - 1);
-    setShowButton(true);
-    console.log(STEP_NUMBER);
+    console.log(stepNumber);
   };
 
   return (

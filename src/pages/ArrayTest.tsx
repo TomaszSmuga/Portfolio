@@ -46,6 +46,7 @@ export const ArrayTest: React.FC = () => {
   const [STS5, setSTS5] = useState<number | null>(null);
   const [consent, setConsent] = useState<boolean | null>(null);
   const [showButton, setShowButton] = useState(true);
+  const STEP_NUMBER = 6;
 
   useEffect(() => {
     let timer: number;
@@ -62,33 +63,33 @@ export const ArrayTest: React.FC = () => {
   }, [showOverlay]);
 
   const onNextStep = () => {
-    if (currentStep < 7) {
-      if (consent === false) {
-        window.location.href = "https://www.google.com/";
-        return;
-      }
-      if (
-        (currentStep === 1 && consent === null) ||
-        (currentStep === 2 &&
-          (id === null || age === null || gender === null || city === null)) ||
-        (currentStep === 3 &&
-          (STS1 === null ||
-            STS2 === null ||
-            STS3 === null ||
-            STS4 === null ||
-            STS5 === null)) ||
-        (currentStep === 4 &&
-          (CSES1 === null ||
-            CSES2 === null ||
-            CSES3 === null ||
-            CSES4 === null))
-      ) {
-        return;
-      } else {
-        setCurrentStep((prevStep) => prevStep + 1);
-        setShowOverlay(true);
-        setIsButtonDisabled(false);
-      }
+    if (currentStep < 6) {
+      // if (consent === false) {
+      //   window.location.href = "https://www.google.com/";
+      //   return;
+      // }
+      // if (
+      //   (currentStep === 1 && consent === null) ||
+      //   (currentStep === 2 &&
+      //     (id === null || age === null || gender === null || city === null)) ||
+      //   (currentStep === 3 &&
+      //     (STS1 === null ||
+      //       STS2 === null ||
+      //       STS3 === null ||
+      //       STS4 === null ||
+      //       STS5 === null)) ||
+      //   (currentStep === 4 &&
+      //     (CSES1 === null ||
+      //       CSES2 === null ||
+      //       CSES3 === null ||
+      //       CSES4 === null))
+      // ) {
+      //   return;
+      // } else {
+      setCurrentStep((prevStep) => prevStep + 1);
+      setShowOverlay(true);
+      setIsButtonDisabled(false);
+      // }
     }
   };
   const onSubmitForm = () => {
@@ -325,10 +326,12 @@ export const ArrayTest: React.FC = () => {
           <Step6
             onInnerCurrentStepChange={() => {}}
             onAnswersChange={handleStep6Answers}
+            stepNumber={STEP_NUMBER}
+            onButtonShow={setShowButton}
           />
         );
-      case 7:
-        return <h1>Dziękuję za udział w badaniu</h1>;
+      // case 7:
+      //   return <h1>Dziękuję za udział w badaniu</h1>;
       default:
         return null;
     }
@@ -347,14 +350,15 @@ export const ArrayTest: React.FC = () => {
           <Grid.Column mobile={14} computer={8} tablet={10}>
             <Form className="form">
               {renderFormStep()}
-
-              <Form.Button
-                size="huge"
-                color="blue"
-                onClick={onSubmitForm}
-                disabled={isButtonDisabled}>
-                {currentStep === 7 ? "Wyślij" : "Dalej"}
-              </Form.Button>
+              {showButton && (
+                <Form.Button
+                  size="huge"
+                  color="blue"
+                  onClick={onSubmitForm}
+                  disabled={isButtonDisabled}>
+                  {currentStep === 6 ? "Wyślij" : "Dalej"}
+                </Form.Button>
+              )}
             </Form>
           </Grid.Column>
           <Grid.Column mobile={1} computer={4} tablet={3}></Grid.Column>

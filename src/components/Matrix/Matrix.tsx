@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../Matrix/matrix.css";
 import { Square } from "./Generator";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setMatrix } from "../../redux/matrixSlice";
 
 interface TrueMatrixProps {
