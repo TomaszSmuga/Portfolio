@@ -6,25 +6,19 @@ import "../Style/Form.css";
 // import NumericInput from "../Utilities/Regex";
 import axios from "axios";
 import { Randomizer } from "../components/Form/Form";
-import CustomForm from "../components/Form/Form";
 import { CheckboxDiv } from "../components/Input/Checkbox.styled";
 import { RadioQuestionnaire } from "../components/Input/Checkbox";
 import {
   Consent,
   Instruction,
 } from "../components/InformedConsent/InformedConsent";
-import {
-  SocioEconomicFormNumbers,
-  // SocioEconomicForm,
-} from "../components/formField/FormField";
+import { SocioEconomicFormNumbers } from "../components/formField/FormField";
 import { CityCheckbox } from "../components/Input/CityCheckbox";
 import { EducationCheckbox } from "../components/Input/Education";
 import { GenderCheckbox } from "../components/Input/GenderCheckbox";
-// import { Matrix } from "../components/Matrix/Matrix";
-import { UseSelector } from "react-redux/es/hooks/useSelector";
-import { Ticker } from "../components/CountDowns/CountDowns";
 import { Step6, Step6Option } from "../pages/Step6";
 import { useSelector } from "react-redux";
+import { StepState } from "../redux/stepSlice";
 
 export const ArrayTest: React.FC = () => {
   const [step6Answers, setStep6Answers] = useState<Step6Option[]>([]);
@@ -48,8 +42,18 @@ export const ArrayTest: React.FC = () => {
   const [STS5, setSTS5] = useState<number | null>(null);
   const [consent, setConsent] = useState<boolean | null>(null);
   const [showButton, setShowButton] = useState(true);
-  const innerCurrentStep = useSelector((state) => state.step.innerCurrentStep);
+  const innerCurrentStep = useSelector(
+    (state: StepState) => state.innerCurrentStep
+  );
   const STEP_NUMBER = 2;
+
+  useEffect(() => {
+    if (innerCurrentStep == STEP_NUMBER) {
+      setShowButton(true);
+    } else {
+      setShowButton(false);
+    }
+  }, [innerCurrentStep, STEP_NUMBER]);
 
   useEffect(() => {
     let timer: number;
@@ -327,10 +331,10 @@ export const ArrayTest: React.FC = () => {
       case 6:
         return (
           <Step6
+            // eslint-disable-next-line @typescript-eslint/no-empty-function
             onInnerCurrentStepChange={() => {}}
             onAnswersChange={handleStep6Answers}
             stepNumber={STEP_NUMBER}
-            onButtonShow={setShowButton}
           />
         );
       // case 7:

@@ -5,6 +5,6 @@ import stepSlice from "./stepSlice";
 export const store = configureStore({
   reducer: {
     matrix: matrixSlice,
-    step: stepSlice.reducer,
+    step: stepSlice,
   },
 });
