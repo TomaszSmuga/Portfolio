@@ -45,6 +45,7 @@ export const ArrayTest: React.FC = () => {
   const [STS4, setSTS4] = useState<number | null>(null);
   const [STS5, setSTS5] = useState<number | null>(null);
   const [consent, setConsent] = useState<boolean | null>(null);
+  const [showButton, setShowButton] = useState(true);
 
   useEffect(() => {
     let timer: number;
@@ -61,7 +62,7 @@ export const ArrayTest: React.FC = () => {
   }, [showOverlay]);
 
   const onNextStep = () => {
-    if (currentStep < 6) {
+    if (currentStep < 7) {
       if (consent === false) {
         window.location.href = "https://www.google.com/";
         return;
@@ -326,6 +327,8 @@ export const ArrayTest: React.FC = () => {
             onAnswersChange={handleStep6Answers}
           />
         );
+      case 7:
+        return <h1>Dziękuję za udział w badaniu</h1>;
       default:
         return null;
     }
@@ -350,7 +353,7 @@ export const ArrayTest: React.FC = () => {
                 color="blue"
                 onClick={onSubmitForm}
                 disabled={isButtonDisabled}>
-                {currentStep === 6 ? "Wyślij" : "Dalej"}
+                {currentStep === 7 ? "Wyślij" : "Dalej"}
               </Form.Button>
             </Form>
           </Grid.Column>

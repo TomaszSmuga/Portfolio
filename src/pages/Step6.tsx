@@ -17,7 +17,7 @@ export interface Step6Option {
   matrixToShow: Square[]; // Add matrixToShow to Step6Option
 }
 
-const STEP_NUMBER = 5;
+const STEP_NUMBER = 12;
 
 export const Step6: FC<Step6Props> = ({
   onInnerCurrentStepChange,
@@ -27,6 +27,7 @@ export const Step6: FC<Step6Props> = ({
   const [answers, setAnswers] = useState<Step6Option[]>([]);
   const [showOverlay, setShowOverlay] = useState(true);
   const [squares, setSquares] = useState<Square[]>([]);
+  const [showButton, setShowButton] = useState(true);
 
   useEffect(() => {
     const ans = [];
@@ -40,6 +41,12 @@ export const Step6: FC<Step6Props> = ({
     setAnswers(ans);
   }, []);
 
+  const handleNoButton = () => {
+    if (innerCurrentStep == STEP_NUMBER - 1) {
+      setShowButton(false);
+    }
+  };
+
   useEffect(() => {
     onInnerCurrentStepChange(innerCurrentStep);
   }, [innerCurrentStep]);
@@ -50,7 +57,7 @@ export const Step6: FC<Step6Props> = ({
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 4000);
+      }, 4);
     }
 
     return () => {
@@ -67,8 +74,17 @@ export const Step6: FC<Step6Props> = ({
   };
 
   const handleNextStep = (): void => {
-    setInnerCurrentStep((prev) => prev + 1);
-    setShowOverlay(true);
+    if (innerCurrentStep <= STEP_NUMBER) {
+      setInnerCurrentStep((prev) => prev + 1);
+      setShowOverlay(true);
+      setShowButton(true);
+    }
+  };
+
+  const handlePrevStep = (): void => {
+    setInnerCurrentStep((prev) => prev - 1);
+    setShowButton(true);
+    console.log(STEP_NUMBER);
   };
 
   return (
@@ -91,13 +107,19 @@ export const Step6: FC<Step6Props> = ({
           )}
         </React.Fragment>
       ))}
-      <Button
-        size="huge"
-        color="blue"
-        onClick={handleNextStep}
-        disabled={innerCurrentStep === answers.length}>
-        Dalej
-      </Button>
+      <div>
+        {showButton && (
+          <Button
+            size="huge"
+            color="blue"
+            onClick={handleNextStep}
+            disabled={innerCurrentStep === answers.length}>
+            Dalej
+          </Button>
+        )}
+      </div>
+
+      <Button onClick={handlePrevStep}>Wstecz</Button>
     </>
   );
 };
