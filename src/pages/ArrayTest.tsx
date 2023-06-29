@@ -21,8 +21,10 @@ import { CityCheckbox } from "../components/Input/CityCheckbox";
 import { EducationCheckbox } from "../components/Input/Education";
 import { GenderCheckbox } from "../components/Input/GenderCheckbox";
 // import { Matrix } from "../components/Matrix/Matrix";
+import { UseSelector } from "react-redux/es/hooks/useSelector";
 import { Ticker } from "../components/CountDowns/CountDowns";
 import { Step6, Step6Option } from "../pages/Step6";
+import { useSelector } from "react-redux";
 
 export const ArrayTest: React.FC = () => {
   const [step6Answers, setStep6Answers] = useState<Step6Option[]>([]);
@@ -46,7 +48,8 @@ export const ArrayTest: React.FC = () => {
   const [STS5, setSTS5] = useState<number | null>(null);
   const [consent, setConsent] = useState<boolean | null>(null);
   const [showButton, setShowButton] = useState(true);
-  const STEP_NUMBER = 6;
+  const innerCurrentStep = useSelector((state) => state.step.innerCurrentStep);
+  const STEP_NUMBER = 2;
 
   useEffect(() => {
     let timer: number;

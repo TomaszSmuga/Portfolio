@@ -5,6 +5,7 @@ import { ImgLinks } from "../Utilities/Link";
 import { useDispatch } from "react-redux";
 import { Ticker } from "../components/CountDowns/CountDowns";
 import { Step6Task } from "./Step6Task";
+import { updateCurrentstep } from "../redux/stepSlice/";
 
 type Step6Props = {
   onInnerCurrentStepChange: (value: number) => void;
@@ -26,7 +27,7 @@ export const Step6: FC<Step6Props> = ({
   const [innerCurrentStep, setInnerCurrentStep] = useState<number>(0);
   const [answers, setAnswers] = useState<Step6Option[]>([]);
   const [showOverlay, setShowOverlay] = useState(true);
-  const [squares, setSquares] = useState<Square[]>([]);
+  const [squares] = useState<Square[]>([]);
   const [showButton, setShowButton] = useState(true);
   const dispatch = useDispatch();
 
@@ -78,6 +79,14 @@ export const Step6: FC<Step6Props> = ({
     setInnerCurrentStep((prev) => prev - 1);
     console.log(stepNumber);
   };
+
+  useEffect(() => {
+    if (innerCurrentStep == stepNumber - 1) {
+      setShowButton(false);
+    } else {
+      setShowButton(true);
+    }
+  }, [stepNumber, innerCurrentStep]);
 
   return (
     <>
