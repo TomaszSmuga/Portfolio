@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, createSelector } from "@reduxjs/toolkit";
+import { RootStateOrAny } from "react-redux";
 
 export interface StepState {
   innerCurrentStep: number;
@@ -16,3 +17,9 @@ const stepSlice = createSlice({
 
 export const { updateCurrentStep } = stepSlice.actions;
 export default stepSlice.reducer;
+
+const selectStepState = (state: RootStateOrAny) => state.step;
+export const selectInnerCurrentStep = createSelector(
+  selectStepState,
+  (step) => step.innerCurrentStep
+);

@@ -12,12 +12,7 @@ interface TickerProps {
   matrixToShow: Square[];
 }
 
-export const Ticker: React.FC<TickerProps> = ({
-  seconds = 3,
-  imgLinks,
-  imgIndex,
-  matrixToShow,
-}) => {
+export const Ticker: React.FC<TickerProps> = ({ seconds = 3 }) => {
   const [time, setTime] = useState(seconds);
   const [showOverlay, setShowOverlay] = useState(false);
   const [showTicker, setShowTicker] = useState(true);

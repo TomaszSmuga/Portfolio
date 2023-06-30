@@ -7,6 +7,7 @@ import { updateCurrentStep, StepState } from "../redux/stepSlice";
 import { Ticker } from "../components/CountDowns/CountDowns";
 import { Step6Task } from "./Step6Task";
 import { useSelector } from "react-redux";
+import { selectInnerCurrentStep } from "../redux/stepSlice";
 
 type Step6Props = {
   onInnerCurrentStepChange: (value: number) => void;
@@ -25,15 +26,15 @@ export const Step6: FC<Step6Props> = ({
   onAnswersChange,
   stepNumber,
 }) => {
-  // const [innerCurrentStep, setInnerCurrentStep] = useState<number>(0);
   const [answers, setAnswers] = useState<Step6Option[]>([]);
   const [showOverlay, setShowOverlay] = useState(true);
   const [squares] = useState<Square[]>([]);
   const [showButton, setShowButton] = useState(true);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const dispatch = useDispatch();
-  const innerCurrentStep = useSelector(
-    (state: StepState) => state.innerCurrentStep
-  );
+
+  const innerCurrentStep = useSelector(selectInnerCurrentStep);
+
   useEffect(() => {
     const ans = [];
     for (let i = 0; i < stepNumber; i++) {
@@ -56,7 +57,7 @@ export const Step6: FC<Step6Props> = ({
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 4000);
+      }, 4);
     }
 
     return () => {
@@ -78,11 +79,6 @@ export const Step6: FC<Step6Props> = ({
     console.log(innerCurrentStep);
   };
 
-  const handlePrevStep = (): void => {
-    dispatch(updateCurrentStep(innerCurrentStep - 1));
-    console.log(stepNumber);
-  };
-
   useEffect(() => {
     if (innerCurrentStep == stepNumber - 1) {
       setShowButton(false);
@@ -90,6 +86,8 @@ export const Step6: FC<Step6Props> = ({
       setShowButton(true);
     }
   }, [stepNumber, innerCurrentStep]);
+
+  const isAnswearSelected = answers[innerCurrentStep]?.answer === undefined;
 
   return (
     <>
@@ -105,7 +103,6 @@ export const Step6: FC<Step6Props> = ({
                   matrixToShow={squares}
                 />
               )}
-              <div>Current Step: {index}</div>
               <Step6Task data={answer} onChange={handleStep6TaskChange} />
             </>
           )}
@@ -117,13 +114,11 @@ export const Step6: FC<Step6Props> = ({
             size="huge"
             color="blue"
             onClick={handleNextStep}
-            disabled={innerCurrentStep === answers.length}>
+            disabled={isAnswearSelected}>
             Dalej
           </Button>
         )}
       </div>
-
-      <Button onClick={handlePrevStep}>Wstecz</Button>
     </>
   );
 };

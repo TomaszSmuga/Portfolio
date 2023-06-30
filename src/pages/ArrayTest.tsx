@@ -18,8 +18,7 @@ import { EducationCheckbox } from "../components/Input/Education";
 import { GenderCheckbox } from "../components/Input/GenderCheckbox";
 import { Step6, Step6Option } from "../pages/Step6";
 import { useSelector } from "react-redux";
-import { StepState } from "../redux/stepSlice";
-
+import { selectInnerCurrentStep } from "../redux/stepSlice";
 export const ArrayTest: React.FC = () => {
   const [step6Answers, setStep6Answers] = useState<Step6Option[]>([]);
 
@@ -42,14 +41,13 @@ export const ArrayTest: React.FC = () => {
   const [STS5, setSTS5] = useState<number | null>(null);
   const [consent, setConsent] = useState<boolean | null>(null);
   const [showButton, setShowButton] = useState(true);
-  const innerCurrentStep = useSelector(
-    (state: StepState) => state.innerCurrentStep
-  );
-  const STEP_NUMBER = 2;
+  const innerCurrentStep = useSelector(selectInnerCurrentStep);
+
+  const STEP_NUMBER = 10;
 
   useEffect(() => {
     if (currentStep == 6) {
-      if (innerCurrentStep <= STEP_NUMBER) {
+      if (innerCurrentStep == STEP_NUMBER - 1) {
         setShowButton(true);
       } else {
         setShowButton(false);
@@ -75,33 +73,33 @@ export const ArrayTest: React.FC = () => {
 
   const onNextStep = () => {
     if (currentStep < 6) {
-      // if (consent === false) {
-      //   window.location.href = "https://www.google.com/";
-      //   return;
-      // }
-      // if (
-      //   (currentStep === 1 && consent === null) ||
-      //   (currentStep === 2 &&
-      //     (id === null || age === null || gender === null || city === null)) ||
-      //   (currentStep === 3 &&
-      //     (STS1 === null ||
-      //       STS2 === null ||
-      //       STS3 === null ||
-      //       STS4 === null ||
-      //       STS5 === null)) ||
-      //   (currentStep === 4 &&
-      //     (CSES1 === null ||
-      //       CSES2 === null ||
-      //       CSES3 === null ||
-      //       CSES4 === null))
-      // ) {
-      //   return;
-      // } else {
-      setCurrentStep((prevStep) => prevStep + 1);
-      setShowOverlay(true);
-      setIsButtonDisabled(false);
-      console.log(innerCurrentStep);
-      // }
+      if (consent === false) {
+        window.location.href = "https://www.google.com/";
+        return;
+      }
+      if (
+        (currentStep === 1 && consent === null) ||
+        (currentStep === 2 &&
+          (id === null || age === null || gender === null || city === null)) ||
+        (currentStep === 3 &&
+          (STS1 === null ||
+            STS2 === null ||
+            STS3 === null ||
+            STS4 === null ||
+            STS5 === null)) ||
+        (currentStep === 4 &&
+          (CSES1 === null ||
+            CSES2 === null ||
+            CSES3 === null ||
+            CSES4 === null))
+      ) {
+        return;
+      } else {
+        setCurrentStep((prevStep) => prevStep + 1);
+        setShowOverlay(true);
+        setIsButtonDisabled(false);
+        console.log(innerCurrentStep);
+      }
     }
   };
   const onSubmitForm = () => {
