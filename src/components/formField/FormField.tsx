@@ -1,6 +1,7 @@
 import { ChangeEvent } from "react";
 import { Form, Input, Container } from "semantic-ui-react";
 import "../formField/form.css";
+import { Randomizer } from "../Form/Form";
 
 interface SocioEconomicFormProps {
   placeholder: string;
@@ -32,8 +33,7 @@ export const SocioEconomicFormNumbers: React.FC<SocioEconomicFormProps> = ({
             <Input
               placeholder={`Tutaj wpisz swój ${placeholder}`}
               onChange={handleInputChange}
-              value={value}
-            />
+              value={value}></Input>
           </Form.Field>
         </Form>
       </Container>

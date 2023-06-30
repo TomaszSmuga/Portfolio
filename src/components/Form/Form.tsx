@@ -41,11 +41,7 @@ const generateRandomNumber = () => {
   return Math.floor(Math.random() * 1000000);
 };
 
-interface RandomizerProps {
-  id?: number;
-}
-
-export const Randomizer: React.FC<RandomizerProps> = () => {
+export const Randomizer: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [random] = useState(generateRandomNumber());
 
