@@ -3,8 +3,10 @@ import { Button } from "semantic-ui-react";
 import { Square } from "../components/Matrix/Generator";
 import { ImgLinks } from "../Utilities/Link";
 import { useDispatch } from "react-redux";
+import { updateCurrentStep, StepState } from "../redux/stepSlice";
 import { Ticker } from "../components/CountDowns/CountDowns";
 import { Step6Task } from "./Step6Task";
+import { useSelector } from "react-redux";
 
 type Step6Props = {
   onInnerCurrentStepChange: (value: number) => void;
@@ -23,12 +25,15 @@ export const Step6: FC<Step6Props> = ({
   onAnswersChange,
   stepNumber,
 }) => {
-  const [innerCurrentStep, setInnerCurrentStep] = useState<number>(0);
+  // const [innerCurrentStep, setInnerCurrentStep] = useState<number>(0);
   const [answers, setAnswers] = useState<Step6Option[]>([]);
   const [showOverlay, setShowOverlay] = useState(true);
   const [squares] = useState<Square[]>([]);
   const [showButton, setShowButton] = useState(true);
-
+  const dispatch = useDispatch();
+  const innerCurrentStep = useSelector(
+    (state: StepState) => state.innerCurrentStep
+  );
   useEffect(() => {
     const ans = [];
     for (let i = 0; i < stepNumber; i++) {
@@ -69,12 +74,12 @@ export const Step6: FC<Step6Props> = ({
 
   const handleNextStep = (): void => {
     setShowOverlay(true);
-    setInnerCurrentStep((prev) => prev + 1);
+    dispatch(updateCurrentStep(innerCurrentStep + 1));
     console.log(innerCurrentStep);
   };
 
   const handlePrevStep = (): void => {
-    setInnerCurrentStep((prev) => prev - 1);
+    dispatch(updateCurrentStep(innerCurrentStep - 1));
     console.log(stepNumber);
   };
 

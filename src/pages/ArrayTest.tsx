@@ -100,6 +100,7 @@ export const ArrayTest: React.FC = () => {
       setCurrentStep((prevStep) => prevStep + 1);
       setShowOverlay(true);
       setIsButtonDisabled(false);
+      console.log(innerCurrentStep);
       // }
     }
   };

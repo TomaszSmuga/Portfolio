@@ -9,7 +9,6 @@ const stepSlice = createSlice({
   initialState: { innerCurrentStep: 0 },
   reducers: {
     updateCurrentStep: (state: StepState, action: PayloadAction<number>) => {
-      console.log(action.payload);
       state.innerCurrentStep = action.payload;
     },
   },
