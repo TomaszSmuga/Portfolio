@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, ChangeEvent, FormEvent } from "react";
+import { FC, useEffect, useState } from "react";
 import { Form, CheckboxProps } from "semantic-ui-react";
 import { FalseMatrix } from "../components/Matrix/FalseMatrix";
 import { Square } from "../components/Matrix/Generator";
