@@ -5,7 +5,7 @@ const matrixSlice = createSlice({
   name: "matrix",
   initialState: [] as Square[],
   reducers: {
-    setMatrix: (state, action: PayloadAction<Square[]>) => {
+    setMatrix: (_, action: PayloadAction<Square[]>) => {
       return action.payload;
     },
   },

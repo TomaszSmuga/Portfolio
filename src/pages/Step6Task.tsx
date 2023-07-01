@@ -1,5 +1,5 @@
-import { FC, useEffect, useState } from "react";
-import { Form } from "semantic-ui-react";
+import { FC, useEffect, useState, ChangeEvent, FormEvent } from "react";
+import { Form, CheckboxProps } from "semantic-ui-react";
 import { FalseMatrix } from "../components/Matrix/FalseMatrix";
 import { Square } from "../components/Matrix/Generator";
 import { Step6Option } from "./Step6";
@@ -16,8 +16,8 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
   const squares = useSelector((state: { matrix: Square[] }) => state.matrix);
 
   const handleChange = (
-    _e: React.ChangeEvent<HTMLInputElement>,
-    { value }: { value: string }
+    _: React.FormEvent<HTMLInputElement>,
+    { value }: CheckboxProps
   ) => {
     const a = value === "1" ? true : false;
     setAnswer(a);
