@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react";
 import { Form, Input, Container } from "semantic-ui-react";
 import "../formField/form.css";
-import { Randomizer } from "../Form/Form";
+// import { Randomizer } from "../Form/Form";
 
 interface SocioEconomicFormProps {
   placeholder: string;

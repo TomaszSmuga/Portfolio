@@ -15,7 +15,10 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
   const [answer, setAnswer] = useState<boolean | undefined>(data.answer);
   const squares = useSelector((state: { matrix: Square[] }) => state.matrix);
 
-  const handleChange = (_e, { value }) => {
+  const handleChange = (
+    _e: React.ChangeEvent<HTMLInputElement>,
+    { value }: { value: string }
+  ) => {
     const a = value === "1" ? true : false;
     setAnswer(a);
     onChange({ ...data, answer: a });

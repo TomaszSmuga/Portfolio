@@ -3,7 +3,7 @@ import { Button } from "semantic-ui-react";
 import { Square } from "../components/Matrix/Generator";
 import { ImgLinks } from "../Utilities/Link";
 import { useDispatch } from "react-redux";
-import { updateCurrentStep, StepState } from "../redux/stepSlice";
+import { updateCurrentStep } from "../redux/stepSlice";
 import { Ticker } from "../components/CountDowns/CountDowns";
 import { Step6Task } from "./Step6Task";
 import { useSelector } from "react-redux";
@@ -30,7 +30,7 @@ export const Step6: FC<Step6Props> = ({
   const [showOverlay, setShowOverlay] = useState(true);
   const [squares] = useState<Square[]>([]);
   const [showButton, setShowButton] = useState(true);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
   const dispatch = useDispatch();
 
   const innerCurrentStep = useSelector(selectInnerCurrentStep);
@@ -52,7 +52,7 @@ export const Step6: FC<Step6Props> = ({
   }, [innerCurrentStep, onInnerCurrentStepChange]);
 
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: number;
 
     if (showOverlay) {
       timer = setTimeout(() => {
