@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   width: 60vh;
-  height: 77vh;
+  height: auto;
 
   h4 {
     text-align: center;
@@ -20,44 +20,11 @@ export const CheckboxDiv = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  height: 77vh;
+  height: auto;
   width: inherit;
-  overflow-y: auto;
-  cursor: grab;
-
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
-    z-index: 5;
-  }
-
-  ::-webkit-scrollbar-thumb:active {
-    cursor: grabbing;
-  }
 
   p {
     font-size: 25px;
-  }
-
-  @media (max-width: 756px) {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-    &::-webkit-scrollbar {
-      display: none; /* Chrome and Safari */
-    }
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-
-    height: fit-content;
   }
 `;
 

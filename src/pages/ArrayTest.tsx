@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Grid } from "semantic-ui-react";
+import { Button, Form, Grid } from "semantic-ui-react";
 import Swal from "sweetalert2";
 import { GOOGLE_SHEET_API_LINK } from "../Utilities/api";
 import "../Style/Form.css";
@@ -98,7 +98,7 @@ export const ArrayTest: React.FC = () => {
         setCurrentStep((prevStep) => prevStep + 1);
         setShowOverlay(true);
         setIsButtonDisabled(false);
-        console.log(innerCurrentStep);
+        window.scrollTo({ top: 0 });
       }
     }
   };
@@ -305,25 +305,27 @@ export const ArrayTest: React.FC = () => {
           <>
             {currentStep === 4 && (
               <>
-                <CheckboxDiv>
-                  <RadioQuestionnaire
-                    title="Bycie osobą starszą jest dla mnie ważne."
-                    onRadioChange={handleCSES[0]}
-                  />
-                  <RadioQuestionnaire
-                    title="Bycie osobą starszą nie jest ważne dla mojego poczucia jaką osobą jestem."
-                    onRadioChange={handleCSES[1]}
-                  />
-                  <RadioQuestionnaire
-                    title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem.
+                <div className="flex">
+                  <CheckboxDiv>
+                    <RadioQuestionnaire
+                      title="Bycie osobą starszą jest dla mnie ważne."
+                      onRadioChange={handleCSES[0]}
+                    />
+                    <RadioQuestionnaire
+                      title="Bycie osobą starszą nie jest ważne dla mojego poczucia jaką osobą jestem."
+                      onRadioChange={handleCSES[1]}
+                    />
+                    <RadioQuestionnaire
+                      title="Bycie osobą starszą jest ważnym odzwierciedleniem tego, kim jestem.
         "
-                    onRadioChange={handleCSES[2]}
-                  />
-                  <RadioQuestionnaire
-                    title="Bycie osobą starszą ma bardzo niewiele wspólnego z tym, jak się czuję względem siebie"
-                    onRadioChange={handleCSES[3]}
-                  />
-                </CheckboxDiv>
+                      onRadioChange={handleCSES[2]}
+                    />
+                    <RadioQuestionnaire
+                      title="Bycie osobą starszą ma bardzo niewiele wspólnego z tym, jak się czuję względem siebie"
+                      onRadioChange={handleCSES[3]}
+                    />
+                  </CheckboxDiv>
+                </div>
               </>
             )}
           </>

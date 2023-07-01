@@ -28,6 +28,7 @@ h2 {
   width: 10%;
   display: flex;
   justify-content: center;
+  z-index: 10;
 }
 
 .flex form input {
@@ -39,7 +40,8 @@ h2 {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 110vh;
+  min-height: 110vh;
+  height: fit-content;
 }
 
 .ui.grid {
@@ -182,9 +184,6 @@ h2 {
 .socioInput {
   width: 95%;
   margin-left: 3.5vh;
-}
-
-.socioInput {
   padding: 0;
   margin: 0;
 }
@@ -205,5 +204,6 @@ h2 {
   .socioInput {
     margin: 0;
     padding: 0;
+    text-align: center;
   }
 }

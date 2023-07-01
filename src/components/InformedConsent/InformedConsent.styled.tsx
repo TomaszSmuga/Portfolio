@@ -19,22 +19,7 @@ export const ConsentDiv = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 77vh;
-  width: 60vh;
-  overflow-y: auto;
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
-  }
+  width: 65vh;
 
   p {
     font-size: 25px;

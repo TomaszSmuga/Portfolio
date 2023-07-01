@@ -72,25 +72,23 @@ export const RadioQuestionnaire: React.FC<RadioQuestionnaireProps> = ({
   return (
     <>
       <Container>
-        <Container>
-          <div className="socioInput">
-            <h4>{title}</h4>
-          </div>
-          {radios.map((radio) => (
-            <Form fluid>
-              <Form.Field>
-                <Form.Radio
-                  className={radio.checked ? "checkedBox" : "notchecked"}
-                  key={radio.identification}
-                  label={radio.label}
-                  checked={radio.checked}
-                  onChange={() => handleCheckbox(radio.identification)}
-                  value={radio.value}
-                />
-              </Form.Field>
-            </Form>
-          ))}
-        </Container>
+        <div className="socioInput">
+          <h4>{title}</h4>
+        </div>
+        {radios.map((radio) => (
+          <Form fluid>
+            <Form.Field>
+              <Form.Radio
+                className={radio.checked ? "checkedBox" : "notchecked"}
+                key={radio.identification}
+                label={radio.label}
+                checked={radio.checked}
+                onChange={() => handleCheckbox(radio.identification)}
+                value={radio.value}
+              />
+            </Form.Field>
+          </Form>
+        ))}
       </Container>
     </>
   );
