@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Container, Form, Radio } from "semantic-ui-react";
-import "../formField/form.css";
 
 interface Radio {
   identification: number;

@@ -87,7 +87,7 @@ export const ArrayTest: React.FC = () => {
             STS3 === null ||
             STS4 === null ||
             STS5 === null)) ||
-        (currentStep === 4 &&
+        (currentStep === 3 &&
           (CSES1 === null ||
             CSES2 === null ||
             CSES3 === null ||
@@ -182,11 +182,15 @@ export const ArrayTest: React.FC = () => {
   };
 
   const createHandleCSES =
-    (setCSESCallback: (value: number) => void) => (value: number) => {
+    (setCSESCallback: React.Dispatch<React.SetStateAction<number | null>>) =>
+    (value: number) => {
       setCSESCallback(value);
     };
+
   const CSESCallbacks = [setCSES1, setCSES2, setCSES3, setCSES4];
-  const handleCSES = CSESCallbacks.map(createHandleCSES);
+  const handleCSES = CSESCallbacks.map((callback) =>
+    createHandleCSES(callback)
+  );
 
   const createHandleSTS =
     (setSTSCallback: (value: number) => void) => (value: number) => {
@@ -294,19 +298,6 @@ export const ArrayTest: React.FC = () => {
                       title="Osoby w moim wieku często są oceniane w sposób tendencyjny"
                       onRadioChange={handleSTS[4]}
                     />
-                  </CheckboxDiv>
-                </div>
-              </>
-            )}
-          </>
-        );
-      case 4:
-        return (
-          <>
-            {currentStep === 4 && (
-              <>
-                <div className="flex">
-                  <CheckboxDiv>
                     <RadioQuestionnaire
                       title="Bycie osobą starszą jest dla mnie ważne."
                       onRadioChange={handleCSES[0]}
@@ -325,6 +316,18 @@ export const ArrayTest: React.FC = () => {
                       onRadioChange={handleCSES[3]}
                     />
                   </CheckboxDiv>
+                </div>
+              </>
+            )}
+          </>
+        );
+      case 4:
+        return (
+          <>
+            {currentStep === 4 && (
+              <>
+                <div className="flex">
+                  <CheckboxDiv></CheckboxDiv>
                 </div>
               </>
             )}

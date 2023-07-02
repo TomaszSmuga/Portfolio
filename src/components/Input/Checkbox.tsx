@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Form, Radio } from "semantic-ui-react";
 
 interface Radio {
@@ -55,35 +55,46 @@ export const RadioQuestionnaire: React.FC<RadioQuestionnaireProps> = ({
       value: 7,
     },
   ]);
+  const [renderCount, setRenderCount] = useState(0);
 
-  const handleCheckbox = (identification: number) => {
-    const updatedItems = radios.map((radio) => ({
+  useEffect(() => {
+    setTimeout(() => {
+      setRenderCount((prevCount) => prevCount + 1);
+    }, 0);
+  }, []);
+
+  useEffect(() => {
+    console.log("Default State:", radios);
+  }, []);
+
+  const handleCheckbox = (index: number) => {
+    const updatedItems = radios.map((radio, i) => ({
       ...radio,
-      checked: radio.identification === identification,
+      checked: i === index,
     }));
     setRadios(updatedItems);
-    const selectedValue = radios.find(
-      (radio) => radio.identification === identification
-    )?.value;
-    if (selectedValue !== undefined) {
-      onRadioChange(selectedValue);
-    }
+    const selectedValue = radios[index].value;
+    onRadioChange(selectedValue);
+    console.log(updatedItems[index].checked);
   };
+  useEffect(() => {
+    setRadios((prevState) => prevState); // Update state to trigger re-render
+  }, []);
   return (
     <>
       <Container>
         <div className="socioInput">
           <h4>{title}</h4>
         </div>
+
         {radios.map((radio) => (
-          <Form fluid>
+          <Form key={radio.identification}>
             <Form.Field>
               <Form.Radio
                 className={radio.checked ? "checkedBox" : "notchecked"}
-                key={radio.identification}
                 label={radio.label}
                 checked={radio.checked}
-                onChange={() => handleCheckbox(radio.identification)}
+                onChange={() => handleCheckbox(radios.indexOf(radio))}
                 value={radio.value}
               />
             </Form.Field>

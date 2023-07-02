@@ -117,9 +117,6 @@ h2 {
 .field {
   display: flex;
   flex-direction: column;
-}
-
-.field {
   padding: 5px;
   margin: 5px;
 }
