@@ -46,7 +46,7 @@ export const ArrayTest: React.FC = () => {
   const STEP_NUMBER = 3;
 
   useEffect(() => {
-    if (currentStep == 6) {
+    if (currentStep == 5) {
       if (innerCurrentStep == STEP_NUMBER - 1) {
         setShowButton(true);
       } else {
@@ -72,7 +72,7 @@ export const ArrayTest: React.FC = () => {
   }, [showOverlay]);
 
   const onNextStep = () => {
-    if (currentStep < 6) {
+    if (currentStep < 5) {
       if (consent === false) {
         window.location.href = "https://www.google.com/";
         return;
@@ -105,7 +105,7 @@ export const ArrayTest: React.FC = () => {
   const onSubmitForm = () => {
     console.log("Ale Ty umiesz wciskać");
     if (
-      currentStep === 6 &&
+      currentStep === 5 &&
       CSES1 !== null &&
       CSES2 !== null &&
       CSES3 !== null &&
@@ -322,21 +322,9 @@ export const ArrayTest: React.FC = () => {
           </>
         );
       case 4:
-        return (
-          <>
-            {currentStep === 4 && (
-              <>
-                <div className="flex">
-                  <CheckboxDiv></CheckboxDiv>
-                </div>
-              </>
-            )}
-          </>
-        );
-      case 5:
-        return <>{currentStep === 5 && <Instruction />}</>;
+        return <>{currentStep === 4 && <Instruction />}</>;
 
-      case 6:
+      case 5:
         return (
           <Step6
             // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -371,7 +359,7 @@ export const ArrayTest: React.FC = () => {
                   color="blue"
                   onClick={onSubmitForm}
                   disabled={isButtonDisabled}>
-                  {currentStep === 6 ? "Wyślij" : "Dalej"}
+                  {currentStep === 5 ? "Wyślij" : "Dalej"}
                 </Form.Button>
               )}
             </Form>
