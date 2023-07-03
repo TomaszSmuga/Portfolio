@@ -162,7 +162,7 @@ export const ArrayTest: React.FC = () => {
           Swal.fire({
             title: "Dobra robota!",
             text: "Twoja odpowiedź została przesłana. ",
-            html: "<p>Dziękuję za udział w badaniu</p>",
+            html: "<p>Dziękuję za udział w badaniu, do widzenia</p>",
             icon: "success",
             confirmButtonText: "Zamknij",
           }).then((response) => {
