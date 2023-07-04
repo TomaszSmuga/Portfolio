@@ -55,13 +55,6 @@ export const RadioQuestionnaire: React.FC<RadioQuestionnaireProps> = ({
       value: 7,
     },
   ]);
-  const [renderCount, setRenderCount] = useState(0);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setRenderCount((prevCount) => prevCount + 1);
-    }, 0);
-  }, []);
 
   useEffect(() => {
     console.log("Default State:", radios);
@@ -77,18 +70,14 @@ export const RadioQuestionnaire: React.FC<RadioQuestionnaireProps> = ({
     onRadioChange(selectedValue);
     console.log(updatedItems[index].checked);
   };
-  useEffect(() => {
-    setRadios((prevState) => prevState); // Update state to trigger re-render
-  }, []);
   return (
     <>
       <Container>
         <div className="socioInput">
           <h4>{title}</h4>
         </div>
-
         {radios.map((radio) => (
-          <Form key={radio.identification}>
+          <Form fluid key={radio.identification}>
             <Form.Field>
               <Form.Radio
                 className={radio.checked ? "checkedBox" : "notchecked"}
