@@ -3,7 +3,6 @@ import "../Matrix/matrix.css";
 import { Square } from "./Generator";
 import { useDispatch } from "react-redux";
 import { setMatrix } from "../../redux/matrixSlice";
-import { useState } from "react";
 
 interface TrueMatrixProps {
   squares: Square[];
