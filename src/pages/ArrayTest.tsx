@@ -256,7 +256,7 @@ export const ArrayTest: React.FC = () => {
                       onRadioChange={handleSocioEconomic[1]}
                     />
                     <EducationCheckbox
-                      title="Edukacja"
+                      title="Wykształcenie"
                       onRadioChange={handleSocioEconomic[2]}
                     />
                   </CheckboxDiv>
