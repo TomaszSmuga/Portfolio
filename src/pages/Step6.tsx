@@ -57,7 +57,7 @@ export const Step6: FC<Step6Props> = ({
     if (showOverlay) {
       timer = setTimeout(() => {
         setShowOverlay(false);
-      }, 11500);
+      }, 1);
     }
 
     return () => {
