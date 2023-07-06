@@ -57,7 +57,7 @@ export const SocioEconomicForm: React.FC<SocioEconomicFormProps> = ({
         <Form.Field required={true} width={5}>
           <label>{label}</label>
           <Input
-            placeholder={`Tutaj wpisz ${placeholder}`}
+            placeholder={`Tutaj wpisz swój ${placeholder}`}
             onChange={handleInputChange}
             value={value}
           />
