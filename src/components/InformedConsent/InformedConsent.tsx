@@ -119,8 +119,8 @@ export const Instruction: React.FC = () => {
               odliczanie.
             </li>
             <li>
-              Gdy licznik dotrze do 0 przez <strong>400ms</strong> wyświelti się
-              matryca 16 kwadratów.
+              Gdy licznik dotrze do 0 przez <strong>400ms</strong> wyświetli się
+              układ 16 kwadratów.
             </li>
             <li>
               Państwa zadaniem jest{" "}
@@ -128,20 +128,20 @@ export const Instruction: React.FC = () => {
             </li>
             <li>
               Następnie wyświetlony zostanie{" "}
-              <strong>przez 8s czarny ekran.</strong>{" "}
+              <strong>
+                czarny ekran.
+                <br>Proszę starać się nie odrywać od niego wzroku</br>
+              </strong>{" "}
             </li>
+
             <li>
-              Będą mieli państwo do wyboru dwie matryce:{" "}
-              <strong>jedną, wyświetlaną wcześniej i drugą nową.</strong>
-            </li>
-            <li>
-              Matryce będą <strong>losowo obrócone</strong> o 90, 180, 270 lub
-              270 stopni
+              Będą mieli państwo do wyboru dwa układy:{" "}
+              <strong>jednen, wyświetlany wcześniej i drugi nowy.</strong>
             </li>
             <li>
               <strong>
-                Państwa zadaniem jest wybrać tę matrycę, którą widzeli Państwo
-                przez 400ms 8s wcześniej
+                Państwa zadaniem jest wybrać ten układ, którą widzeli Państwo
+                wcześniej
               </strong>
             </li>
           </ol>
