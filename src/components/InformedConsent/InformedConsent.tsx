@@ -119,8 +119,9 @@ export const Instruction: React.FC = () => {
               odliczanie.
             </li>
             <li>
-              Gdy licznik dotrze do 0 przez <strong>400ms</strong> wyświetli się
-              układ 16 kwadratów.
+              Gdy licznik dotrze do <strong>0</strong> przez wyświetli się układ
+              16 kwadratów.
+              <img src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg" />
             </li>
             <li>
               Państwa zadaniem jest{" "}
@@ -130,19 +131,33 @@ export const Instruction: React.FC = () => {
               Następnie wyświetlony zostanie{" "}
               <strong>
                 czarny ekran.
-                <br>Proszę starać się nie odrywać od niego wzroku</br>
+                <br></br>
+                Proszę starać się nie odrywać od niego wzroku
               </strong>{" "}
             </li>
 
             <li>
               Będą mieli państwo do wyboru dwa układy:{" "}
-              <strong>jednen, wyświetlany wcześniej i drugi nowy.</strong>
+              <strong>jeden, wyświetlany wcześniej i drugi nowy.</strong>
+              <div>
+                <img src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg" />
+                <img src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg" />
+              </div>
             </li>
             <li>
               <strong>
-                Państwa zadaniem jest wybrać ten układ, którą widzeli Państwo
+                Państwa zadaniem jest wybrać ten układ, który widzieli Państwo
                 wcześniej
               </strong>
+            </li>
+            <li>
+              Ostatni krok to naciśnięcie przycisku <strong>"Dalej"</strong>, po
+              którym sekwencja się <strong>powtórzy</strong>
+            </li>
+            <li>
+              Po ostatnim powtórzeniu zadania zamiast przycisku{" "}
+              <strong>"Dalej"</strong> wyświetli się <strong>"Wyślij"</strong>.
+              Proszę go wcisnąć tym samym kończąc badanie.
             </li>
           </ol>
         </ConsentDiv>

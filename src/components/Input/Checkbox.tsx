@@ -58,7 +58,7 @@ export const RadioQuestionnaire: React.FC<RadioQuestionnaireProps> = ({
 
   useEffect(() => {
     console.log("Default State:", radios);
-  }, []);
+  }, [radios]);
 
   const handleCheckbox = (index: number) => {
     const updatedItems = radios.map((radio, i) => ({
