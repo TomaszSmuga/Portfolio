@@ -10,9 +10,13 @@ interface TickerProps {
   imgLinks: string[];
   imgIndex: number;
   matrixToShow: Square[];
+  randomRotation: number;
 }
 
-export const Ticker: React.FC<TickerProps> = ({ seconds = 3 }) => {
+export const Ticker: React.FC<TickerProps> = ({
+  seconds = 3,
+  randomRotation,
+}) => {
   const [time, setTime] = useState(seconds);
   const [showOverlay, setShowOverlay] = useState(false);
   const [showTicker, setShowTicker] = useState(true);
@@ -28,7 +32,7 @@ export const Ticker: React.FC<TickerProps> = ({ seconds = 3 }) => {
       setShowOverlay(true);
       setTimeout(() => {
         setShowOverlay(false);
-      }, 400);
+      }, 200);
       setTimeout(() => {
         setShowTicker(false);
       }, -1);
@@ -47,7 +51,9 @@ export const Ticker: React.FC<TickerProps> = ({ seconds = 3 }) => {
             <StyledCount isZero={time === 0}>{time.toString()}</StyledCount>
           </div>
         )}
-        {showOverlay && <TrueMatrix squares={squares} />}
+        <div style={{ transform: `rotate(${randomRotation}deg)` }}>
+          {showOverlay && <TrueMatrix squares={squares} />}
+        </div>
       </div>
     </>
   );

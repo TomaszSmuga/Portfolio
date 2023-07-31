@@ -11,12 +11,6 @@ type Step6TaskProps = {
   onChange: (value: Step6Option) => void;
 };
 
-const getRandomRotation = () => {
-  const rotationArray = [90, 180, 270];
-  const randomIndex = Math.floor(Math.random() * rotationArray.length);
-  return rotationArray[randomIndex];
-};
-
 export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
   const [answer, setAnswer] = useState<boolean | undefined>(data.answer);
   const squares = useSelector((state: { matrix: Square[] }) => state.matrix);
@@ -34,15 +28,13 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
     setAnswer(data.answer);
   }, [data.answer]);
 
-  const randomRotation = getRandomRotation();
-
   return (
     <>
       <Form.Group inline>
         {data.questionNumber % 3 === 0 || data.questionNumber % 4 === 0 ? (
           <>
             <div className="task">
-              <div style={{ transform: `rotate(${randomRotation}deg)` }}>
+              <div>
                 <TrueMatrix squares={squares} />
               </div>
 
@@ -75,7 +67,7 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
               />
             </div>
             <div className="task">
-              <div style={{ transform: `rotate(${randomRotation}deg)` }}>
+              <div>
                 <TrueMatrix squares={squares} />
               </div>
               <Form.Radio

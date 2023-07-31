@@ -21,6 +21,12 @@ export interface Step6Option {
   matrixToShow: Square[];
 }
 
+const getRandomRotation = () => {
+  const rotationArray = [90, 180, 270];
+  const randomIndex = Math.floor(Math.random() * rotationArray.length);
+  return rotationArray[randomIndex];
+};
+
 export const Step6: FC<Step6Props> = ({
   onInnerCurrentStepChange,
   onAnswersChange,
@@ -88,6 +94,7 @@ export const Step6: FC<Step6Props> = ({
   }, [stepNumber, innerCurrentStep]);
 
   const isAnswearSelected = answers[innerCurrentStep]?.answer === undefined;
+  const randomRotation = getRandomRotation();
 
   return (
     <>
@@ -101,6 +108,7 @@ export const Step6: FC<Step6Props> = ({
                   imgLinks={ImgLinks}
                   imgIndex={0}
                   matrixToShow={squares}
+                  randomRotation={randomRotation}
                 />
               )}
               <Step6Task data={answer} onChange={handleStep6TaskChange} />
