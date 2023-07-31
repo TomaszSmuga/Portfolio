@@ -43,7 +43,7 @@ export const ArrayTest: React.FC = () => {
   const [showButton, setShowButton] = useState(true);
   const innerCurrentStep = useSelector(selectInnerCurrentStep);
 
-  const STEP_NUMBER = 20;
+  const STEP_NUMBER = 50;
 
   useEffect(() => {
     if (currentStep == 5) {
