@@ -140,7 +140,10 @@ export const Instruction: React.FC = () => {
               Będą mieli państwo do wyboru dwa układy:{" "}
               <strong>jeden, wyświetlany wcześniej i drugi nowy.</strong>
               <div>
-                <img src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg" />
+                <img
+                  style={{ transform: `rotate(90deg)` }}
+                  src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
+                />
                 <img src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg" />
               </div>
             </li>
