@@ -121,8 +121,8 @@ export const Instruction: React.FC = () => {
             <li>
               Gdy licznik dotrze do <strong>0</strong> przez wyświetli się układ
               16 kwadratów.
-              <img src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg" />
             </li>
+            <img src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg" />
             <li>
               Państwa zadaniem jest{" "}
               <strong>zapamiętać ułożenie tych kwadratów.</strong>

@@ -20,7 +20,6 @@ const getRandomRotation = () => {
 export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
   const [answer, setAnswer] = useState<boolean | undefined>(data.answer);
   const squares = useSelector((state: { matrix: Square[] }) => state.matrix);
-  const [random] = useState(getRandomRotation());
 
   const handleChange = (
     _: React.FormEvent<HTMLInputElement>,
@@ -35,13 +34,15 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
     setAnswer(data.answer);
   }, [data.answer]);
 
+  const randomRotation = getRandomRotation();
+
   return (
     <>
       <Form.Group inline>
         {data.questionNumber % 3 === 0 || data.questionNumber % 4 === 0 ? (
           <>
             <div className="task">
-              <div style={{ transform: `rotate(${random})deg` }}>
+              <div style={{ transform: `rotate(${randomRotation}deg)` }}>
                 <TrueMatrix squares={squares} />
               </div>
 
@@ -74,7 +75,7 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
               />
             </div>
             <div className="task">
-              <div style={{ transform: `rotate(${random})deg` }}>
+              <div style={{ transform: `rotate(${randomRotation}deg)` }}>
                 <TrueMatrix squares={squares} />
               </div>
               <Form.Radio
