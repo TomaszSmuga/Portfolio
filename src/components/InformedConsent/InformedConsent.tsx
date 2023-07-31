@@ -27,33 +27,32 @@ export const Consent: React.FC<ConsentProps> = ({
         <h1>Świadoma zgoda</h1>
         <ConsentDiv>
           <p>
-            Nazywam się Tomasz Smuga, badanie do którego Państwo przystąpią jest
-            częścią mojej pracy magisterskiej. Proszę o uważne zapoznanie się z
-            opisem realizowanego projektu naukowego i wyrażenie zgody na udział.
-            Celem badania jest określenie wpływu wieku na funkcjonowanie pamięci
-            wzrokowo-przestrzennej. W badaniu zostanie Pan/Pani poproszona/y o
-            uzupełnienie ankiety socjodemograficznej, kwestionariusza zagrożenia
-            stereotypem, wybranych pozycji z kwestionariusza Collective
-            Self-Esteem Scale zaadaptowanych do odzwierciedlenia badanej grupy
-            oraz wypełnienie Delayed Match-to-Sample task (DMTS) do którego
-            instrukcję zobacza Państwo w następnych krokach. Maksymalny czas
-            całego badania wynosi 20 minut. Uczestnictwo jest dobrowolne, a
-            odmowa nie wiąże się z żadnymi konsekwencjami. Również po wyrażeniu
-            zgody, w trakcie trwania badania, można wycofać się bez podawania
-            przyczyny. Istnieje też możliwość wycofania zgody na przetwarzanie
-            uzyskanych danych po zakończeniu udziału. Uzyskane wyniki są poufne,
-            to znaczy że indywidualne dane uzyskane od uczestnika nie będą
-            rozpowszechniane w sposób umożliwiający identyfikację osoby, a
-            jedynie przetwarzane w celu opracowania naukowego. W przypadku pytań
-            lub wątpliwości, na każdym etapie badania, a także po jego
-            zakończeniu, proszę kontaktować się z osobą odpowiedzialną za
-            projekt. Osobie tej można również zgłosić chęć zapoznania się ze
-            zbiorczymi wynikami projektu. Administratorem Pana/Pani danych
-            osobowych będzie SWPS Uniwersytet Humanistycznospołeczny z siedzibą
-            przy ul. Chodakowska 19/31 w Warszawie (03-815). Przetwarzanie
-            podanych danych jest niezbędne do przeprowadzenia projektu
-            badawczego pt.: „Zagrożenie stereotypem a pamięć
-            wzrokowo-przestrzenna starszych dorosłych.”, na podstawie Pana/Pani
+            Nazywam się Tomasz Smuga, chciałem serdecznie zaprosić Państwa do
+            udziału w badaniu, które jest częścią mojej pracy magisterskiej.
+            Proszę o uważne zapoznanie się z opisem realizowanego projektu
+            naukowego i wyrażenie zgody na udział. Celem badania jest określenie
+            wpływu wieku na funkcjonowanie pamięci wzrokowo-przestrzennej. W
+            badaniu zostanie Pan/Pani poproszona/y o uzupełnienie ankiety
+            socjodemograficznej, kwestionariusza zagrożenia stereotypem,
+            wybranych pozycji z kwestionariusza Collective Self-Esteem Scale
+            zaadaptowanych do odzwierciedlenia badanej grupy oraz wypełnienie
+            Delayed Match-to-Sample task (DMTS) do którego instrukcję zobacza
+            Państwo w następnych krokach. Maksymalny czas całego badania wynosi
+            20 minut. Uczestnictwo jest dobrowolne, a odmowa nie wiąże się z
+            żadnymi konsekwencjami. Również po wyrażeniu zgody, w trakcie
+            trwania badania, można wycofać się bez podawania przyczyny. Istnieje
+            też możliwość wycofania zgody na przetwarzanie uzyskanych danych po
+            zakończeniu udziału. Uzyskane wyniki są poufne, to znaczy że
+            indywidualne dane uzyskane od uczestnika nie będą rozpowszechniane w
+            sposób umożliwiający identyfikację osoby, a jedynie przetwarzane w
+            celu opracowania naukowego. W przypadku pytań lub wątpliwości, na
+            każdym etapie badania, a także po jego zakończeniu, proszę
+            kontaktować się z osobą odpowiedzialną za projekt. Osobie tej można
+            również zgłosić chęć zapoznania się ze zbiorczymi wynikami projektu.
+            Administratorem Pana/Pani danych osobowych będzie SWPS Uniwersytet
+            Humanistycznospołeczny z siedzibą przy ul. Chodakowska 19/31 w
+            Warszawie (03-815). Przetwarzanie podanych danych jest niezbędne do
+            przeprowadzenia tego projektu badawczego, na podstawie Pana/Pani
             zgody wyrażonej poprzez wypełnienie zgłoszenia udziału w
             realizowanym projekcie (art. 6 ust. 1 lit. a RODO). Zbierane dane są
             proporcjonalne do wyznaczonego celu, nie naruszają istoty prawa do
@@ -138,7 +137,15 @@ export const Instruction: React.FC = () => {
 
             <li>
               Będą mieli państwo do wyboru dwa układy:{" "}
-              <strong>jeden, wyświetlany wcześniej i drugi nowy.</strong>
+              <strong>
+                <ul>
+                  <li>
+                    Jeden, wyświetlany wcześniej - Może być obrócony o losowy
+                    kąt względem oryginału
+                  </li>
+                  <li>Drugi nowy</li>
+                </ul>
+              </strong>
               <div>
                 <img
                   style={{ transform: `rotate(90deg)` }}
@@ -155,7 +162,8 @@ export const Instruction: React.FC = () => {
             </li>
             <li>
               Ostatni krok to naciśnięcie przycisku <strong>"Dalej"</strong>, po
-              którym sekwencja się <strong>powtórzy</strong>
+              którym sekwencja się <strong>powtórzy</strong> - badanie składa
+              się z 50 prób.
             </li>
             <li>
               Po ostatnim powtórzeniu zadania zamiast przycisku{" "}

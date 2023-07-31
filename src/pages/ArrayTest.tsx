@@ -80,7 +80,7 @@ export const ArrayTest: React.FC = () => {
       if (
         (currentStep === 1 && consent === null) ||
         (currentStep === 2 &&
-          (id === null || age === null || gender === null || city === null)) ||
+          (id === "" || age === "" || gender === null || city === null)) ||
         (currentStep === 3 &&
           (STS1 === null ||
             STS2 === null ||
