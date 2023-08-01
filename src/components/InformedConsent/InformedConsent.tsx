@@ -36,7 +36,7 @@ export const Consent: React.FC<ConsentProps> = ({
             socjodemograficznej, kwestionariusza zagrożenia stereotypem,
             wybranych pozycji z kwestionariusza Collective Self-Esteem Scale
             zaadaptowanych do odzwierciedlenia badanej grupy oraz wypełnienie
-            Delayed Match-to-Sample task (DMTS) do którego instrukcję zobacza
+            Delayed Match-to-Sample task (DMTS) do którego instrukcję zobaczą
             Państwo w następnych krokach. Maksymalny czas całego badania wynosi
             20 minut. Uczestnictwo jest dobrowolne, a odmowa nie wiąże się z
             żadnymi konsekwencjami. Również po wyrażeniu zgody, w trakcie
@@ -92,8 +92,8 @@ export const Consent: React.FC<ConsentProps> = ({
           <StyledCheckbox
             size="massive"
             label={label}
-            checked={value}
             onChange={() => onChange(!value)}
+            checked={value}
           />
           <StyledCheckbox
             label={label2}
@@ -118,10 +118,10 @@ export const Instruction: React.FC = () => {
               odliczanie.
             </li>
             <li>
-              Gdy licznik dotrze do <strong>0</strong> przez wyświetli się układ
-              16 kwadratów.
+              Gdy licznik dotrze do <strong>0</strong> wyświetli się układ 16
+              kwadratów.
             </li>
-            <img src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg" />
+            <img src="https://ct-card.pl/wp-content/uploads/2023/08/16.jpg" />
             <li>
               Państwa zadaniem jest{" "}
               <strong>zapamiętać ułożenie tych kwadratów.</strong>
@@ -147,11 +147,7 @@ export const Instruction: React.FC = () => {
                 </ul>
               </strong>
               <div>
-                <img
-                  style={{ transform: `rotate(90deg)` }}
-                  src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/8.jpg"
-                />
-                <img src="http://ct-card.socialmind-dk.pl/wp-content/uploads/2023/06/7.jpg" />
+                <img src="https://ct-card.pl/wp-content/uploads/2023/08/15.jpg" />
               </div>
             </li>
             <li>
