@@ -120,7 +120,7 @@ export const Distraction: React.FC = () => {
 
   return (
     <div>
-      <h1 style={{ color: `white` }}>Fałszywy układ</h1>
+      <h1 style={{ color: `white`, textAlign: "center" }}>FAŁSZYWY UKŁAD</h1>
       <div className="grid" style={{ zIndex: `999999` }}>
         {squares.map((square) => (
           <div
