@@ -32,7 +32,7 @@ export const Ticker: React.FC<TickerProps> = ({
       setShowOverlay(true);
       setTimeout(() => {
         setShowOverlay(false);
-      }, 275);
+      }, 325);
       setTimeout(() => {
         setShowTicker(false);
       }, -1);
