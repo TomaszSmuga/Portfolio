@@ -3,7 +3,6 @@ import {
   ConsentDiv,
   StyledCheckbox,
 } from "./InformedConsent.styled";
-
 interface ConsentProps {
   label?: string;
   onChange: (value: boolean) => void;
@@ -127,23 +126,26 @@ export const Instruction: React.FC = () => {
               <strong>zapamiętać ułożenie tych kwadratów.</strong>
             </li>
             <li>
-              Następnie wyświetlony zostanie{" "}
+              Następnie wyświetlone zostaną{" "}
               <strong>
-                czarny ekran.
-                <br></br>
-                Proszę starać się nie odrywać od niego wzroku
+                szaro-czarne fałszywe układy<br></br>
+                Proszę starać się nie odrywać od nich wzroku
               </strong>{" "}
             </li>
+            <img
+              src="https://ct-card.pl/wp-content/uploads/2023/08/Przechwytywanie.jpg"
+              alt=""
+            />
 
             <li>
-              Będą mieli państwo do wyboru dwa układy:{" "}
+              Na kolejnym ekranie będą mieli państwo do wyboru dwa układy:{" "}
               <strong>
                 <ul>
                   <li>
-                    Jeden, wyświetlany wcześniej - Może być obrócony o losowy
-                    kąt względem oryginału
+                    Jeden, wyświetlany wcześniej (zółto-czerwony) - Może być
+                    obrócony o losowy kąt względem oryginału
                   </li>
-                  <li>Drugi nowy</li>
+                  <li>Drugi nowy (żółto-czerwony)</li>
                 </ul>
               </strong>
               <div>
@@ -151,10 +153,9 @@ export const Instruction: React.FC = () => {
               </div>
             </li>
             <li>
-              <strong>
-                Państwa zadaniem jest wybrać ten układ, który widzieli Państwo
-                wcześniej
-              </strong>
+              Państwa zadaniem jest wybrać ten{" "}
+              <strong>żółto-czerwony układ </strong>, który widzieli Państwo
+              wcześniej
             </li>
             <li>
               Ostatni krok to naciśnięcie przycisku <strong>"Dalej"</strong>, po

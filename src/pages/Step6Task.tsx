@@ -59,6 +59,7 @@ export const Step6Task: FC<Step6TaskProps> = ({ data, onChange }) => {
           <>
             <div className="task">
               <FalseMatrix />
+
               <Form.Radio
                 label="Wybór 1"
                 value="0"
