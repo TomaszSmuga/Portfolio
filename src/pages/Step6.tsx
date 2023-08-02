@@ -8,7 +8,7 @@ import { Ticker } from "../components/CountDowns/CountDowns";
 import { Step6Task } from "./Step6Task";
 import { useSelector } from "react-redux";
 import { selectInnerCurrentStep } from "../redux/stepSlice";
-
+import { DistractingMatrices } from "../components/Matrix/DistractingMatrices";
 type Step6Props = {
   onInnerCurrentStepChange: (value: number) => void;
   onAnswersChange: (answers: Step6Option[]) => void;
@@ -103,13 +103,16 @@ export const Step6: FC<Step6Props> = ({
           {index === innerCurrentStep && (
             <>
               {showOverlay && (
-                <Ticker
-                  seconds={3}
-                  imgLinks={ImgLinks}
-                  imgIndex={0}
-                  matrixToShow={squares}
-                  randomRotation={randomRotation}
-                />
+                <>
+                  <Ticker
+                    seconds={3}
+                    imgLinks={ImgLinks}
+                    imgIndex={0}
+                    matrixToShow={squares}
+                    randomRotation={randomRotation}
+                  />
+                  <DistractingMatrices />
+                </>
               )}
               <Step6Task data={answer} onChange={handleStep6TaskChange} />
             </>

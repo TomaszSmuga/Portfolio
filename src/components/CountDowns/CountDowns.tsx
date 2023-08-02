@@ -5,12 +5,12 @@ import "../Matrix/matrix.css";
 import { Square } from "../Matrix/Generator";
 import { useSelector } from "react-redux";
 
-interface TickerProps {
+export interface TickerProps {
   seconds: number;
-  imgLinks: string[];
-  imgIndex: number;
-  matrixToShow: Square[];
-  randomRotation: number;
+  imgLinks?: string[];
+  imgIndex?: number;
+  matrixToShow?: Square[];
+  randomRotation?: number;
 }
 
 export const Ticker: React.FC<TickerProps> = ({
