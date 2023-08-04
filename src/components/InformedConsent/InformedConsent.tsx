@@ -2,6 +2,8 @@ import {
   ConsentWrapper,
   ConsentDiv,
   StyledCheckbox,
+  InstructionDiv,
+  InstructionWrapper,
 } from "./InformedConsent.styled";
 interface ConsentProps {
   label?: string;
@@ -108,9 +110,9 @@ export const Consent: React.FC<ConsentProps> = ({
 export const Instruction: React.FC = () => {
   return (
     <>
-      <ConsentWrapper>
+      <InstructionWrapper>
         <h1>Instrukacja do badania</h1>
-        <ConsentDiv>
+        <InstructionDiv>
           <ol>
             <li>
               Po nacisnięciu przycisku <strong>"Dalej"</strong> zobaczą Państwo
@@ -149,7 +151,8 @@ export const Instruction: React.FC = () => {
                 </ul>
               </strong>
               <div>
-                <img src="https://ct-card.pl/wp-content/uploads/2023/08/15.jpg" />
+                <img src="https://ct-card.pl/wp-content/uploads/2023/08/vut2.jpg" />
+                <img src="https://ct-card.pl/wp-content/uploads/2023/08/vut.jpg" />
               </div>
             </li>
             <li>
@@ -168,8 +171,8 @@ export const Instruction: React.FC = () => {
               Proszę go wcisnąć tym samym kończąc badanie.
             </li>
           </ol>
-        </ConsentDiv>
-      </ConsentWrapper>
+        </InstructionDiv>
+      </InstructionWrapper>
     </>
   );
 };
