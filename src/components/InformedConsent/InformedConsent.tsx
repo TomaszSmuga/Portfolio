@@ -144,7 +144,7 @@ export const Instruction: React.FC = () => {
               <strong>
                 <ul>
                   <li>
-                    Jeden, wyświetlany wcześniej (zółto-czerwony) - Może być
+                    Jeden, wyświetlany wcześniej (żółto-czerwony) - Może być
                     obrócony o losowy kąt względem oryginału
                   </li>
                   <li>Drugi nowy (żółto-czerwony)</li>

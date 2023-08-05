@@ -45,7 +45,7 @@ export const InstructionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: auto;
+  width: 65vh;
   @media screen and (max-width: 768px) {
     width: fit-content;
   }
