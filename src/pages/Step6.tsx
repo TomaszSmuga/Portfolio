@@ -19,6 +19,7 @@ export interface Step6Option {
   questionNumber: number;
   answer: boolean | undefined;
   matrixToShow: Square[];
+  time?: number;
 }
 
 const getRandomRotation = () => {
@@ -36,7 +37,7 @@ export const Step6: FC<Step6Props> = ({
   const [showOverlay, setShowOverlay] = useState(true);
   const [squares] = useState<Square[]>([]);
   const [showButton, setShowButton] = useState(true);
-
+  const [startTime, setStartTime] = useState<number | null>(null);
   const dispatch = useDispatch();
 
   const innerCurrentStep = useSelector(selectInnerCurrentStep);
@@ -48,6 +49,7 @@ export const Step6: FC<Step6Props> = ({
         questionNumber: i,
         answer: undefined,
         matrixToShow: [],
+        time: 0,
       } as Step6Option);
     }
     setAnswers(ans);
@@ -80,9 +82,22 @@ export const Step6: FC<Step6Props> = ({
   };
 
   const handleNextStep = (): void => {
+    setStartTime(performance.now());
+    const endTime = performance.now();
+    const elapsedTime = endTime - (startTime || 0);
+    const updatedAnswers = answers.map((ans) =>
+      ans.questionNumber === innerCurrentStep
+        ? { ...ans, time: elapsedTime }
+        : ans
+    );
+    setAnswers(updatedAnswers);
+    onAnswersChange(updatedAnswers);
     setShowOverlay(true);
     dispatch(updateCurrentStep(innerCurrentStep + 1));
-    console.log(innerCurrentStep);
+    setStartTime(null);
+    console.log(startTime);
+    console.log(endTime);
+    console.log(elapsedTime);
   };
 
   useEffect(() => {
