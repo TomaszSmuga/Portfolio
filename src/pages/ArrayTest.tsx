@@ -340,6 +340,22 @@ export const ArrayTest: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (innerCurrentStep !== STEP_NUMBER) {
+        e.preventDefault();
+        e.returnValue =
+          "Jeśli teraz wyjdziesz wszystkie zmiany zostaną utracone";
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [innerCurrentStep, STEP_NUMBER]);
+
   const handleStep6Answers = (answers: Step6Option[]): void => {
     setStep6Answers(answers);
     console.log(answers);
