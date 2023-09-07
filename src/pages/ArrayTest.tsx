@@ -103,7 +103,7 @@ export const ArrayTest: React.FC = () => {
     }
   };
   const onSubmitForm = () => {
-    console.log("Ale Ty umiesz wciskać");
+    const trueCount = step6Answers.filter((ans) => ans.answer === true).length;
     if (
       currentStep === 5 &&
       CSES1 !== null &&
@@ -160,7 +160,8 @@ export const ArrayTest: React.FC = () => {
           console.log(step6AnswersRequestObj);
           console.log(request);
           Swal.fire({
-            title: "Dobra robota!",
+            title: `Dobra robota! 
+            Liczba poprawnych odpowiedzi ${trueCount}/50`,
             text: "Twoja odpowiedź została przesłana. ",
             html: "<p>Dziękuję za udział w badaniu, do widzenia</p>",
             icon: "success",
