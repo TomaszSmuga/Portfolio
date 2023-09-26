@@ -292,7 +292,7 @@ export const ArrayTest: React.FC = () => {
                       onRadioChange={handleSTS[2]}
                     />
                     <RadioQuestionnaire
-                      title="Sądzę, że ze względu na mój wiek, mam możliwości rozwoju intelektualnego"
+                      title="Sądzę, że ze względu na mój wiek, mam mniejsze możliwości rozwoju intelektualnego"
                       onRadioChange={handleSTS[3]}
                     />
                     <RadioQuestionnaire
