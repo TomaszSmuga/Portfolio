@@ -1,21 +1,22 @@
 import { Link } from "react-router-dom";
+import { StyledMenu, StyledLink } from "./Menu.styled";
 
 export const Menu = () => {
   return (
     <>
-      <nav>
+      <StyledMenu>
         <ul>
           <li>
-            <Link to={"/"}>Home</Link>
+            <StyledLink to={"/"}>Home</StyledLink>
           </li>
           <li>
-            <Link to={"/test"}>Test</Link>
+            <StyledLink to={"/test"}>Test</StyledLink>
           </li>
           <li>
-            <Link to={"/about"}>About</Link>
+            <StyledLink to={"/about"}>About</StyledLink>
           </li>
         </ul>
-      </nav>
+      </StyledMenu>
     </>
   );
 };
