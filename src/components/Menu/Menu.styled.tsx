@@ -19,7 +19,7 @@ export const StyledMenu = styled.div`
     padding: 0.5rem;
     font-size: 2rem;
     font-weight: 600;
-    border-bottom: 1px solid transparent;
+    border-bottom: 5px solid transparent;
     transition: border-bottom 200ms ease-in-out;
     color: black;
   }
