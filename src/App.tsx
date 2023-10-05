@@ -4,28 +4,17 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Route, Routes, Link } from "react-router-dom";
 import { Abouts } from "./pages/Abouts";
-
+import { Menu } from "./components/Menu/Menu";
 const App: React.FC = () => {
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link to={"/"}>Home</Link>
-          </li>
-          <li>
-            <Link to={"/test"}>Test</Link>
-          </li>
-          <li>
-            <Link to={"/about"}>About</Link>
-          </li>
-        </ul>
-      </nav>
+      <Menu />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/test" element={<ArrayTest />} />
         <Route path="/about" element={<About />} />
         <Route path="/about/:id" element={<Abouts />} />
+        <Route path="*" />
       </Routes>
     </>
   );
