@@ -58,7 +58,7 @@ export const ArrayTest: React.FC = () => {
   }, [currentStep, innerCurrentStep, STEP_NUMBER]);
 
   useEffect(() => {
-    let timer: number;
+    let timer: NodeJS.Timeout | undefined;
 
     if (showOverlay) {
       timer = setTimeout(() => {
