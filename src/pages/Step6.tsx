@@ -60,7 +60,7 @@ export const Step6: FC<Step6Props> = ({
   }, [innerCurrentStep, onInnerCurrentStepChange]);
 
   useEffect(() => {
-    let timer: number;
+    let timer: NodeJS.Timeout;
 
     if (showOverlay) {
       timer = setTimeout(() => {

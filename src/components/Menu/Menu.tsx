@@ -15,6 +15,9 @@ export const Menu = () => {
           <li>
             <StyledLink to={"/about"}>About</StyledLink>
           </li>
+          <li>
+            <StyledLink to={"/register"}>Register</StyledLink>
+          </li>
         </ul>
       </StyledMenu>
     </>

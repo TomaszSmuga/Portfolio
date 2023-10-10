@@ -4,7 +4,7 @@ import { auth } from "../../Utilities/Firebase/firebase";
 import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-const RegisterPage: React.FC = () => {
+export const RegisterPage: React.FC = () => {
   const [registering, setRegistering] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -89,5 +89,3 @@ const RegisterPage: React.FC = () => {
     </Grid>
   );
 };
-
-export default RegisterPage;
