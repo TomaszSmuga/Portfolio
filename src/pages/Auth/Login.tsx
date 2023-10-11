@@ -5,43 +5,37 @@ import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import ErrorText from "../../components/ErrorText/ErrorText";
 
-export const RegisterPage: React.FC = () => {
-  const [registering, setRegistering] = useState<boolean>(false);
+export const LoginPage: React.FC = () => {
+  const [authenticating, setAuthenticating] = useState<boolean>(false);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [confirm, setConfirm] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   const navigate = useNavigate();
 
-  const signUpWithEmailAndPassword = () => {
-    if (error !== "") setError("Please make sure your passwords match");
+  const signInWithEmailAndPassword = () => {
+    if (error !== "") setError("");
 
-    setRegistering(true);
+    setAuthenticating(true);
+
     auth
-      .createUserWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email, password)
       .then((result) => {
         console.log(result);
-        navigate("/login");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
-        if (error.code.includes("auth/weak-password")) {
-          setError("Please enter a stronger password");
-        } else if (error.code.includes("auth/email-already-in-use")) {
-          setError(`This email is already in use`);
-        }
-        setRegistering(false);
+        setAuthenticating(false);
+        setError("Unable to sign in try again later.");
       });
   };
-
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 800 }}>
         {" "}
-        {/* Adjust maxWidth as needed */}
         <Header as="h2" color="teal" textAlign="center">
-          Register your account
+          Login to your account
         </Header>
         <Form size="large">
           <Form.Input
@@ -64,28 +58,18 @@ export const RegisterPage: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             size="huge"
           />
-          <Form.Input
-            fluid
-            icon="lock"
-            iconPosition="left"
-            placeholder="Confirm Password"
-            type="password"
-            value={confirm}
-            onChange={(e) => setConfirm(e.target.value)}
-            size="huge"
-          />
           {error && <p style={{ color: "red" }}>{error}</p>}
           <Button
             color="teal"
             fluid
             size="huge"
-            onClick={signUpWithEmailAndPassword}
-            disabled={registering}>
-            Register
+            onClick={() => signInWithEmailAndPassword()}
+            disabled={authenticating}>
+            Log in
           </Button>
           <small>
             <p>
-              Already have an account? <Link to="/login">Click here</Link>
+              Don't have an account? <Link to="/register">Click here</Link>
             </p>
           </small>
           <ErrorText error={error} />
