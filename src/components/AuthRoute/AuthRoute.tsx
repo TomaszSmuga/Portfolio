@@ -1,17 +1,13 @@
 import React from "react";
+import { auth } from "../../Utilities/Firebase/firebase";
+import { Navigate } from "react-router-dom";
 
-interface IAuthRouteProps {
-  error: string;
-  className?: string;
-}
+const AuthRoute: React.FC = () => {
+  if (!auth.currentUser) {
+    return <Navigate to="/login" />; // Replace with your desired path
+  }
 
-const AuthRoute: React.FC<IAuthRouteProps> = ({ error, className }) => {
-  if (error === "") return null;
-  return (
-    <small className={`ui red ${className || ""}`} role="alert">
-      {error}
-    </small>
-  );
+  return <div>{children}</div>;
 };
 
 export default AuthRoute;
