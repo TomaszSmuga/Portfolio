@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../Utilities/Firebase/firebase";
-import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
+// import { auth } from "../../Utilities/Firebase/firebase";
+import { Button, Form, Grid, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import ErrorText from "../../components/ErrorText/ErrorText";
+import { UserAuth } from "../../Context/Context";
 
 export const RegisterPage: React.FC = () => {
   const [registering, setRegistering] = useState<boolean>(false);
@@ -11,29 +12,45 @@ export const RegisterPage: React.FC = () => {
   const [password, setPassword] = useState<string>("");
   const [confirm, setConfirm] = useState<string>("");
   const [error, setError] = useState<string>("");
-
+  const { createUser } = UserAuth();
   const navigate = useNavigate();
 
-  const signUpWithEmailAndPassword = () => {
-    if (error !== "") setError("Please make sure your passwords match");
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
 
-    setRegistering(true);
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        console.log(result);
-        navigate("/login");
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.code.includes("auth/weak-password")) {
-          setError("Please enter a stronger password");
-        } else if (error.code.includes("auth/email-already-in-use")) {
-          setError(`This email is already in use`);
-        }
-        setRegistering(false);
-      });
+    try {
+      await createUser(email, password);
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+        console.log(error.message);
+      } else {
+        console.error("An unexpected error has occurred", error);
+      }
+    }
   };
+
+  // const signUpWithEmailAndPassword = () => {
+  //   if (error !== "") setError("Please make sure your passwords match");
+
+  //   setRegistering(true);
+  //   auth
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then((result) => {
+  //       console.log(result);
+  //       navigate("/login");
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       if (error.code.includes("auth/weak-password")) {
+  //         setError("Please enter a stronger password");
+  //       } else if (error.code.includes("auth/email-already-in-use")) {
+  //         setError(`This email is already in use`);
+  //       }
+  //       setRegistering(false);
+  //     });
+  // };
 
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
@@ -43,7 +60,7 @@ export const RegisterPage: React.FC = () => {
         <Header as="h2" color="teal" textAlign="center">
           Register your account
         </Header>
-        <Form size="large">
+        <Form size="large" onSubmit={handleSubmit}>
           <Form.Input
             fluid
             icon="user"
@@ -79,7 +96,7 @@ export const RegisterPage: React.FC = () => {
             color="teal"
             fluid
             size="huge"
-            onClick={signUpWithEmailAndPassword}
+            onClick={handleSubmit}
             disabled={registering}>
             Register
           </Button>

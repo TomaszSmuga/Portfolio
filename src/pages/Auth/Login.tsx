@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../Utilities/Firebase/firebase";
+// import { auth } from "../../Utilities/Firebase/firebase";
 import { Button, Form, Grid, Header, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import ErrorText from "../../components/ErrorText/ErrorText";
